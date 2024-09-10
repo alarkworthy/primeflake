@@ -14,6 +14,7 @@
   pluto = {
     audio.enable = true;
     impermanence.enable = true;
+    streaming.sunshine.enable = true;
   };
 
   services.printing.enable = true;
