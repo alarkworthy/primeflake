@@ -157,6 +157,13 @@
   
   
   networking.firewall = {
+    allowedUDPPorts = [
+      53
+      67
+    ];
+    trustedInterfaces = [
+      "waydroid0"
+    ];
    # if packets are still dropped, they will show up in dmesg
    logReversePathDrops = true;
    # wireguard trips rpfilter up

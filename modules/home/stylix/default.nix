@@ -7,6 +7,7 @@ in
   config = mkIf cfg.enable {
 	  programs.btop = {
 	    enable = true;
+	    package = (pkgs.btop.override { rocmSupport = true; });
 	  };
 	  stylix = {
 	    enable = true;

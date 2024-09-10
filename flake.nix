@@ -1,7 +1,7 @@
 {
 description = "Pluto";
 
-inputs = {
+    inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
         home-manager = {
             url = "github:nix-community/home-manager";
@@ -20,6 +20,7 @@ inputs = {
             inputs.nixpkgs.follows = "nixpkgs";
         };
         impermanence.url = "github:nix-community/impermanence";
+        nixcord.url = "github:kaylorben/nixcord";
     };
 
 #   outputs = inputs:
@@ -83,7 +84,7 @@ inputs = {
                 
                 homes.modules = with inputs; [
                     #hyprland.homeManagerModules.default
-
+                    nixcord.homeManagerModules.nixcord
                 ];
 
 

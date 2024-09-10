@@ -24,7 +24,7 @@ in
         };
 
       };
-      xdg.portal.extraPortals = with pkgs; [xdg-desktop-portal-gtk xdg-desktop-portal xdg-desktop-portal-hyprland];
+      xdg.portal.extraPortals = with pkgs; [xdg-desktop-portal];
       #xdg.portal.xdgOpenUsePortal = true;
     wayland.windowManager.sway = {
       #General Config

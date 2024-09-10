@@ -9,7 +9,7 @@ in {
   users.users.root.hashedPasswordFile = "/persist/passwords/root";
   boot.initrd.postResumeCommands = lib.mkAfter ''
     mkdir -p /mnt
-    mount -o subvol=/ /dev/nvme0n1 /mnt
+    mount -o subvol=/ /dev/nvme0n1p2 /mnt
 
     btrfs subvolume list -o /mnt/root |
     cut -f9 -d' ' |
