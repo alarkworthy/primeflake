@@ -114,7 +114,7 @@ in
           DP-2 = { #Alienware
             mode = "3440x1440@174.963Hz";
             pos = "0 0";
-            adaptive_sync = "off";
+            adaptive_sync = "on";
           };
           #HDMI-A-2 = {
           #  mode = "1366x768";

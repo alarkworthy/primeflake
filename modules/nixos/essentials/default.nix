@@ -25,6 +25,8 @@ in {
         quickemu
 	curl
         xivlauncher
+        tunctl
+        bridge-utils
     ];
     programs.git.enable = true;
     programs.neovim.defaultEditor = true;

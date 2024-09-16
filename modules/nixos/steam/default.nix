@@ -11,6 +11,10 @@ in {
 #             "xivlauncher"
 #           ];
     hardware.steam-hardware.enable = true;
+    programs.gamemode = {
+      enable = true;
+      enableRenice = true;
+    };
     programs.steam = {
       enable = true;
       extest.enable = true;

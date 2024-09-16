@@ -9,7 +9,7 @@ in
     programs = {
         texlive = {
           enable = true;
-          
+          extraPackages = tpkgs: { inherit (tpkgs) collection-basic standalone pdfcrop collection-xetex collection-latex collection-mathscience collection-fontsrecommended collection-latexextra; };
         };
       };
 

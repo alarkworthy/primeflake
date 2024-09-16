@@ -22,7 +22,7 @@
   # Use the systemd-boot EFI boot loader.
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
-    initrd.kernelModules = [ "amdgpu" ];
+    #initrd.kernelModules = [ "amdgpu" ];
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
   };
@@ -32,14 +32,15 @@
   #Hardware Opengl
   hardware.graphics = {
     enable = true; #May not be needed, the system sway module auto enables this, but we are using homemanager to install sway
-    extraPackages = with pkgs; [
-      amdvlk #AMDVLK
-      rocmPackages.clr.icd #OpenCL
-    ];   
-    extraPackages32 = with pkgs; [
-      driversi686Linux.amdvlk #32 Bit AMDVLK drivers
-      ];
-    
+    enable32Bit = true;
+    #extraPackages = with pkgs; [
+    #  amdvlk #AMDVLK
+    #  rocmPackages.clr.icd #OpenCL
+    #];   
+    #extraPackages32 = with pkgs; [
+    #  driversi686Linux.amdvlk #32 Bit AMDVLK drivers
+    #  ];
+
     #Force radv
     #enviroment.variables.AMD_VULKAN_ICD = "RADV";
 
@@ -47,7 +48,21 @@
     #Might not need anything for this to work
     
   };
+
+  programs.corectrl= {
+    enable = false;
+    gpuOverclock.enable = true;
+  };
+  hardware.amdgpu = {
+    initrd.enable = true;
+    opencl.enable = true;
+    amdvlk = {
+      enable = true;
+      support32Bit.enable = true;
+    };
+  };
   
+  hardware.cpu.amd.ryzen-smu.enable = true;
   #HIP workaround (used in blender)
   #systemd.tmpfiles.rules = [
   #"L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
@@ -85,10 +100,31 @@
   
   
   #End of Hardware
+  programs.virt-manager.enable = true;
+  virtualisation = {
+    libvirtd = {
+      enable = true;
 
+    };
+
+  };
   #Network
-  networking.hostName = "deadmeat";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "deadmeat";
+    useDHCP = false;
+    #interfaces."virbr0".virtualType = "tun";
+    networkmanager = {
+      enable = true;
+      unmanaged = ["esp113s0" "virbr0"];
+    };
+    #bridges."br0".interfaces = ["enp113s0"];
+    #interfaces."br0" = {
+    #  ipv4.addresses = [ {address="192.168.50.198"; prefixLength = 24;} ];
+      #virtual = true;
+    # };
+  #defaultGateway = "192.168.50.1";
+  # nameservers = ["10.100.0.1" "192.168.50.1"];
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -127,11 +163,16 @@
     isNormalUser = true;
     description = "alark";
     extraGroups = [
-      "wheel" 
+      "wheel"
+      "kvm"
+      "corectrl"
       "networkmanager"
       "video"
       "audio"
       "input"
+      "libvirtd"
+      "netdev"
+      "ubridge"
       ]; #Groups
     shell = pkgs.nushell;
     #TODO Set up secret management with sops-nix
