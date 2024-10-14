@@ -27,15 +27,21 @@ in {
         xivlauncher
         tunctl
         bridge-utils
+        man-pages
+        man-pages-posix
     ];
+    documentation = {
+      dev.enable = true;
+      man.generateCaches = true;
+    };
     programs.git.enable = true;
     programs.neovim.defaultEditor = true;
     environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
     security.polkit.enable = true;
-    hardware.opentabletdriver = {
-      enable = true;
+    #hardware.opentabletdriver = {
+    #  enable = true;
 
-    };
+    #};
     #services.xserver = {
     #  enable = true;
     #  autorun = false;

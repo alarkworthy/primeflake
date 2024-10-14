@@ -5,6 +5,9 @@ in
 {
   options.pluto.web.firefox.enable = mkEnableOption "Enable Firefox" // {default = true;};
   config = mkIf cfg.enable {
+    programs.chromium = {
+      enable = true;
+    };
     programs.firefox = {
       enable = true;
     };

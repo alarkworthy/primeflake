@@ -11,19 +11,41 @@ in {
 #             "xivlauncher"
 #           ];
     hardware.steam-hardware.enable = true;
+    hardware.enableRedistributableFirmware = true;
+    chaotic.hdr.enable = true;
+    programs.gamescope = {
+      capSysNice = true;
+      enable = true;
+    };
     programs.gamemode = {
       enable = true;
       enableRenice = true;
     };
+    #jovian = {
+      #  hardware = {
+
+      #    has.amd.gpu = true;
+    # };
+      #steam = {
+      #  enable = true;
+    #};
+      #steamos = {
+      #};
+    #};
     programs.steam = {
       enable = true;
       extest.enable = true;
+      gamescopeSession = {
+        enable = true;
+
+      };
       protontricks = {
         #package =
         enable = true;
       };
 
     };
+
   };
 
 

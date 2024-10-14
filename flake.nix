@@ -21,6 +21,11 @@ description = "Pluto";
         };
         impermanence.url = "github:nix-community/impermanence";
         nixcord.url = "github:kaylorben/nixcord";
+        #jovian = {
+        #    url = "github:Jovian-Experiments/Jovian-NixOS";
+        #    inputs.nixpkgs.follows = "nixpkgs";
+        #};
+        chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     };
 
 #   outputs = inputs:
@@ -74,6 +79,8 @@ description = "Pluto";
                 systems.modules.nixos = with inputs; [
                     home-manager.nixosModules.home-manager
                     impermanence.nixosModules.impermanence
+                    chaotic.nixosModules.default
+                    #jovian.nixosModules.default
                     #{
                     #  home-manager.useGlobalPkgs = true;
                     #  home-manager.useUserPackages = true;

@@ -7,8 +7,7 @@ in {
   #Sound
   config = mkIf cfg.enable {
     security.rtkit.enable = true; #hands out raltime scheduling priority to user proccesses on demand.
-    programs.noisetorch.enable = true;
-
+    #programs.noisetorch.enable = true;
     services.pipewire = {
       enable = true;
       #audio.enable = true #True if alsa | jack | pulse are enabled

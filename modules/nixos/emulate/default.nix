@@ -5,7 +5,7 @@ let
   cfg = config.pluto.emulate;
 in {
   options.pluto.emulate.enable = mkEnableOption "Emulator Options" // {
-    default = true;
+    default = false;
   };
   config = mkIf cfg.enable {
     virtualisation = {

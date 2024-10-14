@@ -10,18 +10,22 @@
       ./hardware-configuration.nix
     ];
 
+  specialisation.hdr.configuration = {
+    pluto.desktop.plasma.enable = true;
+  };
   #NixOS modules
   pluto = {
     audio.enable = true;
     impermanence.enable = true;
     streaming.sunshine.enable = true;
+    
   };
 
   services.printing.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_cachyos; #pkgs.linuxPackages_zen;
     #initrd.kernelModules = [ "amdgpu" ];
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
@@ -48,7 +52,7 @@
     #Might not need anything for this to work
     
   };
-
+  programs.dconf.enable = true;
   programs.corectrl= {
     enable = false;
     gpuOverclock.enable = true;

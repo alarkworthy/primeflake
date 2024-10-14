@@ -29,6 +29,9 @@ $env.NU_PLUGIN_DIRS = [
     ($nu.config-path | path dirname | path join 'plugins')
 ]
 
+# Carapace bridge completions
+$env.CARAPACE_BRIDGES = 'bash'
+
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 $env.XDG_CONFIG_HOME = "/home/alark/.config"

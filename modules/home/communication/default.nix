@@ -4,9 +4,10 @@ let cfg = config.pluto.communication;
 in {
   options.pluto.communication.enable = mkEnableOption "Enable Communication" // {default = true;};
   config = mkIf cfg.enable {
+    services.easyeffects.enable = true;
     home.packages = with pkgs; [
       #discord#evil uwu
-      #discord
+      discord
       #For screenshare with audio
       #nheko #matrix client
       mpg123
@@ -73,7 +74,6 @@ in {
           messageLogger.enable = true;
           moreUserTags.enable = true;
           mutualGroupDMs.enable = true;
-          noDefaultHangStatus.enable = true;
           noDevtoolsWarning.enable = true;
           noF1.enable = true;
           noOnboardingDelay.enable = true;
@@ -117,7 +117,6 @@ in {
             enable = true;
             superReactionPlayingLimit = 0;
           };
-          timeBarAllActivities.enable = true;
           typingIndicator.enable = true;
           typingTweaks.enable = true;
           unlockedAvatarZoom.enable = true;

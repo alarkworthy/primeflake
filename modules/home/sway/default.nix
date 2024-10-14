@@ -24,7 +24,7 @@ in
         };
 
       };
-      xdg.portal.extraPortals = with pkgs; [xdg-desktop-portal];
+      xdg.portal.extraPortals = with pkgs; [xdg-desktop-portal xdg-desktop-portal-kde];
       #xdg.portal.xdgOpenUsePortal = true;
     wayland.windowManager.sway = {
       #General Config
@@ -51,6 +51,8 @@ in
         keybindings = lib.mkOptionDefault {
         "${modr}+Return+Shift" = "exec ${pkgs.kitty}/bin/kitty";
         "${modr}+Return+Ctrl" = "exec slurp | grim -g - /home/alark/Pictures/swayshots/$(date -u +%4Y%2m%2d_%2Hh%2Mm%2Ss_swayshot.png)";
+        "${modr}+S+Shift" = "exec slurp | grim -g - - | wl-copy";
+          #"${modr}+Tab+Shift" = "swaymsg output DP-2
       };
         focus = {
           followMouse = "yes";
@@ -114,7 +116,8 @@ in
           DP-2 = { #Alienware
             mode = "3440x1440@174.963Hz";
             pos = "0 0";
-            adaptive_sync = "on";
+            adaptive_sync = "off";
+            render_bit_depth = "10";
           };
           #HDMI-A-2 = {
           #  mode = "1366x768";
