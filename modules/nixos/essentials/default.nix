@@ -38,6 +38,9 @@ in {
     programs.neovim.defaultEditor = true;
     environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
     security.polkit.enable = true;
+    programs.ssh = {
+      startAgent = true;
+    };
     #hardware.opentabletdriver = {
     #  enable = true;
 

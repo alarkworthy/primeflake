@@ -24,7 +24,7 @@ in
         };
 
       };
-      xdg.portal.extraPortals = with pkgs; [xdg-desktop-portal xdg-desktop-portal-kde];
+      xdg.portal.extraPortals = with pkgs; [xdg-desktop-portal gnome-keyring];
       #xdg.portal.xdgOpenUsePortal = true;
     wayland.windowManager.sway = {
       #General Config

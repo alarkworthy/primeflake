@@ -36,6 +36,7 @@ $env.CARAPACE_BRIDGES = 'bash'
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 $env.XDG_CONFIG_HOME = "/home/alark/.config"
 $env.WLR_RENDER = "vulkan"
+$env.SSH_AUTH_SOCK = "/run/user/1000/ssh-agent"
 #$env.FZF_DEFAULT_OPTS=" \
 #--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
 #--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \

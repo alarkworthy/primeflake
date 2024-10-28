@@ -15,12 +15,17 @@ in
           "tree" = "lsd --tree";
           "gensokyo" = "mpg123 https://stream.gensokyoradio.net/1/";
         };
+
+        
       };
       carapace = {
         enable = true;
         enableNushellIntegration = true;
       };
       lsd.enable = true;
+      fzf = {
+        enable = true;
+      };
     };
   };
 }
