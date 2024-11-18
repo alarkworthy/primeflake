@@ -1,7 +1,15 @@
-{config, pkgs, lib, ...}:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 with lib;
-let cfg = config.pluto.gaming.xivlaunch;
+let
+  cfg = config.pluto.gaming.xivlaunch;
 in
 {
-  options.pluto.gaming.xivlaunch = mkEnableOption "Enable xivlauncher" // {default = true;};
+  options.pluto.gaming.xivlaunch = mkEnableOption "Enable xivlauncher" // {
+    default = true;
+  };
 }

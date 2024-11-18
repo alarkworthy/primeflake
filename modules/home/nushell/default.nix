@@ -1,9 +1,17 @@
-{lib, config, pkgs, ...}:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 with lib;
-let cfg = config.pluto.programs.nushell;
+let
+  cfg = config.pluto.programs.nushell;
 in
 {
-  options.pluto.programs.nushell.enable = mkEnableOption "Enable Nushell" // {default = true;};
+  options.pluto.programs.nushell.enable = mkEnableOption "Enable Nushell" // {
+    default = true;
+  };
   config = mkIf cfg.enable {
     home.packages = [ pkgs.vivid ];
     programs = {
@@ -16,7 +24,6 @@ in
           "gensokyo" = "mpg123 https://stream.gensokyoradio.net/1/";
         };
 
-        
       };
       carapace = {
         enable = true;

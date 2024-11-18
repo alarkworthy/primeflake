@@ -1,17 +1,32 @@
-{lib,config,...}:
+{ lib, config, ... }:
 with lib;
-let cfg = config.pluto.texLive;
+let
+  cfg = config.pluto.texLive;
 in
 {
-  options.pluto.texLive.enable = mkEnableOption "TexLive User wide" // {default = false;};
+  options.pluto.texLive.enable = mkEnableOption "TexLive User wide" // {
+    default = false;
+  };
 
   config = mkIf cfg.enable {
     programs = {
-        texlive = {
-          enable = true;
-          extraPackages = tpkgs: {inherit (tpkgs) collection-basic standalone pdfcrop collection-xetex collection-latex collection-mathscience collection-fontsrecommended collection-latexextra latexmk;};
+      texlive = {
+        enable = true;
+        extraPackages = tpkgs: {
+          inherit (tpkgs)
+            collection-basic
+            standalone
+            pdfcrop
+            collection-xetex
+            collection-latex
+            collection-mathscience
+            collection-fontsrecommended
+            collection-latexextra
+            latexmk
+            ;
         };
       };
+    };
 
   };
 }

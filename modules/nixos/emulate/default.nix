@@ -1,9 +1,15 @@
-{ config, lib, pkgs, ...}:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 let
   cfg = config.pluto.emulate;
-in {
+in
+{
   options.pluto.emulate.enable = mkEnableOption "Emulator Options" // {
     default = false;
   };

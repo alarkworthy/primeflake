@@ -1,15 +1,24 @@
-{lib, pkgs, config, ...}:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 with lib;
-let cfg = config.pluto.gaming.steam;
-in {
-  options.pluto.gaming.steam.enable = mkEnableOption "Enable Gaming NixOS Module" // {default = true;};
+let
+  cfg = config.pluto.gaming.steam;
+in
+{
+  options.pluto.gaming.steam.enable = mkEnableOption "Enable Gaming NixOS Module" // {
+    default = true;
+  };
   config = mkIf cfg.enable {
-#    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-#             "steam"
-#             "steam-original"
-#             "steam-run"
-#             "xivlauncher"
-#           ];
+    #    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    #             "steam"
+    #             "steam-original"
+    #             "steam-run"
+    #             "xivlauncher"
+    #           ];
     hardware.steam-hardware.enable = true;
     hardware.enableRedistributableFirmware = true;
     chaotic.hdr.enable = true;
@@ -22,15 +31,15 @@ in {
       enableRenice = true;
     };
     #jovian = {
-      #  hardware = {
+    #  hardware = {
 
-      #    has.amd.gpu = true;
+    #    has.amd.gpu = true;
     # };
-      #steam = {
-      #  enable = true;
+    #steam = {
+    #  enable = true;
     #};
-      #steamos = {
-      #};
+    #steamos = {
+    #};
     #};
     programs.steam = {
       enable = true;
@@ -47,6 +56,5 @@ in {
     };
 
   };
-
 
 }

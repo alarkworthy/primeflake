@@ -2,13 +2,18 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   specialisation.hdr.configuration = {
     pluto.desktop.plasma.enable = true;
@@ -18,14 +23,14 @@
     audio.enable = true;
     impermanence.enable = true;
     streaming.sunshine.enable = true;
-    
+
   };
 
   services.printing.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot = {
-    kernelPackages = pkgs.linuxPackages_cachyos; #pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_cachyos; # pkgs.linuxPackages_zen;
     #initrd.kernelModules = [ "amdgpu" ];
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
@@ -35,7 +40,7 @@
 
   #Hardware Opengl
   hardware.graphics = {
-    enable = true; #May not be needed, the system sway module auto enables this, but we are using homemanager to install sway
+    enable = true; # May not be needed, the system sway module auto enables this, but we are using homemanager to install sway
     enable32Bit = true;
     #extraPackages = with pkgs; [
     #  amdvlk #AMDVLK
@@ -50,10 +55,10 @@
 
     #VA-API
     #Might not need anything for this to work
-    
+
   };
   programs.dconf.enable = true;
-  programs.corectrl= {
+  programs.corectrl = {
     enable = false;
     gpuOverclock.enable = true;
   };
@@ -65,14 +70,13 @@
       support32Bit.enable = true;
     };
   };
-  
+
   hardware.cpu.amd.ryzen-smu.enable = true;
   #HIP workaround (used in blender)
   #systemd.tmpfiles.rules = [
   #"L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
   #];
-  
-  
+
   #Razer
 
   hardware.openrazer = {
@@ -80,29 +84,26 @@
     users = [ "alark" ];
     #batteryNotifier = false;
     #syncEffectsEnabled = false; #if sync flag true, assignment of effects will work across devices, defaults to true
-    
+
   };
   #Note, there is openrgb support in NixOS options
-  
+
   #Bluetooth
   hardware.bluetooth = {
     enable = true;
     #powerOnBoot = false; default is true
     #Check Nix options for more
   };
-  
-  services.blueman.enable = true; #required for homemanager blueman-applet to work
-  
+
+  services.blueman.enable = true; # required for homemanager blueman-applet to work
+
   #Xbox stuff
   #hardware.xpadneo.enable = true; #For Xbox One wireless controllers
 
   #hardware.xone.enable = true; # For Xbox One and Xbox Series X|S accessories
 
-  
   #Might look into hardware.fancontrol
-  
-  
-  
+
   #End of Hardware
   programs.virt-manager.enable = true;
   virtualisation = {
@@ -119,15 +120,18 @@
     #interfaces."virbr0".virtualType = "tun";
     networkmanager = {
       enable = true;
-      unmanaged = ["esp113s0" "virbr0"];
+      unmanaged = [
+        "esp113s0"
+        "virbr0"
+      ];
     };
     #bridges."br0".interfaces = ["enp113s0"];
     #interfaces."br0" = {
     #  ipv4.addresses = [ {address="192.168.50.198"; prefixLength = 24;} ];
-      #virtual = true;
+    #virtual = true;
     # };
-  #defaultGateway = "192.168.50.1";
-  # nameservers = ["10.100.0.1" "192.168.50.1"];
+    #defaultGateway = "192.168.50.1";
+    # nameservers = ["10.100.0.1" "192.168.50.1"];
   };
 
   # Configure network proxy if necessary
@@ -136,7 +140,7 @@
 
   #Time Zone
   time.timeZone = "US/Mountain";
-  
+
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -177,7 +181,7 @@
       "libvirtd"
       "netdev"
       "ubridge"
-      ]; #Groups
+    ]; # Groups
     shell = pkgs.nushell;
     #TODO Set up secret management with sops-nix
   };
@@ -186,8 +190,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  
-  
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -200,8 +203,7 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  
-  
+
   networking.firewall = {
     allowedUDPPorts = [
       53
@@ -210,17 +212,17 @@
     trustedInterfaces = [
       "waydroid0"
     ];
-   # if packets are still dropped, they will show up in dmesg
-   logReversePathDrops = true;
-   # wireguard trips rpfilter up
-   extraCommands = ''
-     ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 49860 -j RETURN
-     ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 49860 -j RETURN
-   '';
-   extraStopCommands = ''
-     ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 49860 -j RETURN || true
-     ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 49860 -j RETURN || true
-   '';
+    # if packets are still dropped, they will show up in dmesg
+    logReversePathDrops = true;
+    # wireguard trips rpfilter up
+    extraCommands = ''
+      ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 49860 -j RETURN
+      ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 49860 -j RETURN
+    '';
+    extraStopCommands = ''
+      ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 49860 -j RETURN || true
+      ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 49860 -j RETURN || true
+    '';
   };
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -232,7 +234,6 @@
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
   # system.copySystemConfiguration = true;
-  
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
@@ -254,4 +255,3 @@
   system.stateVersion = lib.pluto.stateVersion.nixos; # Did you read the comment?
 
 }
-
