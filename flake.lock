@@ -345,11 +345,11 @@
         "plugins-spaceduck": "plugins-spaceduck"
       },
       "locked": {
-        "lastModified": 1731912445,
-        "narHash": "sha256-IOUDi/7LOt7E+PXuw0yfO/E2/8HUBneJ5T0BSK2NSLo=",
+        "lastModified": 1731960501,
+        "narHash": "sha256-lSSQcLLEjecFPslxGFu8mnUlrHTHiKuT9nMXuhd3zcA=",
         "owner": "alarkworthy",
         "repo": "neovim",
-        "rev": "449526031cdd6eed422b4e58936407e3fc622107",
+        "rev": "f40e03952eb97fc85b1fc60f3a3afc0f269a1f8d",
         "type": "github"
       },
       "original": {
@@ -714,11 +714,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1730321837,
-        "narHash": "sha256-vK+a09qq19QNu2MlLcvN4qcRctJbqWkX7ahgPZ/+maI=",
+        "lastModified": 1731959974,
+        "narHash": "sha256-AsuUJfILHGteNuQgCuiWPzWOVgzBsbetUHRAVwW7FCw=",
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "rev": "746901bb8dba96d154b66492a29f5db0693dbfcc",
+        "rev": "675d4a7fc531799ae8dfca1986b79be7660559e2",
         "type": "github"
       },
       "original": {
