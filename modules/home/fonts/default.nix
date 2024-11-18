@@ -1,9 +1,17 @@
-{config,lib,pkgs,...}:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
-let cfg = config.pluto.essentials.fonts;
+let
+  cfg = config.pluto.essentials.fonts;
 in
 {
-  options.pluto.essentials.fonts.enable = mkEnableOption "Enable fonts" // {default = true;};
+  options.pluto.essentials.fonts.enable = mkEnableOption "Enable fonts" // {
+    default = true;
+  };
   config = mkIf cfg.enable {
     fonts.fontconfig = {
       enable = true;

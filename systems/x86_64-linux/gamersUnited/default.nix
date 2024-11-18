@@ -2,13 +2,18 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   #NixOS modules
   pluto = {
@@ -29,29 +34,28 @@
 
   #Hardware Opengl
   hardware.graphics = {
-    enable = true; #May not be needed, the system sway module auto enables this, but we are using homemanager to install sway
+    enable = true; # May not be needed, the system sway module auto enables this, but we are using homemanager to install sway
     extraPackages = with pkgs; [
-      amdvlk #AMDVLK
-      rocmPackages.clr.icd #OpenCL
-    ];   
+      amdvlk # AMDVLK
+      rocmPackages.clr.icd # OpenCL
+    ];
     extraPackages32 = with pkgs; [
-      driversi686Linux.amdvlk #32 Bit AMDVLK drivers
-      ];
-    
+      driversi686Linux.amdvlk # 32 Bit AMDVLK drivers
+    ];
+
     #Force radv
     #enviroment.variables.AMD_VULKAN_ICD = "RADV";
 
     #VA-API
     #Might not need anything for this to work
-    
+
   };
-  
+
   #HIP workaround (used in blender)
   systemd.tmpfiles.rules = [
-  "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
   ];
-  
-  
+
   #Razer
 
   hardware.openrazer = {
@@ -59,35 +63,32 @@
     users = [ "alark" ];
     #batteryNotifier = false;
     #syncEffectsEnabled = false; #if sync flag true, assignment of effects will work across devices, defaults to true
-    
+
   };
   #Note, there is openrgb support in NixOS options
- 
+
   #Intel CPU
   hardware.cpu.intel = {
     updateMicrocode = true;
     #sgx.provision.enable = true #enables sgx, pls research more 
   };
-  
+
   #Bluetooth
   hardware.bluetooth = {
     enable = true;
     #powerOnBoot = false; default is true
     #Check Nix options for more
   };
-  
-  services.blueman.enable = true; #required for homemanager blueman-applet to work
-  
+
+  services.blueman.enable = true; # required for homemanager blueman-applet to work
+
   #Xbox stuff
   #hardware.xpadneo.enable = true; #For Xbox One wireless controllers
 
   #hardware.xone.enable = true; # For Xbox One and Xbox Series X|S accessories
 
-  
   #Might look into hardware.fancontrol
-  
-  
-  
+
   #End of Hardware
 
   #Network
@@ -100,7 +101,7 @@
 
   #Time Zone
   time.timeZone = "US/Mountain";
-  
+
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -130,20 +131,19 @@
     isNormalUser = true;
     description = "alark";
     extraGroups = [
-      "wheel" 
+      "wheel"
       "networkmanager"
       "video"
       "audio"
       "input"
-      ]; #Groups
+    ]; # Groups
     shell = pkgs.nushell;
     #TODO Set up secret management with sops-nix
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  
-  
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -156,20 +156,19 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  
-  
+
   networking.firewall = {
-   # if packets are still dropped, they will show up in dmesg
-   logReversePathDrops = true;
-   # wireguard trips rpfilter up
-   extraCommands = ''
-     ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 49860 -j RETURN
-     ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 49860 -j RETURN
-   '';
-   extraStopCommands = ''
-     ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 49860 -j RETURN || true
-     ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 49860 -j RETURN || true
-   '';
+    # if packets are still dropped, they will show up in dmesg
+    logReversePathDrops = true;
+    # wireguard trips rpfilter up
+    extraCommands = ''
+      ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 49860 -j RETURN
+      ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 49860 -j RETURN
+    '';
+    extraStopCommands = ''
+      ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 49860 -j RETURN || true
+      ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 49860 -j RETURN || true
+    '';
   };
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -181,7 +180,6 @@
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
   # system.copySystemConfiguration = true;
-  
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
@@ -203,4 +201,3 @@
   system.stateVersion = lib.pluto.stateVersion.nixos; # Did you read the comment?
 
 }
-

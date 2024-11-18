@@ -1,8 +1,17 @@
-{pkgs, lib, config, ...}:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 with lib;
-let cfg = config.pluto.communication;
-in {
-  options.pluto.communication.enable = mkEnableOption "Enable Communication" // {default = true;};
+let
+  cfg = config.pluto.communication;
+in
+{
+  options.pluto.communication.enable = mkEnableOption "Enable Communication" // {
+    default = true;
+  };
   config = mkIf cfg.enable {
     services.easyeffects.enable = true;
     home.packages = with pkgs; [
@@ -22,7 +31,7 @@ in {
       vesktop.enable = true;
       config = {
         useQuickCss = true;
-        enabledThemes = ["stylix.theme.css"];
+        enabledThemes = [ "stylix.theme.css" ];
         frameless = true;
         plugins = {
           alwaysTrust.enable = true;
@@ -44,7 +53,7 @@ in {
           copyUserURLs.enable = true;
           customIdle = {
             enable = true;
-            idleTimeout= 0.0;
+            idleTimeout = 0.0;
           };
           dearrow.enable = true;
           disableCallIdle.enable = true;

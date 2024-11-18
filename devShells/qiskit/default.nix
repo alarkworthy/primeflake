@@ -36,7 +36,7 @@
           ];
 
           shellHook = ''
-              echo "`${pkgs.python3}/bin/python --version`"
+            echo "`${pkgs.python3}/bin/python --version`"
           '';
         };
       }
