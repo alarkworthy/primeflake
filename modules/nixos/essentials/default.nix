@@ -9,7 +9,6 @@ in {
   };
   config = mkIf cfg.enable {
     nix = {
-      package = pkgs.nixFlakes;
       settings = {
         experimental-features = ["nix-command" "flakes"];
   
@@ -22,6 +21,9 @@ in {
     	#git
     	#vim Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
 	wget
+        zip
+        unzip
+        aria2
         quickemu
 	curl
         xivlauncher

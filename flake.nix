@@ -26,8 +26,8 @@ description = "Pluto";
         #    inputs.nixpkgs.follows = "nixpkgs";
         #};
         chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-    };
-
+				neovim.url = "github:alarkworthy/neovim";
+		};
 #   outputs = inputs:
 #       inputs.snowfall-lib.mkFlake {
 #           # You must provide our flake inputs to Snowfall Lib.
@@ -37,7 +37,7 @@ description = "Pluto";
 #           # in the next section for information on how you can move your
 #           # Nix files to a separate directory.
 #           src = ./.;
-#           
+
 #           snowfall = {
 #             namespace = "Pluto";
 #           };
@@ -49,12 +49,12 @@ description = "Pluto";
 #           systems.modules.nixos = with inputs; [
 #             home-manager.nixosModules.home-manager
 #           ];
-#           
-#           
+
+
 #       };
 
 
-    outputs = {self, systems, ...}@inputs: 
+    outputs = {self, ...}@inputs:
     let
       liba = inputs.snowfall-lib.mkLib {
             inherit inputs;
@@ -73,9 +73,10 @@ description = "Pluto";
                 channels-config = {
                     allowUnfree = true; #Allow unfree packages
                 };
-            
 
-                #overlays = with inputs; [];
+								overlays = with inputs; [
+									neovim.overlays.default
+								];
                 systems.modules.nixos = with inputs; [
                     home-manager.nixosModules.home-manager
                     impermanence.nixosModules.impermanence
@@ -88,13 +89,11 @@ description = "Pluto";
                     stylix.nixosModules.stylix
                    #hyprland.nixosModules.default
                 ];
-                
+
                 homes.modules = with inputs; [
                     #hyprland.homeManagerModules.default
                     nixcord.homeManagerModules.nixcord
                 ];
-
-
 
             };
 }
