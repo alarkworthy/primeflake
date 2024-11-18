@@ -25,10 +25,10 @@ in
 	      firefox.profileNames = [ "default" ];
 	    };
 	    opacity = {
-	      terminal = .7;
-	      popups = .8;
-	      desktop = .8;
-	      applications = .7;
+	      terminal = 0.7;
+	      popups = 0.8;
+	      desktop = 0.8;
+	      applications = 0.7;
 	    };
 
 	    fonts = {

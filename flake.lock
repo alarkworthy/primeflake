@@ -341,14 +341,15 @@
     "neovim": {
       "inputs": {
         "nixCats": "nixCats",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "plugins-spaceduck": "plugins-spaceduck"
       },
       "locked": {
-        "lastModified": 1731906133,
-        "narHash": "sha256-ia7BVW/N80CNScLFqsQaVkb1lOf0uXeRt89rig26S1k=",
+        "lastModified": 1731912445,
+        "narHash": "sha256-IOUDi/7LOt7E+PXuw0yfO/E2/8HUBneJ5T0BSK2NSLo=",
         "owner": "alarkworthy",
         "repo": "neovim",
-        "rev": "5a397ecf6fa9acce6a6894e02ff76cfb25ce6c60",
+        "rev": "449526031cdd6eed422b4e58936407e3fc622107",
         "type": "github"
       },
       "original": {
@@ -475,6 +476,22 @@
         "owner": "nixos",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "plugins-spaceduck": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1645472969,
+        "narHash": "sha256-lE8y9BA2a4y0B6O3+NyOS7numoltmzhArgwTAner2fE=",
+        "owner": "pineapplegiant",
+        "repo": "spaceduck",
+        "rev": "350491f19343b24fa85809242089caa02d4dadce",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pineapplegiant",
+        "repo": "spaceduck",
         "type": "github"
       }
     },
