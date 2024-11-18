@@ -12,6 +12,7 @@ in {
 			shortcut = "Space";
 			aggressiveResize = true;
 			baseIndex = 1;
+			escapeTime = 0;
 			newSession = false;
 			clock24 = true;
 			keyMode = "vi";
@@ -30,7 +31,7 @@ in {
 						set -g @continuum-save-interval '60'
 						'';
 				}
-					
+
 			];
 			extraConfig = ''
 				bind-key C-Space send-prefix
