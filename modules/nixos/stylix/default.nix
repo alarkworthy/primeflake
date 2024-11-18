@@ -9,7 +9,7 @@ in {
       enable = true;
 
       image = "${./bgs/space/purplesky.jpg}";
-			base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+			base16Scheme = "${pkgs.base16-schemes}/share/themes/spaceduck.yaml";
 
       #image = "${./bgs/nature/snowMountains1.jpg}";
       #Cool orange spiral galaxy close up
