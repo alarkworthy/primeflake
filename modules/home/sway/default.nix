@@ -60,6 +60,10 @@ in
       #        }'';
       config = {
 
+				startup = [
+					{command="fcitx5 -d -r";}
+					{command="fcitx5-remote -r";}
+				];
         keybindings = lib.mkOptionDefault {
           "${modr}+Return+Shift" = "exec ${pkgs.kitty}/bin/kitty";
           "${modr}+Return+Ctrl" = "exec slurp | grim -g - /home/alark/Pictures/swayshots/$(date -u +%4Y%2m%2d_%2Hh%2Mm%2Ss_swayshot.png)";
