@@ -21,7 +21,7 @@ in
     #           ];
     hardware.steam-hardware.enable = true;
     hardware.enableRedistributableFirmware = true;
-    chaotic.hdr.enable = true;
+    chaotic.hdr.enable = false;
     programs.gamescope = {
       capSysNice = true;
       enable = true;

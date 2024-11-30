@@ -15,15 +15,16 @@
     ./hardware-configuration.nix
   ];
 
-  specialisation.hdr.configuration = {
-    pluto.desktop.plasma.enable = true;
-  };
+	# specialisation.hdr.configuration = {
+	# 	  pluto.desktop.plasma.enable = true;
+	# 	};
   #NixOS modules
   pluto = {
     audio.enable = true;
     impermanence.enable = true;
     streaming.sunshine.enable = true;
 		docker.enable = true;
+		theming.stylix.enable = true;
   };
 
   services.printing.enable = true;
@@ -94,8 +95,6 @@
     #powerOnBoot = false; default is true
     #Check Nix options for more
   };
-
-  services.blueman.enable = true; # required for homemanager blueman-applet to work
 
   #Xbox stuff
   #hardware.xpadneo.enable = true; #For Xbox One wireless controllers
