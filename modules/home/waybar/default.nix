@@ -71,6 +71,7 @@ in
             "temperature"
             "sway/langauge"
             "clock"
+						"battery"
           ];
 
           "network" = {
@@ -108,6 +109,25 @@ in
             avatar = "${./avatars/discordAvatar}";
           };
 
+					"battery" = {
+						states = {
+							good = 95;
+							warning = 20;
+							critical = 10;
+						};
+						format = "{capacity}% {icon}";
+						format-charging = "{capacity}% ";
+						format-plugged = "{capacity}% ";
+						format-alt = "{time} {icon}";
+						format-full = "";
+						format-icons = [
+							""
+							""
+							""
+							""
+							""
+						];
+					};
           #"langauge" = {}; use default
           #"pulseaudio" I like the default currently lol
 

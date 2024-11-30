@@ -31,7 +31,8 @@ $env.NU_PLUGIN_DIRS = [
 
 # Carapace bridge completions
 $env.CARAPACE_BRIDGES = 'bash'
-
+# Fix for pavucontrol idk
+$env.GDK_DISABLE = "vulkan"
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 $env.XDG_CONFIG_HOME = "/home/alark/.config"
