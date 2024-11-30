@@ -10,7 +10,7 @@ let
 in
 {
   options.pluto.theming.stylix.enable = mkEnableOption "Enable Stylix NixModule" // {
-    default = false;
+    default = true;
   };
   config = mkIf cfg.enable {
     stylix = {
