@@ -52,10 +52,8 @@ in
         							#mpd {
         								padding: 0 10px;
         							}
-                      
         							#keyboard-state {
         								padding: 0 0px;
-        								margin: 0 5px;
         								min-width: 16px;
         							}
         							#keyboard-state > label {
@@ -84,14 +82,14 @@ in
           ];
           modules-center = [ "sway/window" ];
           modules-right = [
-            "tray"
+						"tray"
             "pulseaudio"
             "network"
             "keyboard-state"
             "cpu"
             "memory"
             "temperature"
-            "sway/langauge"
+						#"sway/langauge"
             "clock"
             "battery"
           ];
@@ -167,9 +165,9 @@ in
             format = {
               numlock = "N {icon}";
               capslock = "C {icon}";
-            } //
-						(mkIf (config.pluto.home.system == "Desktop") {device-path="/dev/input/by-id/usb-Razer_Razer_BlackWidow_Chroma_V2-event-kbd";});
-
+            };
+						#device-path = mkIf (config.pluto.home.system == "Desktop")
+						#	"/dev/input/by-id/usb-Razer_Razer_BlackWidow_Chroma_V2-if01-event-kbd";
             format-icons = {
               locked = "";
               unlocked = "";

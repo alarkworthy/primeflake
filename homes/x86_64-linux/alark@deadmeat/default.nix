@@ -5,4 +5,5 @@
   pluto.desktop.sway.enable = true;
   pluto.texLive.enable = true;
   pluto.ssh.client.enable = true;
+	pluto.home.system = "Desktop";
 }

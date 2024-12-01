@@ -20,13 +20,13 @@ in
     #Sway specific
 
     xdg.portal.enable = true;
-    xdg.portal.configPackages = with pkgs; [ xdg-desktop-portal-wlr ];
+			xdg.portal.configPackages = with pkgs; [ xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
     #xdg.portal.config.common.default =;
     xdg.portal.config = {
 
       common = {
         default = [
-          "wlr"
+          "gtk"
         ];
 
         "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
