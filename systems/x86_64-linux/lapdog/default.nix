@@ -8,6 +8,7 @@
   pluto = {
     audio.enable = true;
     impermanence.enable = true;
+		system="Laptop";
   };
   programs.light.enable = true;
   services.thermald.enable = true;

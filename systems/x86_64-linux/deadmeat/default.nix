@@ -14,7 +14,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
-
+	
   # specialisation.hdr.configuration = {
   # 	  pluto.desktop.plasma.enable = true;
   # 	};
@@ -26,6 +26,10 @@
     docker.enable = true;
     theming.stylix.enable = true;
   };
+
+	environment.systemPackages = [
+		pkgs.quickemu
+	];
 
   services.printing.enable = true;
 

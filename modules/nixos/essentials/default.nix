@@ -33,7 +33,6 @@ in
       zip
       unzip
       aria2
-      quickemu
       curl
       xivlauncher
       tunctl
