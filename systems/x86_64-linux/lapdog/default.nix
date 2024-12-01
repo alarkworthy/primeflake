@@ -22,10 +22,15 @@
 				CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 				CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
 				CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+				START_CHARGE_THRESH_BAT0=58;
+				STOP_CHARGE_THRESH_BAT0=60;
 			};
 	};
+	security.pam.services.swaylock = {};
 	services.printing.enable = true;
-
+	#services.libinput = {
+	#		enable = true;
+	# };
   boot = {
     kernelPackages = pkgs.linuxPackages_cachyos; # pkgs.linuxPackages_zen;
 		initrd.kernelModules = [ "amdgpu" ];

@@ -5,4 +5,10 @@
   pluto.desktop.sway.enable = true;
   #pluto.texLive.enable = true;
   pluto.ssh.client.enable = true;
+	pluto.desktop.swaylock = {
+		enable = true;
+		idle = {
+			enable = true;
+		};
+	};
 }

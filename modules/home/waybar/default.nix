@@ -27,19 +27,34 @@ in
         	 border-top: 2px solid transparent;
         	 min-width: 4px;
                }
-
-              #network {
-        	padding-right: 10px;
-              }
+							#clock,
+							#battery,
+							#cpu,
+							#memory,
+							#disk,
+							#temperature,
+							#backlight,
+							#network,
+							#pulseaudio,
+							#wireplumber,
+							#custom-media,
+							#tray,
+							#mode,
+							#idle_inhibitor,
+							#scratchpad,
+							#power-profiles-daemon,
+							#mpd {
+								padding: 0 10px;
+							}
               
-              #memory {
-                padding-right: 12px;
-              }
-              
-              #cpu {
-        	padding-left: 4px;
-                padding-right: 12px;
-              }
+							#keyboard-state {
+								padding: 0 0px;
+								margin: 0 5px;
+								min-width: 16px;
+							}
+							#keyboard-state > label {
+								padding: 0 5px;
+							}
 
       '';
       #Systemd importing and launching #Turned off bc waybar is stupid
@@ -66,6 +81,7 @@ in
             "tray"
             "pulseaudio"
             "network"
+						"keyboard-state"
             "cpu"
             "memory"
             "temperature"
@@ -75,7 +91,7 @@ in
           ];
 
           "network" = {
-            interface = "wlo1";
+						#interface = "wlo1";
             format-wifi = "{essid} ({signalStrength}%)";
             format-ethernet = "{ipaddr}/{cidr}";
             tooltip-format = "{ifname} via {gwaddr}";
