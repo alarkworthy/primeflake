@@ -70,7 +70,7 @@
   #Intel CPU
   hardware.cpu.intel = {
     updateMicrocode = true;
-    #sgx.provision.enable = true #enables sgx, pls research more 
+    #sgx.provision.enable = true #enables sgx, pls research more
   };
 
   #Bluetooth
@@ -107,7 +107,7 @@
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";
-    #packages = [ 
+    #packages = [
     #  ]; #Put fonts and stuff here for console to use
     #useXkbConfig = true; # use xkb.options in tty. Uses Xserver font/keyboard config
   };

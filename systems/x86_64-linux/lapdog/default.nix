@@ -8,7 +8,7 @@
   pluto = {
     audio.enable = true;
     impermanence.enable = true;
-		system="Laptop";
+    system = "Laptop";
   };
   programs.light.enable = true;
   services.thermald.enable = true;
@@ -44,7 +44,7 @@
     #extraPackages = with pkgs; [
     #  amdvlk #AMDVLK
     #  rocmPackages.clr.icd #OpenCL
-    #];   
+    #];
     #extraPackages32 = with pkgs; [
     #  driversi686Linux.amdvlk #32 Bit AMDVLK drivers
     #  ];
@@ -96,7 +96,7 @@
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";
-    #packages = [ 
+    #packages = [
     #  ]; #Put fonts and stuff here for console to use
     #useXkbConfig = true; # use xkb.options in tty. Uses Xserver font/keyboard config
   };

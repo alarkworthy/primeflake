@@ -171,7 +171,7 @@ in
           };
 
           #"bluetooth" = {
-          #  format = 
+          #  format =
           #};
 
           "tray" = {

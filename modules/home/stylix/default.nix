@@ -17,23 +17,23 @@ in
       enable = true;
       package = (pkgs.btop.override { rocmSupport = true; });
     };
-		gtk = {
-			enable = true;
-			#			iconTheme = {
-			#		name = "Fluent pink";
-			#		package = (pkgs.fluent-icon-theme.override {colorVariants=["pink"];});
-			#};
-		};
+    gtk = {
+      enable = true;
+      #			iconTheme = {
+      #		name = "Fluent pink";
+      #		package = (pkgs.fluent-icon-theme.override {colorVariants=["pink"];});
+      #};
+    };
     stylix = {
       enable = true;
-			polarity="dark";
+      polarity = "dark";
       #autoEnab			sle = false;
-			iconTheme = {
-				enable = true;
-				package = (pkgs.papirus-icon-theme.override {color="blue";});
-				dark = "Papirus-Dark";
-				light = "Papirus-Light";
-			};
+      iconTheme = {
+        enable = true;
+        package = (pkgs.papirus-icon-theme.override { color = "blue"; });
+        dark = "Papirus-Dark";
+        light = "Papirus-Light";
+      };
       targets = {
         neovim.enable = false;
         waybar.enable = true;
@@ -52,18 +52,18 @@ in
         desktop = 0.8;
         applications = 0.7;
       };
-			#abc
-			 fonts = {
-			      #emoji leave default who cares
-			      monospace.name = "JetBrainsMono Nerd Font";
-			      monospace.package = pkgs.nerd-fonts.jetbrains-mono;#(pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; });
-			      sansSerif.name = "CommitMono Nerd Font";
-			      #	      sansSerif.name = "DejaVuSansM Nerd Font";
-			      sansSerif.package = pkgs.nerd-fonts.commit-mono; #with pkgs; (nerdfonts.override { fonts = [ "CommitMono" ]; });
-			      #	      sansSerif.package = with pkgs; (nerdfonts.override { fonts = ["DejaVuSansMono"]; });
-			      serif.name = "IosevkaTermSlab Nerd Font";
-			      serif.package = pkgs.nerd-fonts.iosevka-term-slab; #with pkgs; (nerdfonts.override { fonts = [ "IosevkaTermSlab" ]; });
-			    };
+      #abc
+      fonts = {
+        #emoji leave default who cares
+        monospace.name = "JetBrainsMono Nerd Font";
+        monospace.package = pkgs.nerd-fonts.jetbrains-mono; # (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; });
+        sansSerif.name = "CommitMono Nerd Font";
+        #	      sansSerif.name = "DejaVuSansM Nerd Font";
+        sansSerif.package = pkgs.nerd-fonts.commit-mono; # with pkgs; (nerdfonts.override { fonts = [ "CommitMono" ]; });
+        #	      sansSerif.package = with pkgs; (nerdfonts.override { fonts = ["DejaVuSansMono"]; });
+        serif.name = "IosevkaTermSlab Nerd Font";
+        serif.package = pkgs.nerd-fonts.iosevka-term-slab; # with pkgs; (nerdfonts.override { fonts = [ "IosevkaTermSlab" ]; });
+      };
     };
   };
 }

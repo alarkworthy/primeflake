@@ -89,7 +89,7 @@ in
         };
         #Homemanager doesn't allow for multiple 'attach' statements which is annoying
         #So we use extra config for seats entirely
-        #seat = { 
+        #seat = {
 
         # "seat1" = {
         #attach = ["7247:2:SIGMACHIP_USB_Keyboard_Consumer_Control" "7247:2:SIGMACHIP_USB_Keyboard" ];

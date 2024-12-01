@@ -56,7 +56,7 @@ in
       #    rev = "5629d2356f62a9f2f8efad3ff37476c19969bd4f"; # Replace with the latest commit hash
       #    sha256 = "nsRuxQFKbQkyEI4TXgvAjcroVdG+heKX5Pauq/4Ota0=";
       #  } + /palettes/${flavour}.toml))
-      #  // ({character.vimcmd_symbol = "[❮](bold green)";}); 
+      #  // ({character.vimcmd_symbol = "[❮](bold green)";});
 
       #remove all the catpuccin stuff, and make sure never to use vimcmd_symbol bc it breaks in nushell bruh
 
