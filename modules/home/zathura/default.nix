@@ -1,14 +1,17 @@
-{config, lib,...}:
+{ config, lib, ... }:
 with lib;
-let cfg = config.pluto.desktop.zathura;
+let
+  cfg = config.pluto.desktop.zathura;
 in
 {
-	options.pluto.desktop.zathura.enable = mkEnableOption "Enable Zathura" // {default = true;};
+  options.pluto.desktop.zathura.enable = mkEnableOption "Enable Zathura" // {
+    default = true;
+  };
 
-	config = mkIf cfg.enable {
-		programs.zathura = {
-			enable = true;
-		};
+  config = mkIf cfg.enable {
+    programs.zathura = {
+      enable = true;
+    };
 
-	};
+  };
 }

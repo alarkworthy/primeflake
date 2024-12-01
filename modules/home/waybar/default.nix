@@ -17,44 +17,44 @@ in
     programs.waybar = {
       enable = true;
       style = ''
-              *{
-        	 border-radius: 0;
-        	 font-size: 16px;
-        	 min-height: 0;
-               }
-               #workspaces button {
-                 background: transparent;
-        	 border-top: 2px solid transparent;
-        	 min-width: 4px;
-               }
-							#clock,
-							#battery,
-							#cpu,
-							#memory,
-							#disk,
-							#temperature,
-							#backlight,
-							#network,
-							#pulseaudio,
-							#wireplumber,
-							#custom-media,
-							#tray,
-							#mode,
-							#idle_inhibitor,
-							#scratchpad,
-							#power-profiles-daemon,
-							#mpd {
-								padding: 0 10px;
-							}
-              
-							#keyboard-state {
-								padding: 0 0px;
-								margin: 0 5px;
-								min-width: 16px;
-							}
-							#keyboard-state > label {
-								padding: 0 5px;
-							}
+                      *{
+                	 border-radius: 0;
+                	 font-size: 16px;
+                	 min-height: 0;
+                       }
+                       #workspaces button {
+                         background: transparent;
+                	 border-top: 2px solid transparent;
+                	 min-width: 4px;
+                       }
+        							#clock,
+        							#battery,
+        							#cpu,
+        							#memory,
+        							#disk,
+        							#temperature,
+        							#backlight,
+        							#network,
+        							#pulseaudio,
+        							#wireplumber,
+        							#custom-media,
+        							#tray,
+        							#mode,
+        							#idle_inhibitor,
+        							#scratchpad,
+        							#power-profiles-daemon,
+        							#mpd {
+        								padding: 0 10px;
+        							}
+                      
+        							#keyboard-state {
+        								padding: 0 0px;
+        								margin: 0 5px;
+        								min-width: 16px;
+        							}
+        							#keyboard-state > label {
+        								padding: 0 5px;
+        							}
 
       '';
       #Systemd importing and launching #Turned off bc waybar is stupid
@@ -81,17 +81,17 @@ in
             "tray"
             "pulseaudio"
             "network"
-						"keyboard-state"
+            "keyboard-state"
             "cpu"
             "memory"
             "temperature"
             "sway/langauge"
             "clock"
-						"battery"
+            "battery"
           ];
 
           "network" = {
-						#interface = "wlo1";
+            #interface = "wlo1";
             format-wifi = "{essid} ({signalStrength}%)";
             format-ethernet = "{ipaddr}/{cidr}";
             tooltip-format = "{ifname} via {gwaddr}";
@@ -125,25 +125,25 @@ in
             avatar = "${./avatars/discordAvatar}";
           };
 
-					"battery" = {
-						states = {
-							good = 95;
-							warning = 20;
-							critical = 10;
-						};
-						format = "{capacity}% {icon}";
-						format-charging = "{capacity}% ";
-						format-plugged = "{capacity}% ";
-						format-alt = "{time} {icon}";
-						format-full = "";
-						format-icons = [
-							""
-							""
-							""
-							""
-							""
-						];
-					};
+          "battery" = {
+            states = {
+              good = 95;
+              warning = 20;
+              critical = 10;
+            };
+            format = "{capacity}% {icon}";
+            format-charging = "{capacity}% ";
+            format-plugged = "{capacity}% ";
+            format-alt = "{time} {icon}";
+            format-full = "";
+            format-icons = [
+              ""
+              ""
+              ""
+              ""
+              ""
+            ];
+          };
           #"langauge" = {}; use default
           #"pulseaudio" I like the default currently lol
 

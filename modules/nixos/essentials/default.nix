@@ -40,8 +40,8 @@ in
       bridge-utils
       man-pages
       man-pages-posix
-			ripgrep
-			fd
+      ripgrep
+      fd
     ];
     documentation = {
       dev.enable = true;

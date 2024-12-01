@@ -15,16 +15,16 @@
     ./hardware-configuration.nix
   ];
 
-	# specialisation.hdr.configuration = {
-	# 	  pluto.desktop.plasma.enable = true;
-	# 	};
+  # specialisation.hdr.configuration = {
+  # 	  pluto.desktop.plasma.enable = true;
+  # 	};
   #NixOS modules
   pluto = {
     audio.enable = true;
     impermanence.enable = true;
     streaming.sunshine.enable = true;
-		docker.enable = true;
-		theming.stylix.enable = true;
+    docker.enable = true;
+    theming.stylix.enable = true;
   };
 
   services.printing.enable = true;
@@ -141,17 +141,18 @@
   time.timeZone = "US/Mountain";
 
   # Select internationalisation properties.
-  i18n={
-		defaultLocale = "en_US.UTF-8"; 
-		inputMethod= {
-			type = "fcitx5";
-			enable = true;
-			fcitx5.addons = with pkgs; [ fcitx5-gtk
-				fcitx5-chinese-addons
-				fcitx5-configtool
-			];
-		};
-	};
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    inputMethod = {
+      type = "fcitx5";
+      enable = true;
+      fcitx5.addons = with pkgs; [
+        fcitx5-gtk
+        fcitx5-chinese-addons
+        fcitx5-configtool
+      ];
+    };
+  };
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";
