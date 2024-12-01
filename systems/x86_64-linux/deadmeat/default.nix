@@ -195,6 +195,7 @@
       "libvirtd"
       "netdev"
       "ubridge"
+			"pipewire"
     ]; # Groups
     shell = pkgs.nushell;
     #TODO Set up secret management with sops-nix

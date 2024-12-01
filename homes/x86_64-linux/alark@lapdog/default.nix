@@ -11,4 +11,5 @@
       enable = true;
     };
   };
+	pluto.home.system = "Laptop";
 }
