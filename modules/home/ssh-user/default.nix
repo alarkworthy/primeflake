@@ -14,10 +14,26 @@ in
   };
 
   config = mkIf cfg.enable {
-    programs.ssh = {
+    programs.ssh = mkMerge [{
       enable = true;
-      addKeysToAgent = "confirm";
-
-    };
+      addKeysToAgent = "yes";
+    } (mkIf (config.pluto.home.system == "Desktop") {
+			matchBlocks = {
+					"alark.server.local"={
+						host = "alark.server";
+						hostname = "192.168.50.218";
+						user = "alark";
+						identityFile = "/home/alark/.ssh/server";
+						identitiesOnly = true;
+					};
+					"alark.github" = {
+						host = "alark.github";
+						hostname = "github.com";
+						user = "git";
+						identityFile = "/home/alark/.ssh/id_ed25519";
+						identitiesOnly = true;
+					};
+				};
+			} ) ];
   };
 }

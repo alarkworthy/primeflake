@@ -42,7 +42,7 @@ in
           betterSessions.enable = true;
           biggerStreamPreview.enable = true;
           callTimer = {
-            enable = true;
+            enable = false;
             format = "human";
           };
           clearURLs.enable = true;
@@ -56,7 +56,7 @@ in
             idleTimeout = 0.0;
           };
           dearrow.enable = true;
-          disableCallIdle.enable = true;
+          disableCallIdle.enable = false;
           dontRoundMyTimestamps.enable = true;
           fakeNitro = {
             enable = true;

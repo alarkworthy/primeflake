@@ -23,7 +23,7 @@
     audio.enable = true;
     impermanence.enable = true;
     streaming.sunshine.enable = true;
-    docker.enable = true;
+    docker.enable = false;
     theming.stylix.enable = true;
   };
 
@@ -124,10 +124,13 @@
     networkmanager = {
       enable = true;
       unmanaged = [
-        "esp113s0"
+				#"esp113s0"
         "virbr0"
       ];
     };
+		interfaces = {
+
+		};
     #bridges."br0".interfaces = ["enp113s0"];
     #interfaces."br0" = {
     #  ipv4.addresses = [ {address="192.168.50.198"; prefixLength = 24;} ];
@@ -220,7 +223,9 @@
   services.openssh.enable = true;
 
   networking.firewall = {
-    allowedUDPPorts = [
+    allowedTCPPorts = [
+		];
+		allowedUDPPorts = [
       53
       67
     ];

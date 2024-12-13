@@ -6,4 +6,5 @@
   pluto.texLive.enable = true;
   pluto.ssh.client.enable = true;
 	pluto.home.system = "Desktop";
+	pluto.streaming.obs.enable = true;
 }

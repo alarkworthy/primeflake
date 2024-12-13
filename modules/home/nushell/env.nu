@@ -29,6 +29,7 @@ $env.NU_PLUGIN_DIRS = [
     ($nu.config-path | path dirname | path join 'plugins')
 ]
 
+
 # Carapace bridge completions
 $env.CARAPACE_BRIDGES = 'bash'
 # Fix for pavucontrol idk
@@ -38,6 +39,8 @@ $env.GDK_DISABLE = "vulkan"
 $env.XDG_CONFIG_HOME = "/home/alark/.config"
 $env.WLR_RENDER = "vulkan"
 $env.SSH_AUTH_SOCK = "/run/user/1000/ssh-agent"
+
+if "DOCKER_HOST" not-in $env { $env.DOCKER_HOST = $"unix://($env.XDG_RUNTIME_DIR)/docker.sock" }
 #$env.FZF_DEFAULT_OPTS=" \
 #--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
 #--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
