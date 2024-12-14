@@ -224,10 +224,11 @@
 
   networking.firewall = {
     allowedTCPPorts =
-      [
+      [ 9
       ];
     allowedUDPPorts = [
-      53
+      9
+			53
       67
     ];
     trustedInterfaces = [
