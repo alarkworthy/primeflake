@@ -29,6 +29,9 @@
   };
   security.pam.services.swaylock = { };
   services.printing.enable = true;
+  environment.systemPackages = [
+    pkgs.acpi
+  ];
   #services.libinput = {
   #		enable = true;
   # };
