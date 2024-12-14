@@ -124,13 +124,13 @@
     networkmanager = {
       enable = true;
       unmanaged = [
-				#"esp113s0"
+        #"esp113s0"
         "virbr0"
       ];
     };
-		interfaces = {
+    interfaces = {
 
-		};
+    };
     #bridges."br0".interfaces = ["enp113s0"];
     #interfaces."br0" = {
     #  ipv4.addresses = [ {address="192.168.50.198"; prefixLength = 24;} ];
@@ -198,7 +198,7 @@
       "libvirtd"
       "netdev"
       "ubridge"
-			"pipewire"
+      "pipewire"
     ]; # Groups
     shell = pkgs.nushell;
     #TODO Set up secret management with sops-nix
@@ -223,9 +223,10 @@
   services.openssh.enable = true;
 
   networking.firewall = {
-    allowedTCPPorts = [
-		];
-		allowedUDPPorts = [
+    allowedTCPPorts =
+      [
+      ];
+    allowedUDPPorts = [
       53
       67
     ];

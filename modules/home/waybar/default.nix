@@ -12,12 +12,12 @@ in
   options.pluto.desktop.waybar.enable = mkEnableOption "Enable Waybar" // {
     default = config.pluto.desktop.sway.enable;
   };
-	options.pluto.home.system = mkOption {
-		type = lib.types.str;
-		default = "Desktop";
-		example = "Laptop";
-		description = "System type for home manager";
-	};
+  options.pluto.home.system = mkOption {
+    type = lib.types.str;
+    default = "Desktop";
+    example = "Laptop";
+    description = "System type for home manager";
+  };
   config = mkIf cfg.enable {
     #Waybar time
     programs.waybar = {
@@ -82,14 +82,14 @@ in
           ];
           modules-center = [ "sway/window" ];
           modules-right = [
-						"tray"
+            "tray"
             "pulseaudio"
             "network"
             "keyboard-state"
             "cpu"
             "memory"
             "temperature"
-						#"sway/langauge"
+            #"sway/langauge"
             "clock"
             "battery"
           ];
@@ -161,13 +161,13 @@ in
 
           "keyboard-state" = {
             numlock = true;
-						  capslock = true;
+            capslock = true;
             format = {
               numlock = "N {icon}";
               capslock = "C {icon}";
             };
-						#device-path = mkIf (config.pluto.home.system == "Desktop")
-						#	"/dev/input/by-id/usb-Razer_Razer_BlackWidow_Chroma_V2-if01-event-kbd";
+            #device-path = mkIf (config.pluto.home.system == "Desktop")
+            #	"/dev/input/by-id/usb-Razer_Razer_BlackWidow_Chroma_V2-if01-event-kbd";
             format-icons = {
               locked = "";
               unlocked = "";
@@ -191,14 +191,18 @@ in
             format = "{usage}% 󰻠";
           };
 
-          "temperature" = {
-            interval = 10;
-            format = "{temperatureC}°C ";
-            format-critical = "HOT!! {temperatureC}°C ";
-            critical-threshold = 80;
-            tooltip = true;
-            tooltip-format = "{temperatureF}°F";
-          } // (mkIf (config.pluto.home.system == "Desktop"){hwmon-path="/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon2/temp1_input";});
+          "temperature" =
+            {
+              interval = 10;
+              format = "{temperatureC}°C ";
+              format-critical = "HOT!! {temperatureC}°C ";
+              critical-threshold = 80;
+              tooltip = true;
+              tooltip-format = "{temperatureF}°F";
+            }
+            // (mkIf (config.pluto.home.system == "Desktop") {
+              hwmon-path = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon2/temp1_input";
+            });
 
           "pulseaudio" = {
             format = "{volume}% {format_source}";

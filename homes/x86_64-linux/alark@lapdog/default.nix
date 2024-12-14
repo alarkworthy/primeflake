@@ -1,4 +1,9 @@
-{ pkgs, inputs, config, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
 {
   #Enable modules
   pluto.home-manager.enable = true;
@@ -11,8 +16,8 @@
       enable = true;
     };
   };
-	pluto.home.system = "Laptop";
-	home.packages = [
-		pkgs.moonlight-qt
-	];
+  pluto.home.system = "Laptop";
+  home.packages = [
+    pkgs.moonlight-qt
+  ];
 }
