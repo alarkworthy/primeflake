@@ -25,7 +25,7 @@ in
         if config.pluto.system == "Desktop" then
           "${./bgs/space/purplesky.jpg}"
         else if config.pluto.system == "Laptop" then
-          "${./bgs/space/STScI-01HGGZBZ1WK06H9NMB5WZTZPXD.png}"
+          "${./bgs/space/gcenter_radio.png}"
         else
           "${./bgs/space/purplesky.jpg}";
       base16Scheme = "${pkgs.base16-schemes}/share/themes/spaceduck.yaml";
