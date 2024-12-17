@@ -23,13 +23,13 @@ in
   };
   options.pluto.desktop.swaylock.idle.time.lock = lib.mkOption {
     type = lib.types.ints.unsigned;
-    default = 300;
+    default = 900;
     example = 300;
     description = "Timeout until lockscreen is turned on";
   };
   options.pluto.desktop.swaylock.idle.time.suspend = lib.mkOption {
     type = lib.types.ints.unsigned;
-    default = 600;
+    default = 1800;
     example = 420;
     description = "Timeout until system is suspended";
   };
