@@ -37,7 +37,6 @@ in
 
     };
     xdg.portal.extraPortals = with pkgs; [
-      xdg-desktop-portal
       gnome-keyring
     ];
     #xdg.portal.xdgOpenUsePortal = true;
