@@ -20,6 +20,10 @@ in
     #             "xivlauncher"
     #           ];
     hardware.steam-hardware.enable = true;
+
+
+
+
     hardware.enableRedistributableFirmware = true;
     chaotic.hdr.enable = false;
     programs.gamescope = {

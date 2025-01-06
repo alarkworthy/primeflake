@@ -25,6 +25,7 @@
     streaming.sunshine.enable = true;
     docker.enable = false;
     theming.stylix.enable = true;
+		gaming.vrstuff.enable = true;
   };
 
   environment.systemPackages = [
@@ -64,7 +65,7 @@
   };
   programs.dconf.enable = true;
   programs.corectrl = {
-    enable = false;
+    enable = true;
     gpuOverclock.enable = true;
   };
   hardware.amdgpu = {

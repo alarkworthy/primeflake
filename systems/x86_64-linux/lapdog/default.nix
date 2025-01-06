@@ -62,6 +62,7 @@
   programs.dconf.enable = true;
   programs.corectrl = {
     enable = false;
+
     gpuOverclock.enable = true;
   };
   hardware.amdgpu = {
