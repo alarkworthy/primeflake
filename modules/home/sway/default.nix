@@ -138,12 +138,12 @@ in
         defaultWorkspace = "workspace number 1";
         menu = "tofi-run | xargs swaymsg exec --";
         output = {
-          DP-1 = {
+					#DP-1 = {
             # Acer
-            mode = "2560x1440@179.877Hz";
-            pos = "3440 0";
-            adaptive_sync = "on";
-          };
+					#  mode = "2560x1440@179.877Hz";
+					#  pos = "3440 0";
+					#  adaptive_sync = "on";
+					#};
           DP-2 = {
             # Alienware
             mode = "3440x1440@174.963Hz";

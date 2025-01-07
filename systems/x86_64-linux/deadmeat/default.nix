@@ -29,7 +29,7 @@
   };
 
   environment.systemPackages = [
-    pkgs.quickemu
+		#pkgs.quickemu
   ];
 
   services.printing.enable = true;
