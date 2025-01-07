@@ -25,7 +25,7 @@
     streaming.sunshine.enable = true;
     docker.enable = false;
     theming.stylix.enable = true;
-		gaming.vrstuff.enable = true;
+		gaming.vrstuff.enable = false;
   };
 
   environment.systemPackages = [
