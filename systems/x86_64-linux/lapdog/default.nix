@@ -83,7 +83,7 @@
     hostName = "lapdog";
   };
 
-  time.timeZone = "US/Central";
+  time.timeZone = "US/Mountain";
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
