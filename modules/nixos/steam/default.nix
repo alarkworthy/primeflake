@@ -20,7 +20,11 @@ in
     #             "xivlauncher"
     #           ];
     hardware.steam-hardware.enable = true;
-
+		
+		programs.alvr = {
+			enable = true;
+			openFirewall = true;
+		};
 
 
 
@@ -47,6 +51,7 @@ in
     #};
     programs.steam = {
       enable = true;
+			remotePlay.openFirewall = true;
       extest.enable = true;
       gamescopeSession = {
         enable = true;
