@@ -39,7 +39,7 @@ in
     xdg.portal.extraPortals = with pkgs; [
       gnome-keyring
     ];
-    #xdg.portal.xdgOpenUsePortal = true;
+    xdg.portal.xdgOpenUsePortal = true;
     wayland.windowManager.sway = {
       #General Config
       enable = true;
@@ -136,7 +136,7 @@ in
 
         modifier = modr;
         defaultWorkspace = "workspace number 1";
-        menu = "tofi-run | xargs swaymsg exec --";
+        menu = "tofi-drun | xargs swaymsg exec --";
         output = {
 					#DP-1 = {
             # Acer
@@ -149,7 +149,7 @@ in
             mode = "3440x1440@174.963Hz";
             pos = "0 0";
             adaptive_sync = "off";
-            render_bit_depth = "10";
+						#render_bit_depth = "10";
           };
           eDP-2 = {
             mode = "1920x1200@165.000Hz";
