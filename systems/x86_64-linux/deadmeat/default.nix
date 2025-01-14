@@ -26,6 +26,7 @@
     docker.enable = false;
     theming.stylix.enable = true;
 		gaming.vrstuff.enable = false;
+		gaming.wivr.enable = true;
   };
 
   environment.systemPackages = [
