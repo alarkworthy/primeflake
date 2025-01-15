@@ -8,12 +8,11 @@
 			defaultRuntime = true;
 			openFirewall = true;
 			monadoEnvironment = {
-				
 				XRT_COMPOSITOR_COMPUTE= "1";
-				IPC_EXIT_ON_DISCONNECT = "off";
+				IPC_EXIT_ON_DISCONNECT = "0";
   			XRT_COMPOSITOR_LOG = "debug";
-  			XRT_PRINT_OPTIONS = "on";
-				U_PACING_COMP_MIN_TIME_MS = "5";
+  			XRT_PRINT_OPTIONS = "1";
+				U_PACING_COMP_MIN_TIME_MS = "9";
 			};
 			config = {
 				enable = true;

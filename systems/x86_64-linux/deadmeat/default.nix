@@ -22,10 +22,10 @@
   pluto = {
     audio.enable = true;
     impermanence.enable = true;
-    streaming.sunshine.enable = true;
+    streaming.sunshine.enable = false;
     docker.enable = false;
     theming.stylix.enable = true;
-		gaming.vrstuff.enable = false;
+		gaming.vrstuff.enable = true;
 		gaming.wivr.enable = true;
   };
 
@@ -37,7 +37,8 @@
 
   # Use the systemd-boot EFI boot loader.
   boot = {
-    kernelPackages = pkgs.linuxPackages_cachyos; # pkgs.linuxPackages_zen;
+    kernelPackages = #pkgs.linuxPackages_cachyos; # 
+			pkgs.linuxPackages_zen;
     #initrd.kernelModules = [ "amdgpu" ];
 		#loader.systemd-boot.enable = true;
 		#loader.efi.canTouchEfiVariables = true;
