@@ -3,6 +3,26 @@
 	options.pluto.gaming.vrstuff.enable = lib.mkEnableOption "Enable VR Utils" // {default = false;};
 	config = lib.mkIf config.pluto.gaming.vrstuff.enable {
 		programs.git.lfs.enable = true;
+		services.pipewire = {
+			wireplumber.extraConfig."99-disable-suspend" = {
+				"monitor.alsa.rules" = [
+					{
+						matches = [
+							{
+							"node.name" = "wivrn.sink";
+							}
+						];
+						actions = {
+							update-props = {
+								"session.suspend-timeout-seconds" = 0;
+								"api.alsa.period-size" = 1024;
+								"api.alsa.headroom" = 8192;
+							};
+						};
+					}
+				];
+			};
+		};
 		 boot.kernelPatches = [
 		 				{
 		 		name = "amdgpu-ignore-ctx-privileges";

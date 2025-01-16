@@ -18,7 +18,7 @@
 				enable = true;
 				json = {
 					#scale = 1.0;
-					#bitrate = 100000000;
+					bitrate = 100000000;
 					#encoders = [
 					#	{
 					#		encoder = "vaapi";
