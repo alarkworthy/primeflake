@@ -24,7 +24,7 @@
     ],
     "runtime" :
     [
-      "${pkgs.opencomposite}/lib/opencomposite"
+      "${pkgs.opencomposite-vendored}/lib/opencomposite"
     ],
     "version" : 1
   }

@@ -25,7 +25,7 @@
     streaming.sunshine.enable = false;
     docker.enable = false;
     theming.stylix.enable = true;
-		gaming.vrstuff.enable = true;
+		gaming.vrstuff.enable = false;
 		gaming.wivr.enable = true;
   };
 
@@ -33,12 +33,11 @@
 		#pkgs.quickemu
   ];
 
-  services.printing.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot = {
-    kernelPackages = #pkgs.linuxPackages_cachyos; # 
-			pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_cachyos; # 
+		#	pkgs.linuxPackages_zen;
     #initrd.kernelModules = [ "amdgpu" ];
 		#loader.systemd-boot.enable = true;
 		#loader.efi.canTouchEfiVariables = true;
@@ -129,6 +128,11 @@
 
   };
   #Network
+	services.avahi = {
+  	enable = true;
+  	nssmdns4 = true;
+  	openFirewall = true;
+	};
   networking = {
     hostName = "deadmeat";
     useDHCP = false;
@@ -188,6 +192,15 @@
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
+	services.printing = {
+		enable = true;
+		drivers = with pkgs; [
+			gutenprint
+			epsonscan2
+			epson-escpr
+			epson-escpr2
+		];
+	};
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
