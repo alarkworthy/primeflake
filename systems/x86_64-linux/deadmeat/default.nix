@@ -195,7 +195,7 @@
 	services.printing = {
 		enable = true;
 		drivers = with pkgs; [
-			epsonscan2
+			#epsonscan2
 			epson-escpr2
 		];
 	};
