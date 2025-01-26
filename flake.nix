@@ -101,6 +101,7 @@
       homes.modules = with inputs; [
         #hyprland.homeManagerModules.default
         nixcord.homeManagerModules.nixcord
+				chaotic.homeManagerModules.default
       ];
 
     }
