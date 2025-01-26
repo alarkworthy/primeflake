@@ -195,9 +195,7 @@
 	services.printing = {
 		enable = true;
 		drivers = with pkgs; [
-			gutenprint
 			epsonscan2
-			epson-escpr
 			epson-escpr2
 		];
 	};
