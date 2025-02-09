@@ -94,7 +94,7 @@ in
             hideFriendRequestsCount = false;
           };
           noReplyMention.enable = true;
-          noScreensharePreview.enable = true;
+					#noScreensharePreview.enable = true;
           noTypingAnimation.enable = true;
           noUnblockToJump.enable = true;
           nsfwGateBypass.enable = true;
