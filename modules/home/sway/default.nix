@@ -68,11 +68,14 @@ in
         ];
         keybindings = lib.mkOptionDefault {
           "${modr}+Return+Shift" = "exec ${pkgs.kitty}/bin/kitty";
-          "${modr}+Return+Ctrl" = "exec slurp | grim -g - /home/alark/Pictures/swayshots/$(date -u +%4Y%2m%2d_%2Hh%2Mm%2Ss_swayshot.png)";
+          "${modr}+Return+Ctrl" =
+            "exec slurp | grim -g - /home/alark/Pictures/swayshots/$(date -u +%4Y%2m%2d_%2Hh%2Mm%2Ss_swayshot.png)";
           "${modr}+S+Shift" = "exec slurp | grim -g - - | wl-copy";
           #"${modr}+Tab+Shift" = "swaymsg output DP-2
-          "XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+";
-          "XF86AudioLowerVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-";
+          "XF86AudioRaiseVolume" =
+            "exec ${pkgs.wireplumber}/bin/wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+";
+          "XF86AudioLowerVolume" =
+            "exec ${pkgs.wireplumber}/bin/wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-";
           "XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
           "XF86AudioMicMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
           "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 5";
@@ -138,18 +141,18 @@ in
         defaultWorkspace = "workspace number 1";
         menu = "tofi-drun | xargs swaymsg exec --";
         output = {
-					#DP-1 = {
-            # Acer
-					#  mode = "2560x1440@179.877Hz";
-					#  pos = "3440 0";
-					#  adaptive_sync = "on";
-					#};
+          #DP-1 = {
+          # Acer
+          #  mode = "2560x1440@179.877Hz";
+          #  pos = "3440 0";
+          #  adaptive_sync = "on";
+          #};
           DP-2 = {
             # Alienware
             mode = "3440x1440@174.963Hz";
             pos = "0 0";
             adaptive_sync = "off";
-						#render_bit_depth = "10";
+            #render_bit_depth = "10";
           };
           eDP-2 = {
             mode = "1920x1200@165.000Hz";

@@ -36,8 +36,8 @@
   #		enable = true;
   # };
   boot = {
-    kernelPackages = pkgs.linuxPackages_cachyos; 
-			#pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_cachyos;
+    #pkgs.linuxPackages_zen;
     initrd.kernelModules = [ "amdgpu" ];
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;

@@ -6,9 +6,9 @@
 }:
 {
   #Enable modules
-	pluto.home-manager.enable = true;
+  pluto.home-manager.enable = true;
   pluto.desktop.sway.enable = true;
-	pluto.emulation.rars.enable = true;
+  pluto.emulation.rars.enable = true;
   #pluto.texLive.enable = true;
   pluto.ssh.client.enable = true;
   pluto.desktop.swaylock = {

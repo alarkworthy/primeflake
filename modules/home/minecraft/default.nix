@@ -14,11 +14,11 @@ in
   };
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-			zenity
-			prismlauncher
-			(mcpelauncher-ui-qt .overrideAttrs (prev: {
-				runtimeDeps = [pkgs.zenity];
-			}) )
+      zenity
+      prismlauncher
+      (mcpelauncher-ui-qt.overrideAttrs (prev: {
+        runtimeDeps = [ pkgs.zenity ];
+      }))
     ];
   };
 }

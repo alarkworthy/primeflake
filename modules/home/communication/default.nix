@@ -16,11 +16,11 @@ in
     services.easyeffects.enable = true;
     home.packages = with pkgs; [
       #discord#evil uwu
-			#discord
+      #discord
       #For screenshare with audio
       #nheko #matrix client
-			teamspeak3
-			arma3-unix-launcher
+      teamspeak3
+      arma3-unix-launcher
       mpg123
       gp-saml-gui
       openconnect
@@ -28,8 +28,8 @@ in
     #services.easyeffects.enable = true; #need that background filter baby, later learn to autospawn in a workspace with discord
     services.arrpc.enable = true;
     programs.nixcord = {
-     	discord.vencord.unstable = true; 
-			enable = true;
+      discord.vencord.unstable = true;
+      enable = true;
       discord.enable = true;
       vesktop.enable = true;
       config = {
@@ -94,7 +94,7 @@ in
             hideFriendRequestsCount = false;
           };
           noReplyMention.enable = true;
-					#noScreensharePreview.enable = true;
+          #noScreensharePreview.enable = true;
           noTypingAnimation.enable = true;
           noUnblockToJump.enable = true;
           nsfwGateBypass.enable = true;

@@ -25,33 +25,32 @@
     streaming.sunshine.enable = false;
     docker.enable = false;
     theming.stylix.enable = true;
-		gaming.vrstuff.enable = false;
-		gaming.wivr.enable = false;
+    gaming.vrstuff.enable = false;
+    gaming.wivr.enable = false;
   };
 
   environment.systemPackages = [
-		#pkgs.quickemu
+    #pkgs.quickemu
   ];
-
 
   # Use the systemd-boot EFI boot loader.
   boot = {
-    kernelPackages = pkgs.linuxPackages_cachyos; # 
-		#	pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_cachyos;
+    #	pkgs.linuxPackages_zen;
     #initrd.kernelModules = [ "amdgpu" ];
-		#loader.systemd-boot.enable = true;
-		#loader.efi.canTouchEfiVariables = true;
+    #loader.systemd-boot.enable = true;
+    #loader.efi.canTouchEfiVariables = true;
 
   };
-	boot.loader = {
-			efi.canTouchEfiVariables = true;
-			grub = {
-				enable = true;
-				devices = [ "nodev" ];
-				efiSupport = true;
-				useOSProber = true;
-			};
-		};
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    grub = {
+      enable = true;
+      devices = [ "nodev" ];
+      efiSupport = true;
+      useOSProber = true;
+    };
+  };
   #Hardware
 
   #Hardware Opengl
@@ -128,11 +127,11 @@
 
   };
   #Network
-	services.avahi = {
-  	enable = true;
-  	nssmdns4 = true;
-  	openFirewall = true;
-	};
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
   networking = {
     hostName = "deadmeat";
     useDHCP = false;
@@ -192,13 +191,13 @@
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
-	services.printing = {
-		enable = true;
-		drivers = with pkgs; [
-			#epsonscan2
-			epson-escpr2
-		];
-	};
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      #epsonscan2
+      epson-escpr2
+    ];
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
@@ -246,12 +245,11 @@
   services.openssh.enable = true;
 
   networking.firewall = {
-    allowedTCPPorts =
-      [ 
-      ];
+    allowedTCPPorts = [
+    ];
     allowedUDPPorts = [
-      
-			53
+
+      53
       67
     ];
     trustedInterfaces = [

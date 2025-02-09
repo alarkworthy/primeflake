@@ -11,7 +11,7 @@
     #    url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     #    inputs.nixpkgs.follows = "nixpkgs";
     #};
-		nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
+    nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
     snowfall-lib = {
       url = "github:snowfallorg/lib";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -56,7 +56,12 @@
   #       };
 
   outputs =
-    { self, systems, nixpkgs-xr, ... }@inputs:
+    {
+      self,
+      systems,
+      nixpkgs-xr,
+      ...
+    }@inputs:
     let
       forAllSystems =
         f: inputs.nixpkgs.lib.genAttrs (import systems) (system: f inputs.nixpkgs.legacyPackages.${system});
@@ -81,14 +86,14 @@
       };
 
       overlays = with inputs; [
-				nixpkgs-xr.overlays.default
+        nixpkgs-xr.overlays.default
         neovim.overlays.default
       ];
       systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager
         impermanence.nixosModules.impermanence
         chaotic.nixosModules.default
-				nixpkgs-xr.nixosModules.nixpkgs-xr
+        nixpkgs-xr.nixosModules.nixpkgs-xr
         #jovian.nixosModules.default
         #{
         #  home-manager.useGlobalPkgs = true;
@@ -101,7 +106,7 @@
       homes.modules = with inputs; [
         #hyprland.homeManagerModules.default
         nixcord.homeManagerModules.nixcord
-				chaotic.homeManagerModules.default
+        chaotic.homeManagerModules.default
       ];
 
     }
