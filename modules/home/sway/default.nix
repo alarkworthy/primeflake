@@ -29,7 +29,7 @@ in
 
       common = {
         default = [
-          "gtk"
+          "wlr"
         ];
 
         "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];

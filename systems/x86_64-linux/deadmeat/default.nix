@@ -25,18 +25,24 @@
     streaming.sunshine.enable = false;
     docker.enable = false;
     theming.stylix.enable = true;
-    gaming.vrstuff.enable = false;
+    gaming.vrstuff.enable = true;
     gaming.wivr.enable = false;
   };
 
-  environment.systemPackages = [
+
+	programs.envision = {
+		enable = true;
+		openFirewall = true;
+	};
+	#environment.systemPackages = [
     #pkgs.quickemu
-  ];
+	#pkgs.envision-unwrapped
+		#];
 
   # Use the systemd-boot EFI boot loader.
   boot = {
     kernelPackages = pkgs.linuxPackages_cachyos;
-    #	pkgs.linuxPackages_zen;
+		#pkgs.linuxPackages_zen;
     #initrd.kernelModules = [ "amdgpu" ];
     #loader.systemd-boot.enable = true;
     #loader.efi.canTouchEfiVariables = true;
@@ -212,6 +218,8 @@
     extraGroups = [
       "wheel"
       "kvm"
+			"tty"
+			"dialout"
       "corectrl"
       "networkmanager"
       "video"

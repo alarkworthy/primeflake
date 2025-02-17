@@ -16,7 +16,7 @@ in
     services.easyeffects.enable = true;
     home.packages = with pkgs; [
       #discord#evil uwu
-      #discord
+      discord
       #For screenshare with audio
       #nheko #matrix client
       teamspeak3
@@ -30,7 +30,7 @@ in
     programs.nixcord = {
       discord.vencord.unstable = true;
       enable = true;
-      discord.enable = true;
+      discord.enable = false;
       vesktop.enable = true;
       config = {
         useQuickCss = true;
@@ -73,7 +73,7 @@ in
           greetStickerPicker.enable = true;
           iLoveSpam.enable = true;
           imageLink.enable = true;
-          imageZoom.enable = true;
+					#imageZoom.enable = true;
           implicitRelationships.enable = true;
           invisibleChat = {
             enable = true;

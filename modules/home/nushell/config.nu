@@ -39,7 +39,13 @@ def dict [...word #word(s) to query the dictionary API but they have to make sen
   }
 }
 
-# Use nushell functions to define your right and left prompt
+
+def create_left_prompt [] {
+    starship prompt --cmd-duration $env.CMD_DURATION_MS $'--status=($env.LAST_EXIT_CODE)'
+}
+
+
+# Use nushell functions to define your right andmplementatio left prompt
 $env.PROMPT_COMMAND = { || create_left_prompt }
 $env.PROMPT_COMMAND_RIGHT = ""
 
