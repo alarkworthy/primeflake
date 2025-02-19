@@ -26,10 +26,12 @@
     docker.enable = false;
     theming.stylix.enable = true;
     gaming.vrstuff.enable = true;
-    gaming.wivr.enable = false;
+		 gaming.wivr.enable = true;
   };
 
-
+	environment.systemPackages = [
+		pkgs.wlx-overlay-s
+	];
 	programs.envision = {
 		enable = true;
 		openFirewall = true;
@@ -58,6 +60,13 @@
     };
   };
   #Hardware
+	
+	#Should not be here but troubleshooting
+	programs.sway = {
+		enable = true;
+		wrapperFeatures.gtk = true;
+	};	
+
 
   #Hardware Opengl
   hardware.graphics = {
@@ -229,6 +238,8 @@
       "netdev"
       "ubridge"
       "pipewire"
+			"realtime"
+			"plugdev"
     ]; # Groups
     shell = pkgs.nushell;
     #TODO Set up secret management with sops-nix

@@ -20,30 +20,30 @@ in
     #Sway specific
 
     xdg.portal.enable = true;
-    xdg.portal.configPackages = with pkgs; [
-      xdg-desktop-portal-wlr
-      xdg-desktop-portal-gtk
-    ];
+		#xdg.portal.configPackages = with pkgs; [
+		#];
     #xdg.portal.config.common.default =;
     xdg.portal.config = {
-
       common = {
         default = [
-          "wlr"
+          "gtk"
         ];
 
-        "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
+        "org.freedesktop.impl.portal.Screencast" = [ "wlr" ];
+				"org.freedesktop.impl.portal.Screenshot" = ["wlr"];
       };
 
     };
-    xdg.portal.extraPortals = with pkgs; [
-      gnome-keyring
-    ];
+		xdg.portal.extraPortals = with pkgs; [
+			xdg-desktop-portal-gtk
+			xdg-desktop-portal-wlr
+		];
     xdg.portal.xdgOpenUsePortal = true;
     wayland.windowManager.sway = {
       #General Config
       enable = true;
       systemd.enable = true;
+		  wrapperFeatures.gtk = true;	
       #      extraConfig = ''
       #seat "seat1" {
       #fallback true

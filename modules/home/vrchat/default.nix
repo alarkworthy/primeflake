@@ -10,10 +10,9 @@
   };
   config = lib.mkIf config.pluto.vr.vrchat.enable {
     home.packages = with pkgs; [
-      vrc-get
-      unityhub
-      alcom
-      wlx-overlay-s
+			#vrc-get
+			#unityhub
+			#alcom
     ];
     xdg.configFile."openxr/1/active_runtime.json".source =
       "${pkgs.wivrn}/share/openxr/1/openxr_wivrn.json";
@@ -32,7 +31,7 @@
         ],
         "runtime" :
         [
-          "${pkgs.opencomposite-vendored}/lib/opencomposite"
+          "${pkgs.opencomposite}/lib/opencomposite"
         ],
         "version" : 1
       }
