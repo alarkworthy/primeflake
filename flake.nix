@@ -11,6 +11,9 @@
     #    url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     #    inputs.nixpkgs.follows = "nixpkgs";
     #};
+		nix-gaming = {
+			url = "github:fufexan/nix-gaming";
+		};
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
     snowfall-lib = {
       url = "github:snowfallorg/lib";
@@ -122,6 +125,7 @@
         impermanence.nixosModules.impermanence
         chaotic.nixosModules.default
         nixpkgs-xr.nixosModules.nixpkgs-xr
+				nix-gaming.nixosModules.pipewireLowLatency
         #jovian.nixosModules.default
         #{
         #  home-manager.useGlobalPkgs = true;

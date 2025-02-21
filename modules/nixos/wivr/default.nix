@@ -21,10 +21,11 @@
         IPC_EXIT_ON_DISCONNECT = "0";
 				#XRT_COMPOSITOR_LOG = "debug";
 				#XRT_PRINT_OPTIONS = "1";
-				#U_PACING_COMP_MIN_TIME_MS = "9";
-				U_PACING_APP_USE_MIN_FRAME_PERIOD = "1";
-				XRT_CURATED_GUI = "1";
-				XRT_DEBUG_GUI = "1";
+				U_PACING_COMP_MIN_TIME_MS = "8";
+				#U_PACING_APP_USE_MIN_FRAME_PERIOD = "1";
+				XRT_COMPOSITOR_DEFAULT_FRAMERATE="120";
+				#XRT_CURATED_GUI = "1";
+				#XRT_DEBUG_GUI = "1";
       };
       config = {
         enable = true;

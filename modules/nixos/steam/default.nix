@@ -22,7 +22,7 @@ in
     hardware.steam-hardware.enable = true;
 
     programs.alvr = {
-      enable = true;
+      enable = false;
       openFirewall = true;
     };
 
@@ -30,10 +30,10 @@ in
     chaotic.hdr.enable = false;
     programs.gamescope = {
       capSysNice = true;
-      enable = true;
+      enable = false;
     };
     programs.gamemode = {
-      enable = true;
+      enable = false;
       enableRenice = true;
     };
     #jovian = {
@@ -52,7 +52,7 @@ in
       remotePlay.openFirewall = true;
       extest.enable = true;
       gamescopeSession = {
-        enable = true;
+        enable = false;
 
       };
       protontricks = {
