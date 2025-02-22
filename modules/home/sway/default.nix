@@ -151,13 +151,13 @@ in
             # Alienware
             mode = "3440x1440@174.963Hz";
             pos = "0 0";
-            adaptive_sync = "off";
+						#adaptive_sync = "off";
             #render_bit_depth = "10";
           };
-          eDP-2 = {
-            mode = "1920x1200@165.000Hz";
-            adaptive_sync = "on";
-          };
+					#eDP-2 = {
+					#  mode = "1920x1200@165.000Hz";
+					#  adaptive_sync = "on";
+					#};
           #HDMI-A-2 = {
           #  mode = "1366x768";
           #  pos = "2560 0";

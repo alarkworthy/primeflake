@@ -91,6 +91,7 @@
   programs.corectrl = {
     enable = true;
     gpuOverclock.enable = true;
+		gpuOverclock.ppfeaturemask = "0xffffffff";
   };
   hardware.amdgpu = {
     initrd.enable = true;
@@ -101,7 +102,7 @@
     };
   };
 
-  hardware.cpu.amd.ryzen-smu.enable = true;
+	#hardware.cpu.amd.ryzen-smu.enable = true;
   #HIP workaround (used in blender)
   #systemd.tmpfiles.rules = [
   #"L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
@@ -155,7 +156,7 @@
       enable = true;
       unmanaged = [
         #"esp113s0"
-        "virbr0"
+				#"virbr0"
       ];
     };
     interfaces = {
@@ -240,6 +241,7 @@
       "pipewire"
 			"realtime"
 			"plugdev"
+			"gamemode"
     ]; # Groups
     shell = pkgs.nushell;
     #TODO Set up secret management with sops-nix

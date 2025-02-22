@@ -33,8 +33,36 @@ in
       enable = false;
     };
     programs.gamemode = {
-      enable = false;
+      enable = true;
       enableRenice = true;
+			settings = {
+			  general = {
+			    renice = 10;
+					ioprio=0;
+					inhibit_screensaver=0;
+					disable_splitlock=1;
+					softrealtime="auto";
+			  };
+				
+			  # Warning: GPU optimisations have the potential to damage hardware
+				#gpu = {
+				#  apply_gpu_optimisations = "accept-responsibility";
+				#  gpu_device = 0;
+				#  amd_performance_level = "vr";
+				#};
+
+				cpu = {
+					parkcores="no";
+					pin_cores="yes";
+
+				};
+
+			  custom = {
+			    start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";
+			    end = "${pkgs.libnotify}/bin/notify-send 'GameMode ended'";
+			  };
+			}
+			;
     };
     #jovian = {
     #  hardware = {
