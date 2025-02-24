@@ -26,7 +26,7 @@ in
     xdg.portal.config = {
       common = {
         default = [
-          "gtk"
+					"gtk"
         ];
 
         "org.freedesktop.impl.portal.Screencast" = [ "wlr" ];
@@ -43,7 +43,7 @@ in
       #General Config
       enable = true;
       systemd.enable = true;
-		  wrapperFeatures.gtk = true;	
+			wrapperFeatures.gtk = true;
       #      extraConfig = ''
       #seat "seat1" {
       #fallback true

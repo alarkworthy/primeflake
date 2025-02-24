@@ -31,6 +31,10 @@ in
               threshold = 30;
               style = "bold yellow";
             }
+						{
+							threshold = 55;
+							style = "bold green";
+						}
           ];
         };
         username = {

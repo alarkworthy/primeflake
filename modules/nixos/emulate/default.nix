@@ -15,9 +15,17 @@ in
   };
   config = mkIf cfg.enable {
     virtualisation = {
-      waydroid.enable = true;
+      waydroid.enable = false;
+			#containers.enable = true;
+			#podman = {
+			#		enable = true;
+			#	dockerCompat = true;
+			#		defaultNetwork.settings = { dns_enabled = true; };
+			#};
+
 
     };
 
+		environment.systemPackages = [pkgs.distrobox];
   };
 }

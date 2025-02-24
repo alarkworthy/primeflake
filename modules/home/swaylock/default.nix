@@ -8,7 +8,7 @@ with config.lib.stylix.colors;
 let
   cfg = config.pluto.desktop.swaylock;
   inside = base01-hex;
-  outside = base01-hex;
+  outside = base00-hex;
   ring = base05-hex;
   text = base05-hex;
   positive = base0B-hex;
