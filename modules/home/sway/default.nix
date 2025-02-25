@@ -68,8 +68,7 @@ in
         ];
         keybindings = lib.mkOptionDefault {
           "${modr}+Return+Shift" = "exec ${pkgs.kitty}/bin/kitty";
-          "${modr}+Return+Ctrl" =
-            "exec slurp | grim -g - /home/alark/Pictures/swayshots/$(date -u +%4Y%2m%2d_%2Hh%2Mm%2Ss_swayshot.png)";
+          "${modr}+Return+Ctrl" = "exec slurp | grim -g - /home/alark/Pictures/swayshots/$(date -u +%4Y%2m%2d_%2Hh%2Mm%2Ss_swayshot.png)";
           "${modr}+S+Shift" = "exec slurp | grim -g - - | wl-copy";
           #"${modr}+Tab+Shift" = "swaymsg output DP-2
           "XF86AudioRaiseVolume" =
@@ -84,6 +83,7 @@ in
           "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
           "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
           #"XF86Launch3" = d
+					"${modr}+Shift+D" = "exec tofi-run | xargs swaymsg exec --";
         };
         focus = {
           followMouse = "yes";

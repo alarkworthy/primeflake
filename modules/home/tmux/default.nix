@@ -28,14 +28,14 @@ in
       historyLimit = 5000;
       plugins = with pkgs.tmuxPlugins; [
         pain-control
-        #{
-        #  plugin = resurrect;
-        #extraConfig = "set -g @ressurect-strategy-nvim 'session'";
-        #}
+        {
+          plugin = resurrect;
+        extraConfig = "set -g @ressurect-strategy-nvim 'session'";
+        }
         {
           plugin = continuum;
           extraConfig = ''
-            set -g @continuum-restore 'on'
+            set -g @continuum-restore 'off'
             set -g @continuum-save-interval '60'
           '';
         }

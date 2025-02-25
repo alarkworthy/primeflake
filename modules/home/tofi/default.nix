@@ -56,7 +56,7 @@ in
         padding-left = 15;
         padding-right = 10;
 
-        terminal = "alacritty";
+        terminal = "foot";
         width = "50%";
         height = "30%";
         prompt-text = "Give me a";
