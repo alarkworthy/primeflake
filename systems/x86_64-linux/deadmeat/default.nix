@@ -46,19 +46,19 @@
     kernelPackages = pkgs.linuxPackages_cachyos;
 		#pkgs.linuxPackages_zen;
     #initrd.kernelModules = [ "amdgpu" ];
-    #loader.systemd-boot.enable = true;
-    #loader.efi.canTouchEfiVariables = true;
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
 
   };
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    grub = {
-      enable = true;
-      devices = [ "nodev" ];
-      efiSupport = true;
-      useOSProber = true;
-    };
-  };
+	#boot.loader = {
+	#  efi.canTouchEfiVariables = true;
+	#  grub = {
+	#    enable = true;
+	#    devices = [ "nodev" ];
+	#    efiSupport = true;
+	#    useOSProber = true;
+	#  };
+	#};
   #Hardware
 	
 	#Should not be here but troubleshooting
