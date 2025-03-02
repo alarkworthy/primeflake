@@ -26,47 +26,46 @@
     docker.enable = false;
     theming.stylix.enable = true;
     gaming.vrstuff.enable = true;
-		 gaming.wivr.enable = true;
+    gaming.wivr.enable = true;
   };
 
-	environment.systemPackages = [
-		pkgs.wlx-overlay-s
-	];
-	programs.envision = {
-		enable = true;
-		openFirewall = true;
-	};
-	#environment.systemPackages = [
-    #pkgs.quickemu
-	#pkgs.envision-unwrapped
-		#];
+  environment.systemPackages = [
+    pkgs.wlx-overlay-s
+  ];
+  programs.envision = {
+    enable = true;
+    openFirewall = true;
+  };
+  #environment.systemPackages = [
+  #pkgs.quickemu
+  #pkgs.envision-unwrapped
+  #];
 
   # Use the systemd-boot EFI boot loader.
   boot = {
     kernelPackages = pkgs.linuxPackages_cachyos;
-		#pkgs.linuxPackages_zen;
+    #pkgs.linuxPackages_zen;
     #initrd.kernelModules = [ "amdgpu" ];
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
 
   };
-	#boot.loader = {
-	#  efi.canTouchEfiVariables = true;
-	#  grub = {
-	#    enable = true;
-	#    devices = [ "nodev" ];
-	#    efiSupport = true;
-	#    useOSProber = true;
-	#  };
-	#};
+  #boot.loader = {
+  #  efi.canTouchEfiVariables = true;
+  #  grub = {
+  #    enable = true;
+  #    devices = [ "nodev" ];
+  #    efiSupport = true;
+  #    useOSProber = true;
+  #  };
+  #};
   #Hardware
-	
-	#Should not be here but troubleshooting
-	programs.sway = {
-		enable = true;
-		wrapperFeatures.gtk = true;
-	};	
 
+  #Should not be here but troubleshooting
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
 
   #Hardware Opengl
   hardware.graphics = {
@@ -91,7 +90,7 @@
   programs.corectrl = {
     enable = true;
     gpuOverclock.enable = true;
-		gpuOverclock.ppfeaturemask = "0xffffffff";
+    gpuOverclock.ppfeaturemask = "0xffffffff";
   };
   hardware.amdgpu = {
     initrd.enable = true;
@@ -102,7 +101,7 @@
     };
   };
 
-	#hardware.cpu.amd.ryzen-smu.enable = true;
+  #hardware.cpu.amd.ryzen-smu.enable = true;
   #HIP workaround (used in blender)
   #systemd.tmpfiles.rules = [
   #"L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
@@ -156,7 +155,7 @@
       enable = true;
       unmanaged = [
         #"esp113s0"
-				#"virbr0"
+        #"virbr0"
       ];
     };
     interfaces = {
@@ -228,8 +227,8 @@
     extraGroups = [
       "wheel"
       "kvm"
-			"tty"
-			"dialout"
+      "tty"
+      "dialout"
       "corectrl"
       "networkmanager"
       "video"
@@ -239,9 +238,9 @@
       "netdev"
       "ubridge"
       "pipewire"
-			"realtime"
-			"plugdev"
-			"gamemode"
+      "realtime"
+      "plugdev"
+      "gamemode"
     ]; # Groups
     shell = pkgs.nushell;
     #TODO Set up secret management with sops-nix

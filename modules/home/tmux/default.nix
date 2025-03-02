@@ -30,7 +30,7 @@ in
         pain-control
         {
           plugin = resurrect;
-        extraConfig = "set -g @ressurect-strategy-nvim 'session'";
+          extraConfig = "set -g @ressurect-strategy-nvim 'session'";
         }
         {
           plugin = continuum;

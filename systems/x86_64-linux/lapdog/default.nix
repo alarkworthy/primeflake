@@ -9,13 +9,13 @@
     audio.enable = true;
     impermanence.enable = true;
     system = "Laptop";
-		emulate.enable = false;
+    emulate.enable = false;
   };
   programs.light.enable = true;
-	# services.thermald.enable = true;
-  
-	hardware.enableAllFirmware = true;
-	services.tlp = {
+  # services.thermald.enable = true;
+
+  hardware.enableAllFirmware = true;
+  services.tlp = {
     enable = true;
     settings = {
       CPU_BOOST_ON_AC = 1;
@@ -28,25 +28,28 @@
       CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
       START_CHARGE_THRESH_BAT0 = 58;
       STOP_CHARGE_THRESH_BAT0 = 60;
-			RUNTIME_PM_DRIVER_DENYLIST = "mei_me";
+      RUNTIME_PM_DRIVER_DENYLIST = "mei_me";
     };
   };
   security.pam.services.swaylock = { };
   services.printing.enable = true;
   environment.systemPackages = [
     pkgs.acpi
-		pkgs.eagle
+    pkgs.eagle
   ];
-	services.avahi = {
-		enable = true;
-		nssmdns4 = true;
-		openFirewall = true;
-	};
-	hardware.sane = {
-		enable = true;
-		extraBackends = [ pkgs.hplipWithPlugin pkgs.sane-airscan ];
-		openFirewall = true;
-	};
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+  hardware.sane = {
+    enable = true;
+    extraBackends = [
+      pkgs.hplipWithPlugin
+      pkgs.sane-airscan
+    ];
+    openFirewall = true;
+  };
   #services.libinput = {
   #		enable = true;
   # };
@@ -56,7 +59,7 @@
     initrd.kernelModules = [ "amdgpu" ];
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-		kernelParams = ["rcutree.enable_rcu_lazy=1"];
+    kernelParams = [ "rcutree.enable_rcu_lazy=1" ];
   };
   hardware.graphics = {
     enable = true; # May not be needed, the system sway module auto enables this, but we are using homemanager to install sway
@@ -85,10 +88,10 @@
   hardware.amdgpu = {
     initrd.enable = false;
     opencl.enable = false;
-		#amdvlk = {
-		#  enable = true;
-		#  support32Bit.enable = true;
-		#};
+    #amdvlk = {
+    #  enable = true;
+    #  support32Bit.enable = true;
+    #};
   };
 
   hardware.bluetooth = {
@@ -129,18 +132,18 @@
     extraGroups = [
       "wheel"
       "kvm"
-			#"corectrl"
+      #"corectrl"
       "networkmanager"
       "video"
-			"lp"
-			"scanner"
+      "lp"
+      "scanner"
       "audio"
       "input"
       "libvirtd"
       "netdev"
       "ubridge"
       "pipewire"
-			#"podman"
+      #"podman"
     ]; # Groups
     shell = pkgs.nushell;
     #TODO Set up secret management with sops-nix

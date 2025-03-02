@@ -10,9 +10,9 @@
   };
   config = lib.mkIf config.pluto.vr.vrchat.enable {
     home.packages = with pkgs; [
-			#vrc-get
-			#unityhub
-			#alcom
+      #vrc-get
+      #unityhub
+      #alcom
     ];
     xdg.configFile."openxr/1/active_runtime.json".source =
       "${pkgs.wivrn}/share/openxr/1/openxr_wivrn.json";

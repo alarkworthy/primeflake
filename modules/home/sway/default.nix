@@ -20,30 +20,30 @@ in
     #Sway specific
 
     xdg.portal.enable = true;
-		#xdg.portal.configPackages = with pkgs; [
-		#];
+    #xdg.portal.configPackages = with pkgs; [
+    #];
     #xdg.portal.config.common.default =;
     xdg.portal.config = {
       common = {
         default = [
-					"gtk"
+          "gtk"
         ];
 
         "org.freedesktop.impl.portal.Screencast" = [ "wlr" ];
-				"org.freedesktop.impl.portal.Screenshot" = ["wlr"];
+        "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
       };
 
     };
-		xdg.portal.extraPortals = with pkgs; [
-			xdg-desktop-portal-gtk
-			xdg-desktop-portal-wlr
-		];
+    xdg.portal.extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+    ];
     xdg.portal.xdgOpenUsePortal = true;
     wayland.windowManager.sway = {
       #General Config
       enable = true;
       systemd.enable = true;
-			wrapperFeatures.gtk = true;
+      wrapperFeatures.gtk = true;
       #      extraConfig = ''
       #seat "seat1" {
       #fallback true
@@ -68,7 +68,8 @@ in
         ];
         keybindings = lib.mkOptionDefault {
           "${modr}+Return+Shift" = "exec ${pkgs.kitty}/bin/kitty";
-          "${modr}+Return+Ctrl" = "exec slurp | grim -g - /home/alark/Pictures/swayshots/$(date -u +%4Y%2m%2d_%2Hh%2Mm%2Ss_swayshot.png)";
+          "${modr}+Return+Ctrl" =
+            "exec slurp | grim -g - /home/alark/Pictures/swayshots/$(date -u +%4Y%2m%2d_%2Hh%2Mm%2Ss_swayshot.png)";
           "${modr}+S+Shift" = "exec slurp | grim -g - - | wl-copy";
           #"${modr}+Tab+Shift" = "swaymsg output DP-2
           "XF86AudioRaiseVolume" =
@@ -83,7 +84,7 @@ in
           "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
           "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
           #"XF86Launch3" = d
-					"${modr}+Shift+D" = "exec tofi-run | xargs swaymsg exec --";
+          "${modr}+Shift+D" = "exec tofi-run | xargs swaymsg exec --";
         };
         focus = {
           followMouse = "yes";
@@ -151,13 +152,13 @@ in
             # Alienware
             mode = "3440x1440@174.963Hz";
             pos = "0 0";
-						#adaptive_sync = "off";
+            #adaptive_sync = "off";
             #render_bit_depth = "10";
           };
-					#eDP-2 = {
-					#  mode = "1920x1200@165.000Hz";
-					#  adaptive_sync = "on";
-					#};
+          #eDP-2 = {
+          #  mode = "1920x1200@165.000Hz";
+          #  adaptive_sync = "on";
+          #};
           #HDMI-A-2 = {
           #  mode = "1366x768";
           #  pos = "2560 0";

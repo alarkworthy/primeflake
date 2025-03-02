@@ -13,7 +13,7 @@ in
     default = true;
   };
   config = mkIf cfg.enable {
-    services.easyeffects.enable = true;
+    services.easyeffects.enable = false;
     home.packages = with pkgs; [
       #discord#evil uwu
       discord
@@ -73,7 +73,7 @@ in
           greetStickerPicker.enable = true;
           iLoveSpam.enable = true;
           imageLink.enable = true;
-					#imageZoom.enable = true;
+          #imageZoom.enable = true;
           implicitRelationships.enable = true;
           invisibleChat = {
             enable = true;

@@ -28,15 +28,15 @@
   boot.supportedFilesystems = [
     "btrfs"
     "vfat"
-		"ext4"
+    "ext4"
   ];
-	
-	# fileSystems."/home/alark/.local/share/envision" = {
-	# 	device = "/dev/disk/by-uuid/a758209a-787c-45e6-aa02-2156e8982f21";
-	# 	fsType = "ext4";
-	# 	options = [ "defaults" "suid" ];
-	# };
-	
+
+  # fileSystems."/home/alark/.local/share/envision" = {
+  # 	device = "/dev/disk/by-uuid/a758209a-787c-45e6-aa02-2156e8982f21";
+  # 	fsType = "ext4";
+  # 	options = [ "defaults" "suid" ];
+  # };
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/88aae86c-e602-4f88-90b0-9b460ea16f26";
     fsType = "btrfs";
@@ -54,7 +54,7 @@
       "subvol=home"
       "compress=zstd"
       "noatime"
-			"suid"
+      "suid"
     ];
   };
 

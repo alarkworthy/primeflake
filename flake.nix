@@ -11,9 +11,9 @@
     #    url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     #    inputs.nixpkgs.follows = "nixpkgs";
     #};
-		nix-gaming = {
-			url = "github:fufexan/nix-gaming";
-		};
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
+    };
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
     snowfall-lib = {
       url = "github:snowfallorg/lib";
@@ -91,41 +91,42 @@
       overlays = with inputs; [
         nixpkgs-xr.overlays.default
         neovim.overlays.default
-				(final: prev:
-    {
-							wivrn = prev.wivrn.overrideAttrs (previousAttrs: rec {
-        version = "123";
-        src = prev.fetchFromGitHub {
-          owner = "notpeelz";
-          repo = "WiVRn";
-          rev = "8ce86763d46206f191bc0235ca0af5410e0b220c";
-          hash = "sha256-G8k52LbgNk1pbTy5ehs+ZMI7L3mOsGFFt3cyFF2hN6c=";
-        };
-					cmakeFlags = (previousAttrs.cmakeFlags or []) ++ [(nixpkgs.lib.cmakeBool "WIVRN_FEATURE_SOLARXR" true)];
-      });
-    })
-				# (final: prev:
-				# {
-				# 			slimevr = prev.slimevr.overrideAttrs (previousAttrs: rec {
-				#     version = "123";
-				#     src = prev.fetchFromGitHub {
-				#       owner = "SlimeVR";
-				#       repo = "SlimeVR-Server";
-				#       rev = "d3b2cb726b077a28b1cffc72d635eabf0d66a38b";
-				# 						#"4f364acecc98ccad4a20f0155a2f806d6fb98e0d";
-				#       hash = "sha256-nPAIwykY/8tXa3ISUD+c7HmOtY7iurpd2jS95GGgyjU="; 
-				# 		#"sha256-9oMdxuP/TpZn2GOkXeLxKBsnxZ4bFIwJgPM8rPTvzbE=";
-				#
-				#     };
-				#   });
-				# })
+        (final: prev: {
+          wivrn = prev.wivrn.overrideAttrs (previousAttrs: rec {
+            version = "123";
+            src = prev.fetchFromGitHub {
+              owner = "notpeelz";
+              repo = "WiVRn";
+              rev = "8ce86763d46206f191bc0235ca0af5410e0b220c";
+              hash = "sha256-G8k52LbgNk1pbTy5ehs+ZMI7L3mOsGFFt3cyFF2hN6c=";
+            };
+            cmakeFlags = (previousAttrs.cmakeFlags or [ ]) ++ [
+              (nixpkgs.lib.cmakeBool "WIVRN_FEATURE_SOLARXR" true)
+            ];
+          });
+        })
+        # (final: prev:
+        # {
+        # 			slimevr = prev.slimevr.overrideAttrs (previousAttrs: rec {
+        #     version = "123";
+        #     src = prev.fetchFromGitHub {
+        #       owner = "SlimeVR";
+        #       repo = "SlimeVR-Server";
+        #       rev = "d3b2cb726b077a28b1cffc72d635eabf0d66a38b";
+        # 						#"4f364acecc98ccad4a20f0155a2f806d6fb98e0d";
+        #       hash = "sha256-nPAIwykY/8tXa3ISUD+c7HmOtY7iurpd2jS95GGgyjU=";
+        # 		#"sha256-9oMdxuP/TpZn2GOkXeLxKBsnxZ4bFIwJgPM8rPTvzbE=";
+        #
+        #     };
+        #   });
+        # })
       ];
       systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager
         impermanence.nixosModules.impermanence
         chaotic.nixosModules.default
         nixpkgs-xr.nixosModules.nixpkgs-xr
-				nix-gaming.nixosModules.pipewireLowLatency
+        nix-gaming.nixosModules.pipewireLowLatency
         #jovian.nixosModules.default
         #{
         #  home-manager.useGlobalPkgs = true;
