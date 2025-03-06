@@ -31,6 +31,14 @@
       RUNTIME_PM_DRIVER_DENYLIST = "mei_me";
     };
   };
+
+	systemd.sleep.extraConfig = ''
+		AllowSuspend=yes
+		AllowHibernation=yes
+		AllowHybridSleep=no
+		AllowSuspendThenHibernate=no
+	'';
+
   security.pam.services.swaylock = { };
   services.printing.enable = true;
   environment.systemPackages = [
@@ -92,6 +100,12 @@
     #  enable = true;
     #  support32Bit.enable = true;
     #};
+  };
+	
+  programs.mtr.enable = true;
+  programs.gnupg.agent = {
+		enable = true;
+		#enableSSHSupport = true;
   };
 
   hardware.bluetooth = {

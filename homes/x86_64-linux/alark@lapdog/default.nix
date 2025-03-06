@@ -18,6 +18,7 @@
     };
   };
   pluto.home.system = "Laptop";
+	pluto.desktop.thunderbird.enable = true;
   home.packages = [
     pkgs.moonlight-qt
   ];
