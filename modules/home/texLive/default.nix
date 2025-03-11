@@ -1,7 +1,10 @@
-{ lib, config, ... }:
+{ lib, config,pkgs, ... }:
 with lib;
 let
   cfg = config.pluto.texLive;
+	tex = (pkgs.texlive.combine {
+		inherit (pkgs.texlive) scheme-medium;
+	});
 in
 {
   options.pluto.texLive.enable = mkEnableOption "TexLive User wide" // {
@@ -9,24 +12,8 @@ in
   };
 
   config = mkIf cfg.enable {
-    programs = {
-      texlive = {
-        enable = true;
-        extraPackages = tpkgs: {
-          inherit (tpkgs)
-            collection-basic
-            standalone
-            pdfcrop
-            collection-xetex
-            collection-latex
-            collection-mathscience
-            collection-fontsrecommended
-            collection-latexextra
-            latexmk
-            ;
-        };
-      };
-    };
-
+		home.packages = with pkgs; [
+			tex
+		];
   };
 }
