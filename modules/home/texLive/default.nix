@@ -3,7 +3,7 @@ with lib;
 let
   cfg = config.pluto.texLive;
 	tex = (pkgs.texlive.combine {
-		inherit (pkgs.texlive) scheme-medium;
+		inherit (pkgs.texlive) scheme-full;
 	});
 in
 {
