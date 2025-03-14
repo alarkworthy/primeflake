@@ -197,8 +197,12 @@ in
         ] ++ optionals (config.pluto.home.system == "Desktop") [ {
             output = "DP-1";
             workspace = "10";
-					} ] ++ optionals (config.pluto.home.system == "Laptop") [{
-            output = "DP-2";
+					} 
+					{output = "DP-2";
+						workspace = "1";
+						}
+				] ++ optionals (config.pluto.home.system == "Laptop") [{
+            output = "eDP-2";
             workspace = "1";
 					}];
         window = {
