@@ -66,6 +66,7 @@ in
         startup = [
           { command = "fcitx5 -d -r"; }
           { command = "fcitx5-remote -r"; }
+					{ command = "exec mako";}
         ];
         keybindings = lib.mkOptionDefault {
           "${modr}+Return+Shift" = "exec ${pkgs.kitty}/bin/kitty";
