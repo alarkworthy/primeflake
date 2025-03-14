@@ -39,7 +39,8 @@ in
       xdg-desktop-portal-wlr
     ];
     xdg.portal.xdgOpenUsePortal = true;
-    wayland.windowManager.sway = {
+		wayland.systemd.target = "sway-session.target";
+		wayland.windowManager.sway = {
       #General Config
       enable = true;
       systemd.enable = true;
@@ -123,11 +124,17 @@ in
               mode = "dock";
               position = "top";
               hiddenState = "hide";
-              command = "waybar"; # Need waybar
-              #statusCommand = "i3status"; #need i3status we dont need this
+							command = "swaybar"; # Need waybar
+              statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml"; #need i3status we dont need this
 
             }
-            // config.lib.stylix.sway.bar
+						 // config.lib.stylix.sway.bar // 
+							{
+								fonts = {
+									names = [ config.stylix.fonts.sansSerif.name "Font Awesome 6 Free"];
+									size = 11.0; #config.stylix.fonts.sizes.desktop + 0.0;
+								};
+							}
           )
         ];
 

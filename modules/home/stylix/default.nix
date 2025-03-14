@@ -62,6 +62,7 @@ in
         sansSerif.package = pkgs.nerd-fonts.commit-mono; # with pkgs; (nerdfonts.override { fonts = [ "CommitMono" ]; });
         #	      sansSerif.package = with pkgs; (nerdfonts.override { fonts = ["DejaVuSansMono"]; });
         serif.name = "IosevkaTermSlab Nerd Font";
+
         serif.package = pkgs.nerd-fonts.iosevka-term-slab; # with pkgs; (nerdfonts.override { fonts = [ "IosevkaTermSlab" ]; });
       };
     };

@@ -10,7 +10,7 @@ let
 in
 {
   options.pluto.desktop.waybar.enable = mkEnableOption "Enable Waybar" // {
-    default = config.pluto.desktop.sway.enable;
+    default = false; #config.pluto.desktop.sway.enable;
   };
   options.pluto.home.system = mkOption {
     type = lib.types.str;
@@ -193,7 +193,7 @@ in
 
           "temperature" =
             {
-              interval = 10;
+              interval = 60;
               format = "{temperatureC}°C ";
               format-critical = "HOT!! {temperatureC}°C ";
               critical-threshold = 80;

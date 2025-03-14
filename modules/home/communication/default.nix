@@ -16,7 +16,6 @@ in
     services.easyeffects.enable = false;
     home.packages = with pkgs; [
       #discord#evil uwu
-      discord
       #For screenshare with audio
       #nheko #matrix client
       teamspeak3
@@ -26,11 +25,14 @@ in
       openconnect
     ];
     #services.easyeffects.enable = true; #need that background filter baby, later learn to autospawn in a workspace with discord
-    services.arrpc.enable = true;
+		services.arrpc = {
+			enable = true;
+			systemdTarget = "sway-session.target";
+		};
     programs.nixcord = {
       discord.vencord.unstable = true;
       enable = true;
-      discord.enable = false;
+      discord.enable = true;
       vesktop.enable = true;
       config = {
         useQuickCss = true;

@@ -22,6 +22,7 @@ in
       noto-fonts-emoji
       noto-fonts-extra
       ipafont
+			font-awesome #awesome 6
     ];
   };
 }
