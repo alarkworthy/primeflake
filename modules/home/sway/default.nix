@@ -39,8 +39,8 @@ in
       xdg-desktop-portal-wlr
     ];
     xdg.portal.xdgOpenUsePortal = true;
-		wayland.systemd.target = "sway-session.target";
-		wayland.windowManager.sway = {
+    wayland.systemd.target = "sway-session.target";
+    wayland.windowManager.sway = {
       #General Config
       enable = true;
       systemd.enable = true;
@@ -66,7 +66,7 @@ in
         startup = [
           { command = "fcitx5 -d -r"; }
           { command = "fcitx5-remote -r"; }
-					{ command = "exec mako";}
+          { command = "exec mako"; }
         ];
         keybindings = lib.mkOptionDefault {
           "${modr}+Return+Shift" = "exec ${pkgs.kitty}/bin/kitty";
@@ -125,17 +125,20 @@ in
               mode = "dock";
               position = "top";
               hiddenState = "hide";
-							command = "swaybar"; # Need waybar
-              statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml"; #need i3status we dont need this
+              command = "swaybar"; # Need waybar
+              statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml"; # need i3status we dont need this
 
             }
-						 // config.lib.stylix.sway.bar // 
-							{
-								fonts = {
-									names = [ config.stylix.fonts.sansSerif.name "Font Awesome 6 Free"];
-									size = 11.0; #config.stylix.fonts.sizes.desktop + 0.0;
-								};
-							}
+            // config.lib.stylix.sway.bar
+            // {
+              fonts = {
+                names = [
+                  config.stylix.fonts.sansSerif.name
+                  "Font Awesome 6 Free"
+                ];
+                size = 11.0; # config.stylix.fonts.sizes.desktop + 0.0;
+              };
+            }
           )
         ];
 
@@ -149,62 +152,71 @@ in
         modifier = modr;
         defaultWorkspace = "workspace number 1";
         menu = "tofi-drun | xargs swaymsg exec --";
-        output = {
-          #DP-1 = {
-          # Acer
-          #  mode = "2560x1440@179.877Hz";
-          #  pos = "3440 0";
-          #  adaptive_sync = "on";
-          #};
-					#DP-2 = {
+        output =
+          {
+            #DP-1 = {
+            # Acer
+            #  mode = "2560x1440@179.877Hz";
+            #  pos = "3440 0";
+            #  adaptive_sync = "on";
+            #};
+            #DP-2 = {
             # Alienware
-					#  mode = "3440x1440@174.963Hz";
-					#  pos = "0 0";
+            #  mode = "3440x1440@174.963Hz";
+            #  pos = "0 0";
             #adaptive_sync = "off";
             #render_bit_depth = "10";
-					#};
-          #eDP-2 = {
-          #  mode = "1920x1200@165.000Hz";
-          #  adaptive_sync = "on";
-          #};
-          #HDMI-A-2 = {
-          #  mode = "1366x768";
-          #  pos = "2560 0";
+            #};
+            #eDP-2 = {
+            #  mode = "1920x1200@165.000Hz";
+            #  adaptive_sync = "on";
+            #};
+            #HDMI-A-2 = {
+            #  mode = "1366x768";
+            #  pos = "2560 0";
 
-          #};
+            #};
 
-        } // attrsets.optionalAttrs (config.pluto.home.system == "Desktop") {
-						#Acer
-						DP-1 = {
-							mode = "2560x1440@179.877Hz";
-							pos = "3440 0";
-							adaptive_sync = "on";
-						};
-						#Alienware
-						DP-2 = {
-							mode = "3440x1440@174.963Hz";
-							pos = "0 0";
-						};
-					} // attrsets.optionalAttrs (config.pluto.home.system == "Laptop") 
-					{
-						eDP-2 = {
-							mode = "1920x1200@165.000Hz";
-							adaptive_sync = "on";
-						};
-					};
+          }
+          // attrsets.optionalAttrs (config.pluto.home.system == "Desktop") {
+            #Acer
+            DP-1 = {
+              mode = "2560x1440@179.877Hz";
+              pos = "3440 0";
+              adaptive_sync = "on";
+            };
+            #Alienware
+            DP-2 = {
+              mode = "3440x1440@174.963Hz";
+              pos = "0 0";
+            };
+          }
+          // attrsets.optionalAttrs (config.pluto.home.system == "Laptop") {
+            eDP-2 = {
+              mode = "1920x1200@165.000Hz";
+              adaptive_sync = "on";
+            };
+          };
 
-        workspaceOutputAssign = [
-        ] ++ optionals (config.pluto.home.system == "Desktop") [ {
-            output = "DP-1";
-            workspace = "10";
-					} 
-					{output = "DP-2";
-						workspace = "1";
-						}
-				] ++ optionals (config.pluto.home.system == "Laptop") [{
-            output = "eDP-2";
-            workspace = "1";
-					}];
+        workspaceOutputAssign =
+          [
+          ]
+          ++ optionals (config.pluto.home.system == "Desktop") [
+            {
+              output = "DP-1";
+              workspace = "10";
+            }
+            {
+              output = "DP-2";
+              workspace = "1";
+            }
+          ]
+          ++ optionals (config.pluto.home.system == "Laptop") [
+            {
+              output = "eDP-2";
+              workspace = "1";
+            }
+          ];
         window = {
           border = 2;
           #Sway doesnt support window rounding, use hyprland for drip instead

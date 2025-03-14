@@ -10,7 +10,7 @@ let
 in
 {
   options.pluto.desktop.waybar.enable = mkEnableOption "Enable Waybar" // {
-    default = false; #config.pluto.desktop.sway.enable;
+    default = false; # config.pluto.desktop.sway.enable;
   };
   options.pluto.home.system = mkOption {
     type = lib.types.str;

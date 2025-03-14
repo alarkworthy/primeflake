@@ -1,10 +1,17 @@
-{ lib, config,pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 with lib;
 let
   cfg = config.pluto.texLive;
-	tex = (pkgs.texlive.combine {
-		inherit (pkgs.texlive) scheme-full;
-	});
+  tex = (
+    pkgs.texlive.combine {
+      inherit (pkgs.texlive) scheme-full;
+    }
+  );
 in
 {
   options.pluto.texLive.enable = mkEnableOption "TexLive User wide" // {
@@ -12,8 +19,8 @@ in
   };
 
   config = mkIf cfg.enable {
-		home.packages = with pkgs; [
-			tex
-		];
+    home.packages = with pkgs; [
+      tex
+    ];
   };
 }

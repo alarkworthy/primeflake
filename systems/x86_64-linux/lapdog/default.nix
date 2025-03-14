@@ -14,13 +14,12 @@
   programs.light.enable = true;
   # services.thermald.enable = true;
 
-	
-	powerManagement = {
-		powertop.enable = false;
-		enable = true;
-	};
+  powerManagement = {
+    powertop.enable = false;
+    enable = true;
+  };
 
-	services.upower.enable = true;
+  services.upower.enable = true;
 
   hardware.enableAllFirmware = true;
   services.tlp = {
@@ -34,28 +33,27 @@
       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
       CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
       CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-			PLATFORM_PROFILE_ON_AC="performance";
-			PLATFORM_PROFILE_ON_BAT="quiet";
+      PLATFORM_PROFILE_ON_AC = "performance";
+      PLATFORM_PROFILE_ON_BAT = "quiet";
       START_CHARGE_THRESH_BAT0 = 50;
       STOP_CHARGE_THRESH_BAT0 = 60;
       RUNTIME_PM_DRIVER_DENYLIST = "mei_me";
     };
   };
 
-	systemd.sleep.extraConfig = ''
-		AllowSuspend=yes
-		AllowHibernation=yes
-		AllowHybridSleep=no
-		AllowSuspendThenHibernate=yes
-	'';
-
+  systemd.sleep.extraConfig = ''
+    		AllowSuspend=yes
+    		AllowHibernation=yes
+    		AllowHybridSleep=no
+    		AllowSuspendThenHibernate=yes
+    	'';
 
   security.pam.services.swaylock = { };
   services.printing.enable = true;
   environment.systemPackages = [
     pkgs.acpi
     pkgs.eagle
-		pkgs.powertop
+    pkgs.powertop
   ];
   services.avahi = {
     enable = true;
@@ -113,11 +111,11 @@
     #  support32Bit.enable = true;
     #};
   };
-	
+
   programs.mtr.enable = true;
   programs.gnupg.agent = {
-		enable = true;
-		#enableSSHSupport = true;
+    enable = true;
+    #enableSSHSupport = true;
   };
 
   hardware.bluetooth = {

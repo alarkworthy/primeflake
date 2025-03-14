@@ -25,10 +25,10 @@ in
       openconnect
     ];
     #services.easyeffects.enable = true; #need that background filter baby, later learn to autospawn in a workspace with discord
-		services.arrpc = {
-			enable = true;
-			systemdTarget = "sway-session.target";
-		};
+    services.arrpc = {
+      enable = true;
+      systemdTarget = "sway-session.target";
+    };
     programs.nixcord = {
       discord.vencord.unstable = true;
       enable = true;
