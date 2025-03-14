@@ -156,13 +156,13 @@ in
           #  pos = "3440 0";
           #  adaptive_sync = "on";
           #};
-          DP-2 = {
+					#DP-2 = {
             # Alienware
-            mode = "3440x1440@174.963Hz";
-            pos = "0 0";
+					#  mode = "3440x1440@174.963Hz";
+					#  pos = "0 0";
             #adaptive_sync = "off";
             #render_bit_depth = "10";
-          };
+					#};
           #eDP-2 = {
           #  mode = "1920x1200@165.000Hz";
           #  adaptive_sync = "on";
@@ -173,17 +173,34 @@ in
 
           #};
 
-        };
+        } // attrsets.optionalAttrs (config.pluto.home.system == "Desktop") {
+						#Acer
+						DP-1 = {
+							mode = "2560x1440@179.877Hz";
+							pos = "3440 0";
+							adaptive_sync = "on";
+						};
+						#Alienware
+						DP-2 = {
+							mode = "3440x1440@174.963Hz";
+							pos = "0 0";
+						};
+					} // attrsets.optionalAttrs (config.pluto.home.system == "Laptop") 
+					{
+						eDP-2 = {
+							mode = "1920x1200@165.000Hz";
+							adaptive_sync = "on";
+						};
+					};
+
         workspaceOutputAssign = [
-          {
+        ] ++ optionals (config.pluto.home.system == "Desktop") [ {
             output = "DP-1";
             workspace = "10";
-          }
-          {
+					} ] ++ optionals (config.pluto.home.system == "Laptop") [{
             output = "DP-2";
             workspace = "1";
-          }
-        ];
+					}];
         window = {
           border = 2;
           #Sway doesnt support window rounding, use hyprland for drip instead
