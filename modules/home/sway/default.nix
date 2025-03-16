@@ -16,6 +16,7 @@ in
     default = false;
   };
 
+
   config = mkIf cfg.enable {
     #Sway specific
 
@@ -45,7 +46,10 @@ in
       enable = true;
       systemd.enable = true;
       wrapperFeatures.gtk = true;
-      #      extraConfig = ''
+			extraConfig = ''
+			mouse_warping container
+			'';
+			#      extraConfig = ''
       #seat "seat1" {
       #fallback true
       #attach 5426:545:Razer_Razer_BlackWidow_Chroma_V2
@@ -90,11 +94,13 @@ in
         };
         focus = {
           followMouse = "yes";
-          #mouseWrapping = true;
-          newWindow = "urgent";
+					#mouseWarping = true;
+          newWindow = "smart";
           wrapping = "workspace";
 
         };
+
+
         #Homemanager doesn't allow for multiple 'attach' statements which is annoying
         #So we use extra config for seats entirely
         #seat = {
