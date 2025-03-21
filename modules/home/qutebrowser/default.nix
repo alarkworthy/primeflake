@@ -17,21 +17,30 @@
 				g = "https://www.google.com/search?hl=en&q={}";
 			};
 			settings = {
+				tabs = {
+					position = "right";
+					width = "10%";
+				};
 				editor = {
-					command = ["foot"  
-						"-T" 
+					command = ["foot"
+						"-T"
 						"auxiliary text edit"
 						"nvim"
 						"{file}"
-						"+startinsert"
+						#"+startinsert"
 						"+call cursor({line}, {column})"
 					];
 				};
 				fileselect = {
 					folder.command = ["foot" "ranger" "--choosedir={}"];
 					multiple_files.command = ["foot" "ranger" "--choosefiles={}"];
-					single_file.command = ["foot" "ranger" "--chosefile={}"];
+					single_file.command = ["foot" "ranger" "--choosefile={}"];
 					handler = "external";
+				};
+			};
+			keyBindings = {
+				normal = {
+					",d" = "config-cycle colors.webpage.darkmode.enabled true false";
 				};
 			};
 		};
