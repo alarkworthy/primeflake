@@ -50,11 +50,15 @@
 
   security.pam.services.swaylock = { };
   services.printing = {
-		enable = true;
-		drivers = with pkgs; [ gutenprint hplip splix epson-escpr2 
-		];
-		browsing = true;
-	};
+    enable = true;
+    drivers = with pkgs; [
+      gutenprint
+      hplip
+      splix
+      epson-escpr2
+    ];
+    browsing = true;
+  };
   environment.systemPackages = [
     pkgs.acpi
     pkgs.eagle
@@ -70,7 +74,7 @@
     extraBackends = [
       pkgs.hplipWithPlugin
       pkgs.sane-airscan
-			(pkgs.epsonscan2.override {withNonFreePlugins = true;})
+      (pkgs.epsonscan2.override { withNonFreePlugins = true; })
     ];
     openFirewall = true;
   };
