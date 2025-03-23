@@ -17,7 +17,11 @@ in
   };
 
   config = mkIf cfg.enable {
-    #Sway specific
+    home.packages = with pkgs; [
+			pavucontrol
+		];
+
+		#Sway specific
 
     xdg.portal.enable = true;
     #xdg.portal.configPackages = with pkgs; [
