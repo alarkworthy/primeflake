@@ -9,11 +9,11 @@
     default = false;
   };
   config = lib.mkIf config.pluto.vr.vrchat.enable {
-    home.packages = with pkgs; [
-      #vrc-get
-      #unityhub
-      #alcom
-    ];
+    # home.packages = with pkgs; [
+    #   #vrc-get
+    #   #unityhub
+    #   #alcom
+    # ];
     xdg.configFile."openxr/1/active_runtime.json".source =
       "${pkgs.wivrn}/share/openxr/1/openxr_wivrn.json";
 
@@ -31,11 +31,15 @@
         ],
         "runtime" :
         [
-          "${pkgs.opencomposite}/lib/opencomposite"
+					"${pkgs.xrizer}/lib/xrizer"
         ],
         "version" : 1
       }
     '';
     #xdg.configFile."openxr/1/active_runtime.json".source = "${pkgs.monado}/share/openxr/1/openxr_monado.json";
+		#Xrizer, use for default and for VRChat
+		#Opencomposite need to use for Overte
+				 	# "${pkgs.opencomposite}/lib/opencomposite"
+		#Place back in runtime section to use instead, also figure out how to have both installed
   };
 }

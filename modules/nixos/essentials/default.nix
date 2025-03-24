@@ -46,6 +46,9 @@ in
       dev.enable = true;
       man.generateCaches = true;
     };
+		environment.shells = [
+			pkgs.nushell
+		];
     programs.git.enable = true;
     programs.neovim.defaultEditor = true;
     environment.pathsToLink = [

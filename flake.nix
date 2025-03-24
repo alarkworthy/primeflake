@@ -93,13 +93,16 @@
         neovim.overlays.default
         (final: prev: {
           wivrn = prev.wivrn.overrideAttrs (previousAttrs: rec {
-            version = "123";
-            src = prev.fetchFromGitHub {
-              owner = "notpeelz";
-              repo = "WiVRn";
-              rev = "8ce86763d46206f191bc0235ca0af5410e0b220c";
-              hash = "sha256-G8k52LbgNk1pbTy5ehs+ZMI7L3mOsGFFt3cyFF2hN6c=";
-            };
+             version = "Latest-solarXR";
+             src = prev.fetchFromGitHub {
+               owner = "notpeelz";
+               repo = "WiVRn";
+							 rev = "8586fe9e88ab9d2236ee462d37a704d26e10ebf8";
+								hash = "sha256-s9KxReP0Ctp7knNU/pXoaIdD4/ROCyGKFcFKCwoqGJA=";
+								#Previous rev and hash that worked with solarxr patches
+								#rev = "8ce86763d46206f191bc0235ca0af5410e0b220c";
+								#hash = "sha256-G8k52LbgNk1pbTy5ehs+ZMI7L3mOsGFFt3cyFF2hN6c=";
+             };
             cmakeFlags = (previousAttrs.cmakeFlags or [ ]) ++ [
               (nixpkgs.lib.cmakeBool "WIVRN_FEATURE_SOLARXR" true)
             ];
