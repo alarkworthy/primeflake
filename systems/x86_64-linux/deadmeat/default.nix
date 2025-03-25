@@ -60,6 +60,10 @@
   #  };
   #};
   #Hardware
+	zramSwap = {
+		enable = true;
+		memoryPercent = 100;
+	};
 
   #Should not be here but troubleshooting
   programs.sway = {
@@ -211,7 +215,9 @@
     drivers = with pkgs; [
       #epsonscan2
       epson-escpr2
+			gutenprint
     ];
+		browsing = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
