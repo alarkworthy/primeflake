@@ -39,6 +39,7 @@
             0.75
           ];
           bitrate = 50000000;
+						#	50000000;
           encoders = [
             {
               encoder = "vaapi";

@@ -97,8 +97,8 @@
              src = prev.fetchFromGitHub {
                owner = "notpeelz";
                repo = "WiVRn";
-							 rev = "8586fe9e88ab9d2236ee462d37a704d26e10ebf8";
-								hash = "sha256-s9KxReP0Ctp7knNU/pXoaIdD4/ROCyGKFcFKCwoqGJA=";
+							 rev = "ae3231708fe4d2d8270cfb7be2bb7b061b8e4425";
+								hash = "sha256-bvwCIytlIDy14gk1dAgaa5jvose1PSMHuTchbvyneeM=";
 								#Previous rev and hash that worked with solarxr patches
 								#rev = "8ce86763d46206f191bc0235ca0af5410e0b220c";
 								#hash = "sha256-G8k52LbgNk1pbTy5ehs+ZMI7L3mOsGFFt3cyFF2hN6c=";

@@ -61,7 +61,7 @@
   #};
   #Hardware
 	zramSwap = {
-		enable = true;
+		enable = false;
 		memoryPercent = 100;
 	};
 
@@ -114,7 +114,7 @@
   #Razer
 
   hardware.openrazer = {
-    enable = true;
+    enable = false;
     users = [ "alark" ];
     #batteryNotifier = false;
     #syncEffectsEnabled = false; #if sync flag true, assignment of effects will work across devices, defaults to true
