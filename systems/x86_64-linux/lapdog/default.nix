@@ -87,7 +87,7 @@
     initrd.kernelModules = [ "amdgpu" ];
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-    kernelParams = [ "rcutree.enable_rcu_lazy=1" ];
+    kernelParams = [ "rcutree.enable_rcu_lazy=1" "resume_offset=53329980"];
   };
   hardware.graphics = {
     enable = true; # May not be needed, the system sway module auto enables this, but we are using homemanager to install sway

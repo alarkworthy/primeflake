@@ -22,6 +22,7 @@
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
+	boot.resumeDevice = "/dev/disk/by-uuid/9ed48ba4-8d82-4ab6-887b-abec69557123";
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
   boot.supportedFilesystems = [
@@ -88,10 +89,14 @@
       "dmask=0022"
     ];
   };
-
-  swapDevices = [ 
+	fileSystems."/swap" = { 
+		device = "/dev/disk/by-uuid/9ed48ba4-8d82-4ab6-887b-abec69557123";
+    fsType = "btrfs";
+    options = [ "subvol=swap" "noatime" ];
+  };
+  swapDevices = [
 		{
-			device = "/swap/swapfile";
+			device="/swap/swapfile";
 			#randomEncryption.enable = true;
 		}
 	];
