@@ -151,9 +151,14 @@
       ];
     };
   };
+	services.xserver.xkb = {
+		layout = "us";
+		variant = "3l";
+	};
   console = {
     font = "Lat2-Terminus16";
-    keyMap = "us";
+		#keyMap = "us";
+		#useXkbConfig = true;
     #packages = [
     #  ]; #Put fonts and stuff here for console to use
     #useXkbConfig = true; # use xkb.options in tty. Uses Xserver font/keyboard config
