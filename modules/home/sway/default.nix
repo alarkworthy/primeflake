@@ -73,7 +73,7 @@ in
 				input = {
 					"type:keyboard" = {
 						xkb_layout = "us,us(3l)";
-						xkb_options = "grp:ralt_rshift_toggle";
+						xkb_options = "grp:ralt_rshift_toggle,caps:none";
 
 					};
 				};
