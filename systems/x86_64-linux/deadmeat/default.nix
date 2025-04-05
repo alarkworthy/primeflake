@@ -21,7 +21,7 @@
   #NixOS modules
   pluto = {
     audio.enable = true;
-    impermanence.enable = true;
+    impermanence.enable = false;
     streaming.sunshine.enable = false;
     docker.enable = false;
     theming.stylix.enable = true;
