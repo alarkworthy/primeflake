@@ -32,7 +32,7 @@ in
     programs.nixcord = {
       discord.vencord.unstable = true;
       enable = true;
-      discord.enable = true;
+      discord.enable = false;
       vesktop.enable = true;
       config = {
         useQuickCss = true;

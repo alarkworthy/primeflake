@@ -25,7 +25,7 @@ in
             host = "alark.server";
             hostname = "192.168.50.218";
             user = "alark";
-            identityFile = "/home/alark/.ssh/server";
+            identityFile = "/home/alark/.ssh/id_ed25519";
             identitiesOnly = true;
           };
           "alark.github" = {
