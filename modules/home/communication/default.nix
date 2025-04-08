@@ -21,10 +21,10 @@ in
       teamspeak3
 			#arma3-unix-launcher
       mpg123
-			iamb
       gp-saml-gui
       openconnect
     ];
+
     #services.easyeffects.enable = true; #need that background filter baby, later learn to autospawn in a workspace with discord
     services.arrpc = {
       enable = true;
