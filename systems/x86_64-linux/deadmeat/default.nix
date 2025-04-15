@@ -220,6 +220,15 @@
 		browsing = true;
   };
 
+  hardware.sane = {
+    enable = true;
+    extraBackends = [
+      pkgs.hplipWithPlugin
+      pkgs.sane-airscan
+      (pkgs.epsonscan2.override { withNonFreePlugins = true; })
+    ];
+    openFirewall = true;
+  };
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
