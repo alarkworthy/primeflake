@@ -163,7 +163,10 @@ in
         #For all those gaps
         gaps = {
           inner = 4;
-        };
+        }
+				// attrsets.optionalAttrs (config.pluto.home.system == "Laptop") {
+						inner = 0;
+					};
 
         modifier = modr;
         defaultWorkspace = "workspace number 1";
