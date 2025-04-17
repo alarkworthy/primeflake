@@ -41,6 +41,7 @@ in
       man-pages-posix
       ripgrep
       fd
+			comma
     ];
     documentation = {
       dev.enable = true;
