@@ -70,6 +70,7 @@ in
       #        }'';
       config = {
 				
+
 				input = {
 					"type:keyboard" = {
 						xkb_layout = "us,us(3l)";
@@ -239,6 +240,14 @@ in
         window = {
           border = 2;
           #Sway doesnt support window rounding, use hyprland for drip instead
+					# commands = [
+					# 	{
+					# 		command = ",layout tabbed";
+					# 		criteria = {
+					# 			app_id = "org.pwmt.zathura";
+					# 		};
+					# 	}
+					# ];
         };
         terminal = "foot";
       };
