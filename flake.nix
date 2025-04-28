@@ -89,6 +89,18 @@
       };
 
       overlays = with inputs; [
+				# (final: prev:{
+				# 	xrizer1 = prev.xrizer.overrideAttrs (prevAttrs: rec {
+				# 			version = "2a54e25bfac72afe4b695c7045dfb349efad76ed";
+				# 			src = prev.fetchFromGitHub {
+				# 				owner = "SpookySkeletons";
+				# 				repo = "xrizer";
+				# 				rev = version;
+				# 				hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+				# 			};
+				# 			cargoHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+				# 		});
+				# 	})
         nixpkgs-xr.overlays.default
         neovim.overlays.default
         (final: prev: {
