@@ -87,7 +87,10 @@
     initrd.kernelModules = [ "amdgpu" ];
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-    kernelParams = [ "rcutree.enable_rcu_lazy=1" "resume_offset=53329980"];
+    kernelParams = [
+      "rcutree.enable_rcu_lazy=1"
+      "resume_offset=53329980"
+    ];
   };
   hardware.graphics = {
     enable = true; # May not be needed, the system sway module auto enables this, but we are using homemanager to install sway
@@ -151,14 +154,14 @@
       ];
     };
   };
-	services.xserver.xkb = {
-		layout = "us";
-		variant = "3l";
-	};
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "3l";
+  };
   console = {
     font = "Lat2-Terminus16";
-		#keyMap = "us";
-		#useXkbConfig = true;
+    #keyMap = "us";
+    #useXkbConfig = true;
     #packages = [
     #  ]; #Put fonts and stuff here for console to use
     #useXkbConfig = true; # use xkb.options in tty. Uses Xserver font/keyboard config

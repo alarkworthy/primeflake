@@ -18,10 +18,10 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-			pavucontrol
-		];
+      pavucontrol
+    ];
 
-		#Sway specific
+    #Sway specific
 
     xdg.portal.enable = true;
     #xdg.portal.configPackages = with pkgs; [
@@ -69,15 +69,14 @@ in
       #xcursor_theme VimixCursors-White
       #        }'';
       config = {
-				
 
-				input = {
-					"type:keyboard" = {
-						xkb_layout = "us,us(3l)";
-						xkb_options = "grp:ralt_rshift_toggle,caps:none";
+        input = {
+          "type:keyboard" = {
+            xkb_layout = "us,us(3l)";
+            xkb_options = "grp:ralt_rshift_toggle,caps:none";
 
-					};
-				};
+          };
+        };
 
         startup = [
           { command = "fcitx5 -d -r"; }
@@ -162,12 +161,13 @@ in
         #Colors, we are using Stylix so this *should* be not used
         #colors = {};
         #For all those gaps
-        gaps = {
-          inner = 4;
-        }
-				// attrsets.optionalAttrs (config.pluto.home.system == "Laptop") {
-						inner = 0;
-					};
+        gaps =
+          {
+            inner = 4;
+          }
+          // attrsets.optionalAttrs (config.pluto.home.system == "Laptop") {
+            inner = 0;
+          };
 
         modifier = modr;
         defaultWorkspace = "workspace number 1";
@@ -240,14 +240,14 @@ in
         window = {
           border = 2;
           #Sway doesnt support window rounding, use hyprland for drip instead
-					# commands = [
-					# 	{
-					# 		command = ",layout tabbed";
-					# 		criteria = {
-					# 			app_id = "org.pwmt.zathura";
-					# 		};
-					# 	}
-					# ];
+          # commands = [
+          # 	{
+          # 		command = ",layout tabbed";
+          # 		criteria = {
+          # 			app_id = "org.pwmt.zathura";
+          # 		};
+          # 	}
+          # ];
         };
         terminal = "foot";
       };

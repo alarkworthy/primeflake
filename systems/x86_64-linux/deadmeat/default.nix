@@ -60,10 +60,10 @@
   #  };
   #};
   #Hardware
-	zramSwap = {
-		enable = false;
-		memoryPercent = 100;
-	};
+  zramSwap = {
+    enable = false;
+    memoryPercent = 100;
+  };
 
   #Should not be here but troubleshooting
   programs.sway = {
@@ -215,9 +215,9 @@
     drivers = with pkgs; [
       #epsonscan2
       epson-escpr2
-			gutenprint
+      gutenprint
     ];
-		browsing = true;
+    browsing = true;
   };
 
   hardware.sane = {

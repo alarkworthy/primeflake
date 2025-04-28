@@ -41,15 +41,15 @@ in
       man-pages-posix
       ripgrep
       fd
-			comma
+      comma
     ];
     documentation = {
       dev.enable = true;
       man.generateCaches = true;
     };
-		environment.shells = [
-			pkgs.nushell
-		];
+    environment.shells = [
+      pkgs.nushell
+    ];
     programs.git.enable = true;
     programs.neovim.defaultEditor = true;
     environment.pathsToLink = [
