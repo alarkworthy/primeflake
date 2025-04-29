@@ -103,49 +103,18 @@
 				# 	})
         nixpkgs-xr.overlays.default
         neovim.overlays.default
-        (final: prev: {
-          wivrn = prev.wivrn.overrideAttrs (previousAttrs: rec {
-            version = "Latest-solarXR";
-            src = prev.fetchFromGitHub {
-              owner = "notpeelz";
-              repo = "WiVRn";
-              rev = "a60da87f5c7b3db80d5b56b1b7b4415480196a81";
-              hash = "sha256-qIX3TYJwa3c2CiJHs/d7U17AmRrnXMsD0o3yx/LjtL8=";
-              #Old working rev 23.2 (around that version)
-              #rev = "ae3231708fe4d2d8270cfb7be2bb7b061b8e4425";
-              #hash = "sha256-bvwCIytlIDy14gk1dAgaa5jvose1PSMHuTchbvyneeM=";
-            };
-            monado = prev.applyPatches {
-              src = prev.fetchFromGitLab {
-                domain = "gitlab.freedesktop.org";
-                owner = "monado";
-                repo = "monado";
-                rev = "c80de9e7cacf2bf9579f8ae8c621d8bf16e85d6c";
-                hash = "sha256-ciH26Hyr8FumB2rQB5sFcXqtcQ1R84XOlphkkLBjzvA=";
-              };
-              patches = [
-                #(builtins.toPath (nixpkgs + "/pkgs/by-name/wi/wivrn/force-enable-steamvr_lh.patch"))
-              ];
-              postpatch = ''
-                ${previousAttrs.src}/patches/apply.sh ${previousAttrs.src}/patches/monado/*
-              '';
-            };
-            #postUnpack = '' '';
-            postUnpack = ''
-              ourMonadoRev="${previousAttrs.monado.src.rev}"
-              theirMonadoRev=$(sed -n '/FetchContent_Declare(monado/,/)/p' ${previousAttrs.src.name}/CMakeLists.txt | grep "GIT_TAG" | awk '{print $2}')
-              if [ ! "$theirMonadoRev" == "$ourMonadoRev" ]; then
-                echo "Our Monado source revision doesn't match CMakeLists.txt." >&2
-                echo "  theirs: $theirMonadoRev" >&2
-                echo "    ours: $ourMonadoRev" >&2
-                return 1
-              fi
-            '';
-            cmakeFlags = (previousAttrs.cmakeFlags or [ ]) ++ [
-              (nixpkgs.lib.cmakeBool "WIVRN_FEATURE_SOLARXR" true)
-            ];
-          });
-        })
+          # postUnpack = ''
+          #   # Ensure revision consistency between the fetched Monado and CMakeLists.txt
+          #   ourMonadoRev="${previousMonadoAttrs.src.rev}"
+          #   theirMonadoRev=$(sed -n '/FetchContent_Declare(monado/,/)/p' ${previousMonadoAttrs.src.name}/CMakeLists.txt | grep "GIT_TAG" | awk '{print $2}')
+          #   if [ ! "$theirMonadoRev" == "$ourMonadoRev" ]; then
+          #     echo "Our Monado source revision doesn't match CMakeLists.txt." >&2
+          #     echo "  theirs: $theirMonadoRev" >&2
+          #     echo "    ours: $ourMonadoRev" >&2
+          #     return 1
+          #   fi
+          # '';
+
         # (final: prev: {
         #   wivrn = prev.wivrn.overrideAttrs (previousAttrs: rec {
         #      version = "Latest-solarXR";
