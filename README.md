@@ -6,8 +6,11 @@
 <a href="https://nixos.org" target="_blank">
 	<img alt="Linux Ready" src="https://img.shields.io/static/v1?logo=linux&logoColor=d8dee9&label=Linux&labelColor=5e81ac&message=Ready&color=d8dee9&style=for-the-badge">
 </a>
-<a href="https://github.com/snowfallorg/lib" target="_blank">
-	<img alt="Built With Snowfall" src="https://img.shields.io/static/v1?logoColor=d8dee9&label=Built%20With&labelColor=5e81ac&message=Snowfall&color=d8dee9&style=for-the-badge">
-</a>
 
-Very cool 🤯
+Currently redoing my entire flake to not rely stuff like snowfall and be more explicit.
+
+#TODO
+- [ ] refactor modules and flake to successfully build without snowfall-lib
+- [ ] Go through and better modularize systems and packages, lots of stuff in weird places
+- [ ] Readd VR more sensibly, specifically Wivrn with solarxr patches and xrizer fbt
+- [ ] Add hyprland configuration and eww
