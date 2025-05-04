@@ -16,16 +16,16 @@ in
     services.mako =
       {
         enable = true;
-        defaultTimeout = 10000;
+        defaultTimeout = "10000";
         anchor = "top-left";
-        borderSize = 3;
-        borderRadius = 5;
+        borderSize = "3";
+        borderRadius = "5";
         #anchor = "top-left";
         #output = "DP-1";
         layer = "overlay";
       }
       // attrsets.optionalAttrs (config.pluto.home.system == "Desktop") {
-        defaultTimeout = 5000;
+        defaultTimeout = "5000";
         output = "DP-1";
       }
       // attrsets.optionalAttrs (config.pluto.home.system == "Laptop") {
