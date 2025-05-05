@@ -280,10 +280,12 @@
   services.openssh.enable = true;
 
   networking.firewall = {
+		enable = false;
     allowedTCPPorts = [
+
     ];
     allowedUDPPorts = [
-
+			8266
       53
       67
     ];
