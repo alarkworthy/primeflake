@@ -504,11 +504,11 @@
         "plugins-spaceduck": "plugins-spaceduck"
       },
       "locked": {
-        "lastModified": 1746400287,
-        "narHash": "sha256-ifUIsaPPqqnCnGKajF6Nz3SZ4NUVavaV4FQ4TTiuyAQ=",
+        "lastModified": 1746402578,
+        "narHash": "sha256-J869zzGw8FfYIXYQArocTyTyFwmTvembD2kTdpIqDIw=",
         "owner": "alarkworthy",
         "repo": "neovim",
-        "rev": "264e9ee302977f3d9e0e06732f2b83c2bb91d81a",
+        "rev": "31711c7c29cb3b376e31aeada8e176a1e6c1f075",
         "type": "github"
       },
       "original": {
