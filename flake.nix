@@ -89,31 +89,31 @@
       };
 
       overlays = with inputs; [
-				# (final: prev:{
-				# 	xrizer1 = prev.xrizer.overrideAttrs (prevAttrs: rec {
-				# 			version = "2a54e25bfac72afe4b695c7045dfb349efad76ed";
-				# 			src = prev.fetchFromGitHub {
-				# 				owner = "SpookySkeletons";
-				# 				repo = "xrizer";
-				# 				rev = version;
-				# 				hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
-				# 			};
-				# 			cargoHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
-				# 		});
-				# 	})
+        # (final: prev:{
+        # 	xrizer1 = prev.xrizer.overrideAttrs (prevAttrs: rec {
+        # 			version = "2a54e25bfac72afe4b695c7045dfb349efad76ed";
+        # 			src = prev.fetchFromGitHub {
+        # 				owner = "SpookySkeletons";
+        # 				repo = "xrizer";
+        # 				rev = version;
+        # 				hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+        # 			};
+        # 			cargoHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+        # 		});
+        # 	})
         nixpkgs-xr.overlays.default
         neovim.overlays.default
-          # postUnpack = ''
-          #   # Ensure revision consistency between the fetched Monado and CMakeLists.txt
-          #   ourMonadoRev="${previousMonadoAttrs.src.rev}"
-          #   theirMonadoRev=$(sed -n '/FetchContent_Declare(monado/,/)/p' ${previousMonadoAttrs.src.name}/CMakeLists.txt | grep "GIT_TAG" | awk '{print $2}')
-          #   if [ ! "$theirMonadoRev" == "$ourMonadoRev" ]; then
-          #     echo "Our Monado source revision doesn't match CMakeLists.txt." >&2
-          #     echo "  theirs: $theirMonadoRev" >&2
-          #     echo "    ours: $ourMonadoRev" >&2
-          #     return 1
-          #   fi
-          # '';
+        # postUnpack = ''
+        #   # Ensure revision consistency between the fetched Monado and CMakeLists.txt
+        #   ourMonadoRev="${previousMonadoAttrs.src.rev}"
+        #   theirMonadoRev=$(sed -n '/FetchContent_Declare(monado/,/)/p' ${previousMonadoAttrs.src.name}/CMakeLists.txt | grep "GIT_TAG" | awk '{print $2}')
+        #   if [ ! "$theirMonadoRev" == "$ourMonadoRev" ]; then
+        #     echo "Our Monado source revision doesn't match CMakeLists.txt." >&2
+        #     echo "  theirs: $theirMonadoRev" >&2
+        #     echo "    ours: $ourMonadoRev" >&2
+        #     return 1
+        #   fi
+        # '';
 
         # (final: prev: {
         #   wivrn = prev.wivrn.overrideAttrs (previousAttrs: rec {
