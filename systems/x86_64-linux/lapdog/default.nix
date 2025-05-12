@@ -20,6 +20,7 @@
   };
 
   services.upower.enable = true;
+  programs.noisetorch.enable = true;
 
   hardware.enableAllFirmware = true;
   services.tlp = {
