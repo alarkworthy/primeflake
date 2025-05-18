@@ -94,7 +94,7 @@ in
           "XF86AudioLowerVolume" =
             "exec ${pkgs.wireplumber}/bin/wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-";
           "XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-          "XF86AudioMicMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          "XF86AudioMicMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
           "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 5";
           "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 5";
           "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";

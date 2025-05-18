@@ -16,17 +16,21 @@ in
     services.mako =
       {
         enable = true;
-        settings =
-      
-      {
+       settings = {
         default-timeout = "10000";
         anchor = "top-left";
         border-size = "3";
         border-radius = "5";
-        output = "DP-1";
+        #anchor = "top-left";
+        #output = "DP-1";
         layer = "overlay";
       }
-      ;
+      // attrsets.optionalAttrs (config.pluto.home.system == "Desktop") {
+        default-timeout = "5000";
+        output = "DP-1";
+      }
+      // attrsets.optionalAttrs (config.pluto.home.system == "Laptop") {
+        anchor = "top-right";
       };
       #     // attrsets.optionalAttrs (config.pluto.home.system == "Desktop") {
       #   defaultTimeout = 5000;
@@ -36,4 +40,5 @@ in
       #   anchor = "top-right";
       # };
   };
+};
 }

@@ -27,12 +27,18 @@ in
     stylix = {
       enable = true;
       polarity = "dark";
+
       #autoEnab			sle = false;
       iconTheme = {
         enable = true;
         package = (pkgs.papirus-icon-theme.override { color = "blue"; });
         dark = "Papirus-Dark";
         light = "Papirus-Light";
+      };
+        cursor = {
+          package = pkgs.rose-pine-cursor;
+          name = "BreezeX-RosePine-Linux";
+          size = 32;
       };
       targets = {
         neovim.enable = false;

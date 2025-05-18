@@ -21,6 +21,11 @@ in
   config = mkIf cfg.enable {
     stylix = {
       enable = true;
+      cursor = {
+        package = pkgs.rose-pine-cursor;
+        name = "BreezeX-RosePine-Linux";
+        size = 32;
+      };
       image =
         if config.pluto.system == "Desktop" then
           "${./bgs/space/purplesky.jpg}"
