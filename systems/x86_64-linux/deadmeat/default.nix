@@ -29,6 +29,10 @@
     gaming.wivr.enable = true;
   };
 
+  services.hardware.openrgb = {
+    enable = true;
+  };
+
   environment.systemPackages = [
     pkgs.wlx-overlay-s
   ];
@@ -48,6 +52,13 @@
     #initrd.kernelModules = [ "amdgpu" ];
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
+    kernel = {
+      sysctl = {
+        "net.ipv4.ip_forward" = 1;
+        "net.ipv4.conf.all.forwarding" = 1;
+        "net.ipv6.conf.all.forwarding" = 1;
+      };
+    };
 
   };
   #boot.loader = {
