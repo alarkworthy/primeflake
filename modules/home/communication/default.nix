@@ -36,7 +36,7 @@ in
       discord.enable = false;
       vesktop.enable = true;
       config = {
-        useQuickCss = true;
+        useQuickCss = false;
         enabledThemes = [ "stylix.theme.css" ];
         frameless = true;
         plugins = {
