@@ -96,6 +96,18 @@
       inherit (final) system config;
     };
   })
+          (final: prev:
+            {
+              wpa_supplicant = prev.wpa_supplicant.overrideAttrs (finalAttrs: previousAttrs: {
+                patches = (previousAttrs.patches or []) ++ [
+                (prev.fetchpatch {
+                    name = "stop-journal-ctl-log-spam.patch";
+                    url = "https://w1.fi/cgit/hostap/patch/?id=c330b5820eefa8e703dbce7278c2a62d9c69166a";
+                    hash = "sha256-5ti5OzgnZUFznjU8YH8Cfktrj4YBzsbbrEbNvec+ppQ=";
+                  })
+                ];
+              });
+            })
 				# (final: prev:{
 				# 	xrizer1 = prev.xrizer.overrideAttrs (prevAttrs: rec {
 				# 			version = "2a54e25bfac72afe4b695c7045dfb349efad76ed";
