@@ -12,7 +12,7 @@
     services.wivrn = {
       enable = true;
       autoStart = false;
-      package = pkgs.wivrn;
+      package = pkgs.wivpkgs.wivrn-solarXR;
         #pkgs.alarkPkgs.wivrn-solarXR;
       extraPackages = [
         pkgs.bash

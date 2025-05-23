@@ -15,7 +15,7 @@
     #   #alcom
     # ];
     xdg.configFile."openxr/1/active_runtime.json".source =
-      "${pkgs.wivrn}/share/openxr/1/openxr_wivrn.json";
+      "${pkgs.wivpkgs.wivrn-solarXR}/share/openxr/1/openxr_wivrn.json";
 
     xdg.configFile."openvr/openvrpaths.vrpath".text = ''
             {

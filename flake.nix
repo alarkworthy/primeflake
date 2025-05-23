@@ -7,7 +7,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #nixpkgs-alark.url = "github:alarkworthy/nixpkgs/master";
+    nixpkgs-alark.url = "github:alarkworthy/nixpkgs/master";
     #hyprland = {
     #    url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     #    inputs.nixpkgs.follows = "nixpkgs";
@@ -65,7 +65,7 @@
       systems,
       nixpkgs-xr,
 		  nixpkgs,
-    #nixpkgs-alark,
+      nixpkgs-alark,
       ...
     }:
     let
@@ -91,11 +91,9 @@
       };
 
       overlays = with inputs; [
-  # 			(final: prev: {
-  #   alarkPkgs = import nixpkgs-alark {
-  #     inherit (final) system config;
-  #   };
-  # })
+  			(final: prev: {
+    wivpkgs = nixpkgs-alark.legacyPackages."x86_64-linux";
+  })
 
           #Put this in an overlay file, when done with snow melt ugh
           (final: prev:
@@ -123,13 +121,44 @@
 				# 		});
 				# 	})
         nixpkgs-xr.overlays.default
+        (final: prev:
+          {
+            wlx-overlay-s = prev.wlx-overlay-s.overrideAttrs (prevAttrs: { 
+              postPatch = nixpkgs.legacyPackages."x86_64-linux".wlx-overlay-s.postPatch;
+              });
+          }
+        )
         neovim.overlays.default
+          # (final: prev:
+          #   {
+          #     wivrn = prev.wivrn.overrideAttrs(finalAttrs: prevAttrs: {
+          #       version = "git-solarxr";
+          #       src = prev.fetchFromGitHub {
+          #         owner = "notpeelz";
+          #         repo = "wivrn";
+          #         rev = "415bb70fd881e60a6bcaf95aaebc04eff0901e44";
+          #         hash = "sha256-v38v3cyix5A7HM88ryJmvDOo0ycZqqBZwO+hqgxoSIA=";
+          #       };
+          #       monado = final.applyPatches {
+          #         src = final.fetchgit {
+          #             url = "https://gitlab.freedesktop.org/monado/monado.git";
+          #             rev = "2a6932d46dad9aa957205e8a47ec2baa33041076";
+          #             fetchSubmodules = false;
+          #             deepClone = false;
+          #             leaveDotGit = false;
+          #             sparseCheckout = [];
+          #             sha256 = "sha256-Bus9GTNC4+nOSwN8pUsMaFsiXjlpHYioQfBLxbQEF+0=";
+          #           };
+          #         };
+          #       postUnpack = '' '';
+          #     });
+          #   })
       ];
       systems.modules.nixos = with inputs; [
+        nixpkgs-xr.nixosModules.nixpkgs-xr
         home-manager.nixosModules.home-manager
         impermanence.nixosModules.impermanence
         chaotic.nixosModules.default
-        nixpkgs-xr.nixosModules.nixpkgs-xr
         nix-gaming.nixosModules.pipewireLowLatency
         #jovian.nixosModules.default
         #{
