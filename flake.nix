@@ -7,7 +7,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-		nixpkgs-alark.url = "github:alarkworthy/nixpkgs/master";
+    #nixpkgs-alark.url = "github:alarkworthy/nixpkgs/master";
     #hyprland = {
     #    url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     #    inputs.nixpkgs.follows = "nixpkgs";
@@ -65,7 +65,7 @@
       systems,
       nixpkgs-xr,
 		  nixpkgs,
-		  nixpkgs-alark,
+    #nixpkgs-alark,
       ...
     }:
     let
@@ -91,11 +91,13 @@
       };
 
       overlays = with inputs; [
-					(final: prev: {
-    alarkPkgs = import nixpkgs-alark {
-      inherit (final) system config;
-    };
-  })
+  # 			(final: prev: {
+  #   alarkPkgs = import nixpkgs-alark {
+  #     inherit (final) system config;
+  #   };
+  # })
+
+          #Put this in an overlay file, when done with snow melt ugh
           (final: prev:
             {
               wpa_supplicant = prev.wpa_supplicant.overrideAttrs (finalAttrs: previousAttrs: {
