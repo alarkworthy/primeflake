@@ -190,7 +190,7 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   #Time Zone
-  time.timeZone = "US/Mountain";
+  time.timeZone = "US/Eastern";
 
   # Select internationalisation properties.
   i18n = {
