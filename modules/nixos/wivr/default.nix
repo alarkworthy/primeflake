@@ -36,11 +36,10 @@
         enable = true;
         json = {
           scale = [
-            0.75
-            0.75
+            0.5 0.5
           ];
-          bitrate = 100000000;
-          #	50000000;
+          bitrate = 50000000;
+          #	        50000000;
           encoders = [
             {
               encoder = "vaapi";
