@@ -191,7 +191,14 @@
     shell = pkgs.nushell;
     #TODO Set up secret management with sops-nix
   };
-
+  networking.firewall = {
+    allowedTCPPorts = [
+      25565
+    ];
+    allowedUDPPorts = [
+      25565
+    ];
+  };
   networking.firewall = {
     extraCommands = ''
       ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 49860 -j RETURN
