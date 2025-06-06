@@ -100,7 +100,6 @@ in
           #noScreensharePreview.enable = true;
           noTypingAnimation.enable = true;
           noUnblockToJump.enable = true;
-          nsfwGateBypass.enable = true;
           openInApp.enable = false;
           pauseInvitesForever.enable = true;
           permissionFreeWill.enable = true;

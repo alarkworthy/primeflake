@@ -37,8 +37,8 @@
     pkgs.wlx-overlay-s
   ];
   programs.envision = {
-    enable = true;
-    openFirewall = true;
+    enable = false;
+    openFirewall = false;
   };
   #environment.systemPackages = [
   #pkgs.quickemu
@@ -104,12 +104,13 @@
   programs.dconf.enable = true;
   programs.corectrl = {
     enable = true;
-    gpuOverclock.enable = true;
-    gpuOverclock.ppfeaturemask = "0xffffffff";
   };
+  
   hardware.amdgpu = {
     initrd.enable = true;
     opencl.enable = true;
+    overdrive.enable = true;
+    overdrive.ppfeaturemask = "0xffffffff";
     amdvlk = {
       enable = false;
       support32Bit.enable = false;
@@ -152,7 +153,15 @@
   virtualisation = {
     libvirtd = {
       enable = true;
-
+      qemu = {
+        ovmf = {
+          packages = [
+            pkgs.pkgsCross.riscv64.OVMFFull
+            pkgs.pkgsCross.riscv64.OVMF.fd
+            pkgs.OVMF.fd
+          ];
+        };
+      };
     };
 
   };
