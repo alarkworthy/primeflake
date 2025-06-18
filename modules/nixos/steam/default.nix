@@ -27,10 +27,10 @@ in
     };
 
     hardware.enableRedistributableFirmware = true;
-    chaotic.hdr.enable = false;
+    chaotic.hdr.enable = true;
     programs.gamescope = {
       capSysNice = true;
-      enable = false;
+      enable = true;
     };
     programs.gamemode = {
       enable = true;
@@ -79,7 +79,7 @@ in
       remotePlay.openFirewall = true;
       extest.enable = true;
       gamescopeSession = {
-        enable = false;
+        enable = true;
 
       };
       protontricks = {

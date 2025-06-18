@@ -35,6 +35,7 @@
 
   environment.systemPackages = [
     pkgs.wlx-overlay-s
+    pkgs.wineWow64Packages.full
   ];
   programs.envision = {
     enable = false;
@@ -149,9 +150,13 @@
   #Might look into hardware.fancontrol
 
   #End of Hardware
+  boot.binfmt = {
+      emulatedSystems = ["riscv64-linux"];
+      preferStaticEmulators = true;
+  };
   programs.virt-manager.enable = true;
   virtualisation = {
-    libvirtd = {
+   libvirtd = {
       enable = true;
       qemu = {
         ovmf = {

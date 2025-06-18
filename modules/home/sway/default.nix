@@ -202,14 +202,14 @@ in
             #Acer
             DP-1 = {
               mode = "2560x1440@179.877Hz";
-              pos = "3440 0";
+              pos = "0 0";
               adaptive_sync = "on";
             };
             #Alienware
-            DP-2 = {
-              mode = "3440x1440@174.963Hz";
-              pos = "0 0";
-            };
+            # DP-2 = {
+            #   mode = "3440x1440@174.963Hz";
+            #   pos = "0 0";
+            # };
           }
           // attrsets.optionalAttrs (config.pluto.home.system == "Laptop") {
             eDP-2 = {
