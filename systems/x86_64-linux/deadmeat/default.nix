@@ -33,12 +33,14 @@
     enable = true;
   };
 
+  programs.adb.enable = true;
+
   environment.systemPackages = [
     pkgs.wlx-overlay-s
     pkgs.wineWow64Packages.full
   ];
   programs.envision = {
-    enable = false;
+    enable = true;
     openFirewall = false;
   };
   #environment.systemPackages = [
@@ -268,6 +270,7 @@
       "wheel"
       "kvm"
       "tty"
+      "adbusers"
       "dialout"
       "corectrl"
       "networkmanager"
