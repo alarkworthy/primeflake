@@ -36,7 +36,7 @@ in
       discord.enable = false;
       vesktop.enable = true;
       config = {
-        useQuickCss = true;
+        useQuickCss = false;
         enabledThemes = [ "stylix.theme.css" ];
         frameless = true;
         plugins = {
@@ -101,7 +101,7 @@ in
           noTypingAnimation.enable = true;
           noUnblockToJump.enable = true;
           nsfwGateBypass.enable = true;
-          openInApp.enable = true;
+          openInApp.enable = false;
           pauseInvitesForever.enable = true;
           permissionFreeWill.enable = true;
           permissionsViewer.enable = true;
@@ -113,11 +113,13 @@ in
           readAllNotificationsButton.enable = true;
           relationshipNotifier.enable = true;
           replaceGoogleSearch = {
-            enable = true;
+            enable = false;
+            customEngineName = "duckduckgo";
+            customEngineURL = "https://duckduckgo.com/?q=";
           };
           replyTimestamp.enable = true;
           reverseImageSearch.enable = true;
-          summaries.enable = true;
+          #summaries.enable = true;
           serverInfo.enable = true;
           serverListIndicators.enable = true;
           showConnections.enable = true;

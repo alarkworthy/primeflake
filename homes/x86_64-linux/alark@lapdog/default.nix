@@ -14,7 +14,7 @@
   pluto.desktop.swaylock = {
     enable = true;
     idle = {
-      enable = true;
+      enable = false;
     };
   };
   pluto.home.system = "Laptop";
