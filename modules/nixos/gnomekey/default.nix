@@ -10,7 +10,7 @@ let
 in
 {
   options.pluto.essential.gnomekeyring.enable = mkEnableOption "Enable Gnome Key Ring" // {
-    default = true;
+    default = false;
   };
   config = mkIf cfg.enable {
     services.gnome.gnome-keyring = {
