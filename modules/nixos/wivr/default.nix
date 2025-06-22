@@ -17,6 +17,7 @@
       extraPackages = [
         pkgs.bash
         pkgs.procps
+        pkgs.xrizer
       ];
       defaultRuntime = true;
       openFirewall = true;
@@ -66,6 +67,8 @@
               offset_y = 0.0;
             }
           ];
+          openvr-compat-path = "${pkgs.xrizer}/lib/xrizer";
+          application = [ pkgs.wlx-overlay-s ];
           #encoders = [
           #	{
           #		encoder = "vaapi";
