@@ -586,11 +586,11 @@
     },
     "nixpkgs-alark": {
       "locked": {
-        "lastModified": 1750209464,
-        "narHash": "sha256-qH65Cusl5aSmrx1O0PrNoAEvbkR1LEv0vZoY48zu3xw=",
+        "lastModified": 1750984215,
+        "narHash": "sha256-tYtlEXjZ67jROsPCO9j861WuForMk2jbLu6Knt15NYw=",
         "owner": "alarkworthy",
         "repo": "nixpkgs",
-        "rev": "9a7d829d58fd10b3471a83a84798a0c44e9f40cd",
+        "rev": "ada81130ad0aef3d84ef9177a7a973eecae5090b",
         "type": "github"
       },
       "original": {
