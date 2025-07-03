@@ -1,5 +1,9 @@
 {config, pkgs, lib, ...}:
 {
+  options.pluto.mailserver.enable = lib.mkEnableOption "Mail server" // {
+    enable = false;
+  };
+  config = lib.mkIf config.pluto.mailserver.enable {
 	networking.nat = {
 		internalInterfaces = ["ve-+"];
 		externalInterface = "enp113s0";
@@ -31,4 +35,5 @@
 			};
 		};
 	};
+  };
 }
