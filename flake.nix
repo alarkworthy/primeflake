@@ -94,7 +94,28 @@
   			(final: prev: {
     wivpkgs = nixpkgs-alark.legacyPackages."x86_64-linux";
   })
-
+          # (final: prev: {
+          #   slimevr = prev.slimevr.overrideAttrs (prevAttrs: let
+          #     inherit (prevAttrs) pname;
+          #     version = "0.16.0-a";
+          #     src = final.fetchFromGitHub {
+          #         owner = "SlimeVR";
+          #         repo = "SlimeVR-Server";
+          #         rev = "3ec6a617637e4f3bc2ee2c9c290cb5740afd7808";
+          #         hash = "sha256-ZYL+aBrADbzSXnhFzxNk8xRrY0WHmHCtVaC6VfXfLJw=";
+          #         fetchSubmodules = true;
+          #       };
+          #     in {
+          #     inherit version src;
+          #     cargoHash = "sha256-BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+          #
+          #     pnpmDeps = prev.pnpm_9.fetchDeps {
+          #         pname = "${pname}-pnpm-deps";
+          #         inherit version src;
+          #         hash = "sha256-lh5IKdBXuH9GZFUTrzaQFDWCEYj0UJhKwCdPmsiwfCs=";
+          #       };
+          #     });
+          # })
           #Put this in an overlay file, when done with snow melt ugh
           (final: prev:
             {

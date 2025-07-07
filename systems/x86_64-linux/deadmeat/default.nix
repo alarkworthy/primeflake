@@ -32,7 +32,7 @@
   services.hardware.openrgb = {
     enable = true;
   };
-
+  services.flatpak.enable = false;
   programs.adb.enable = true;
 
   environment.systemPackages = [
