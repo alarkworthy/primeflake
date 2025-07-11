@@ -34,6 +34,7 @@
   };
   services.flatpak.enable = false;
   programs.adb.enable = true;
+  musnix.enable = true;
 
   environment.systemPackages = [
     pkgs.wlx-overlay-s

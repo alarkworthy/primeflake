@@ -56,7 +56,7 @@ in
         terminal = 0.7;
         popups = 0.8;
         desktop = 0.8;
-        applications = 0.7;
+        applications = 1.0;
       };
       #abc
       fonts = {

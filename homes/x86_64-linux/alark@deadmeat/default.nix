@@ -9,4 +9,5 @@
   pluto.home.system = "Desktop";
   pluto.streaming.obs.enable = true;
   pluto.vr.vrchat.enable = true;
+  pluto.sound.design.enable = true;
 }
