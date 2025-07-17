@@ -26,6 +26,7 @@
     docker.enable = false;
     theming.stylix.enable = true;
     gaming.vrstuff.enable = true;
+    essential.gnomekeyring.enable = true;
     gaming.wivr.enable = true;
   };
 

@@ -58,7 +58,7 @@ in
     ];
     security.polkit.enable = true;
     programs.ssh = {
-      startAgent = true;
+      startAgent = false;
     };
     #hardware.opentabletdriver = {
     #  enable = true;
