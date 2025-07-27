@@ -120,44 +120,68 @@
         #     });
         # })
         #Put this in an overlay file, when done with snow melt ugh
-        (final: prev: {
-          wpa_supplicant = prev.wpa_supplicant.overrideAttrs (
-            finalAttrs: previousAttrs: {
-              patches = (previousAttrs.patches or [ ]) ++ [
-                (prev.fetchpatch {
-                  name = "stop-journal-ctl-log-spam.patch";
-                  url = "https://w1.fi/cgit/hostap/patch/?id=c330b5820eefa8e703dbce7278c2a62d9c69166a";
-                  hash = "sha256-5ti5OzgnZUFznjU8YH8Cfktrj4YBzsbbrEbNvec+ppQ=";
-                })
-              ];
-            }
-          );
-        })
-        # (final: prev:{
-        # 	xrizer1 = prev.xrizer.overrideAttrs (prevAttrs: rec {
-        # 			version = "2a54e25bfac72afe4b695c7045dfb349efad76ed";
-        # 			src = prev.fetchFromGitHub {
-        # 				owner = "SpookySkeletons";
-        # 				repo = "xrizer";
-        # 				rev = version;
-        # 				hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
-        # 			};
-        # 			cargoHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
-        # 		});
-        # 	})
+        # (final: prev: {
+        #   wpa_supplicant = prev.wpa_supplicant.overrideAttrs (
+        #     finalAttrs: previousAttrs: {
+        #       patches = (previousAttrs.patches or [ ]) ++ [
+        #         (prev.fetchpatch {
+        #           name = "stop-journal-ctl-log-spam.patch";
+        #           url = "https://w1.fi/cgit/hostap/patch/?id=c330b5820eefa8e703dbce7278c2a62d9c69166a";
+        #           hash = "sha256-5ti5OzgnZUFznjU8YH8Cfktrj4YBzsbbrEbNvec+ppQ=";
+        #         })
+        #       ];
+        #     }
+        #   );
+        # })
         nixpkgs-xr.overlays.default
         (final: prev: {
           wlx-overlay-s = prev.wlx-overlay-s.overrideAttrs (prevAttrs: {
             postPatch = nixpkgs.legacyPackages."x86_64-linux".wlx-overlay-s.postPatch;
           });
-          xrizer = nixpkgs.legacyPackages."x86_64-linux".xrizer.overrideAttrs (prevAttrs: {
-            src = prev.fetchFromGitHub {
-              owner = "RinLovesYou";
+
+          wivrn = prev.wivrn.overrideAttrs(old: rec {
+              version = "607b12f8ca3a18580189126f701cd2c77e72c7a6";
+              src = final.fetchFromGitHub {
+                owner = "notpeelz";
+                repo = "WiVRn";
+                rev = version;
+                hash = "sha256-7tTgBC+Eq37MekYhEmarX4xSMcsq5EhYD2UFPZVTwqI=";
+              };
+              
+              monado = prev.applyPatches {
+                src = prev.fetchFromGitLab {
+                  domain = "gitlab.freedesktop.org";
+                  owner = "monado";
+                  repo = "monado";
+                  rev = "bb9bcee2a3be75592de819d9e3fb2c8ed27bb7dc";
+                  hash = "sha256-+PiWxnvMXaSFc+67r17GBRXo7kbjikSElawNMJCydrk=";
+                };
+
+                postPatch = ''
+                  ${src}/patches/apply.sh ${src}/patches/monado/*
+                '';
+              };
+              cmakeFlags = old.cmakeFlags ++ [
+                (nixpkgs.lib.cmakeBool "WIVRN_FEATURE_SOLARXR" true)
+              ];
+            });
+          xrizer = prev.xrizer.overrideAttrs (prevAttrs: rec {
+            src = final.fetchFromGitHub {
+              owner = "SpookySkeletons";
               repo = "xrizer";
-              rev = "2d095a51723ea569571ed8127416930d854fdeff";
-              hash = "sha256-yWrJuIcHsQ7654r6B6NlKzDhIiPnm37/m0fsvNP9RFo=";
+              rev = "552b4dacc013fd2c58363a4eb74db85e3b7b8910";
+              hash = "sha256-23ZcIBF21mi3Rz8PkmEQLn2Jg5dvYTS3f8YmWcPGP3o=";
             };
             doCheck = false;
+
+            cargoDeps = final.rustPlatform.fetchCargoVendor {
+              inherit src;
+              hash = "sha256-yvjx8hIeG9W0TColZZpjNh0h+X1U1K/WXxfCmdaqFU0=";
+            };
+            # cargoDeps = prevAttrs.cargoDeps.overrideAttrs (prev.lib.const {
+            #    inherit src;
+            #    cargoHash = "";
+            #    });
           });
         })
         neovim.overlays.default

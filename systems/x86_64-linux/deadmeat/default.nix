@@ -40,6 +40,12 @@
   environment.systemPackages = [
     pkgs.wlx-overlay-s
     pkgs.wineWow64Packages.full
+    pkgs.spice
+    pkgs.win-virtio
+    pkgs.win-spice
+    pkgs.spice-protocol
+    pkgs.spice-gtk
+    pkgs.alcom
   ];
   programs.envision = {
     enable = true;
@@ -163,17 +169,24 @@
    libvirtd = {
       enable = true;
       qemu = {
+        package = pkgs.qemu_kvm.override {
+          gtkSupport = true;
+          sdlSupport = true;
+          openGLSupport = true;
+        };
+        swtpm.enable = true;
         ovmf = {
+          enable = true;
           packages = [
-            pkgs.pkgsCross.riscv64.OVMFFull
-            pkgs.pkgsCross.riscv64.OVMF.fd
-            pkgs.OVMF.fd
+            pkgs.OVMFFull
           ];
         };
       };
     };
+    spiceUSBRedirection.enable = true;
 
   };
+  services.spice-vdagentd.enable = true;
   #Network
   services.avahi = {
     enable = true;
