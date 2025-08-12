@@ -95,6 +95,9 @@
     liba.mkFlake {
       channels-config = {
         allowUnfree = true; # Allow unfree packages
+        permittedInsecurePackages = [
+                "libxml2-2.13.8"
+              ];
       };
 
       overlays = with inputs; [

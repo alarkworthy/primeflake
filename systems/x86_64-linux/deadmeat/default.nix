@@ -29,7 +29,6 @@
     essential.gnomekeyring.enable = true;
     gaming.wivr.enable = true;
   };
-
   services.hardware.openrgb = {
     enable = true;
   };
