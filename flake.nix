@@ -11,6 +11,9 @@
     musnix = {
       url = "github:musnix/musnix";
     };
+
+    container-config.url = ./modules/nixos/container;
+    container-config.inputs.nixpkgs.follows = "nixpkgs";
     #hyprland = {
     #    url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     #    inputs.nixpkgs.follows = "nixpkgs";
@@ -69,6 +72,7 @@
       nixpkgs-xr,
       nixpkgs,
       nixpkgs-alark,
+      container-config,
       ...
     }:
     let
@@ -140,21 +144,26 @@
           });
 
           wivrn = prev.wivrn.overrideAttrs(old: rec {
-              version = "607b12f8ca3a18580189126f701cd2c77e72c7a6";
+              version = "debdbac87184b598cc064fcff7f4759dd527a048";
               src = final.fetchFromGitHub {
                 owner = "notpeelz";
                 repo = "WiVRn";
                 rev = version;
-                hash = "sha256-7tTgBC+Eq37MekYhEmarX4xSMcsq5EhYD2UFPZVTwqI=";
+                hash = "sha256-IInUGSpAEX2SFTDMzXpjUp4Y6swiHXaLd9m5aRCNtp4=";
               };
               
+              buildInputs = old.buildInputs ++ [
+                final.librsvg
+                final.libpng
+                final.libarchive
+              ];
               monado = prev.applyPatches {
                 src = prev.fetchFromGitLab {
                   domain = "gitlab.freedesktop.org";
                   owner = "monado";
                   repo = "monado";
-                  rev = "bb9bcee2a3be75592de819d9e3fb2c8ed27bb7dc";
-                  hash = "sha256-+PiWxnvMXaSFc+67r17GBRXo7kbjikSElawNMJCydrk=";
+                  rev = "5c137fe28b232fe460f9b03defa7749adc32ee48";
+                  hash = "sha256-4P/ejRAitrYn8hXZPaDOcx27utfm+aVLjtqL6JxZYAg=";
                 };
 
                 postPatch = ''
@@ -210,6 +219,7 @@
         #     });
         #   })
       ];
+      systems = { container-config = container-config; };
       systems.modules.nixos = with inputs; [
         nixpkgs-xr.nixosModules.nixpkgs-xr
         home-manager.nixosModules.home-manager

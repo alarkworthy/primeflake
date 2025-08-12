@@ -9,6 +9,9 @@
       pkgs.ardour
       pkgs.zynaddsubfx
       pkgs.rosegarden
+      pkgs.lmms
+      pkgs.carla
+      pkgs.qjackctl
     ];
   };
 }
