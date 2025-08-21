@@ -145,7 +145,7 @@ in
               statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml"; # need i3status we dont need this
 
             }
-            // config.lib.stylix.sway.bar
+            // config.stylix.targets.sway.exportedBarConfig
             // {
               fonts = {
                 names = [
@@ -206,10 +206,10 @@ in
               adaptive_sync = "on";
             };
             #Alienware
-            # DP-2 = {
-            #   mode = "3440x1440@174.963Hz";
-            #   pos = "0 0";
-            # };
+            DP-2 = {
+              mode = "3440x1440@174.963Hz";
+              pos = "2560 0";
+            };
           }
           // attrsets.optionalAttrs (config.pluto.home.system == "Laptop") {
             eDP-2 = {

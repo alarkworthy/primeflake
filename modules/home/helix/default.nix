@@ -6,14 +6,17 @@
 }:
 {
   config = {
+    home.packages = [
+      pkgs.nixfmt-rfc-style
+      pkgs.nil
+      pkgs.nixd
+    ];
     programs.helix = {
       enable = true;
-      extraPackages = with pkgs; [
-        nixd
-        nil
-        nixpkgs-fmt
-      ];
       settings = {
+        editor = {
+          line-number = "relative";
+        };
       };
       languages = {
 

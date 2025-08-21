@@ -179,16 +179,16 @@
             });
           xrizer = prev.xrizer.overrideAttrs (prevAttrs: rec {
             src = final.fetchFromGitHub {
-              owner = "SpookySkeletons";
+              owner = "Mr-Zero88-FBT";
               repo = "xrizer";
-              rev = "552b4dacc013fd2c58363a4eb74db85e3b7b8910";
-              hash = "sha256-23ZcIBF21mi3Rz8PkmEQLn2Jg5dvYTS3f8YmWcPGP3o=";
+              rev = "d5aa044df545c6236b812431b0a620e6ce2195d2";
+              hash = "sha256-oMI+jjnDj3kFINA/KfbO6jOyxCivFB8BScA1mLJOw7o=";
             };
             doCheck = false;
 
             cargoDeps = final.rustPlatform.fetchCargoVendor {
               inherit src;
-              hash = "sha256-yvjx8hIeG9W0TColZZpjNh0h+X1U1K/WXxfCmdaqFU0=";
+              hash = "sha256-87JcULH1tAA487VwKVBmXhYTXCdMoYM3gOQTkM53ehE=";
             };
             # cargoDeps = prevAttrs.cargoDeps.overrideAttrs (prev.lib.const {
             #    inherit src;
