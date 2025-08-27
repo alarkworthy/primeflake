@@ -22,6 +22,11 @@
   services.upower.enable = true;
   programs.noisetorch.enable = true;
 
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+
+  };
   hardware.enableAllFirmware = true;
   services.tlp = {
     enable = true;
@@ -186,7 +191,7 @@
       "netdev"
       "ubridge"
       "pipewire"
-      #"podman"
+      "podman"
     ]; # Groups
     shell = pkgs.nushell;
     #TODO Set up secret management with sops-nix

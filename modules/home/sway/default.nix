@@ -73,7 +73,7 @@ in
         input = {
           "type:keyboard" = {
             xkb_layout = "us,us(3l)";
-            xkb_options = "grp:ralt_rshift_toggle,caps:none";
+            xkb_options = "grp:ralt_rshift_toggle,caps:escape";
 
           };
         };
@@ -161,82 +161,79 @@ in
         #Colors, we are using Stylix so this *should* be not used
         #colors = {};
         #For all those gaps
-        gaps =
-          {
-            inner = 4;
-          }
-          // attrsets.optionalAttrs (config.pluto.home.system == "Laptop") {
-            inner = 0;
-          };
+        gaps = {
+          inner = 4;
+        }
+        // attrsets.optionalAttrs (config.pluto.home.system == "Laptop") {
+          inner = 0;
+        };
 
         modifier = modr;
         defaultWorkspace = "workspace number 1";
         menu = "tofi-drun | xargs swaymsg exec --";
-        output =
-          {
-            #DP-1 = {
-            # Acer
-            #  mode = "2560x1440@179.877Hz";
-            #  pos = "3440 0";
-            #  adaptive_sync = "on";
-            #};
-            #DP-2 = {
-            # Alienware
-            #  mode = "3440x1440@174.963Hz";
-            #  pos = "0 0";
-            #adaptive_sync = "off";
-            #render_bit_depth = "10";
-            #};
-            #eDP-2 = {
-            #  mode = "1920x1200@165.000Hz";
-            #  adaptive_sync = "on";
-            #};
-            #HDMI-A-2 = {
-            #  mode = "1366x768";
-            #  pos = "2560 0";
+        output = {
+          #DP-1 = {
+          # Acer
+          #  mode = "2560x1440@179.877Hz";
+          #  pos = "3440 0";
+          #  adaptive_sync = "on";
+          #};
+          #DP-2 = {
+          # Alienware
+          #  mode = "3440x1440@174.963Hz";
+          #  pos = "0 0";
+          #adaptive_sync = "off";
+          #render_bit_depth = "10";
+          #};
+          #eDP-2 = {
+          #  mode = "1920x1200@165.000Hz";
+          #  adaptive_sync = "on";
+          #};
+          #HDMI-A-2 = {
+          #  mode = "1366x768";
+          #  pos = "2560 0";
 
-            #};
+          #};
 
-          }
-          // attrsets.optionalAttrs (config.pluto.home.system == "Desktop") {
-            #Acer
-            DP-1 = {
-              mode = "2560x1440@179.877Hz";
-              pos = "3440 0";
-              adaptive_sync = "on";
-            };
-            #Alienware
-            DP-2 = {
-              mode = "3440x1440@174.963Hz";
-              pos = "0 0";
-            };
-          }
-          // attrsets.optionalAttrs (config.pluto.home.system == "Laptop") {
-            eDP-2 = {
-              mode = "1920x1200@165.000Hz";
-              adaptive_sync = "on";
-            };
+        }
+        // attrsets.optionalAttrs (config.pluto.home.system == "Desktop") {
+          #Acer
+          DP-1 = {
+            mode = "2560x1440@179.877Hz";
+            pos = "3440 0";
+            adaptive_sync = "on";
           };
+          #Alienware
+          DP-2 = {
+            mode = "3440x1440@174.963Hz";
+            pos = "0 0";
+          };
+        }
+        // attrsets.optionalAttrs (config.pluto.home.system == "Laptop") {
+          eDP-2 = {
+            mode = "1920x1200@165.000Hz";
+            adaptive_sync = "on";
+          };
+        };
 
-        workspaceOutputAssign =
-          [
-          ]
-          ++ optionals (config.pluto.home.system == "Desktop") [
-            {
-              output = "DP-1";
-              workspace = "10";
-            }
-            {
-              output = "DP-2";
-              workspace = "1";
-            }
-          ]
-          ++ optionals (config.pluto.home.system == "Laptop") [
-            {
-              output = "eDP-2";
-              workspace = "1";
-            }
-          ];
+        workspaceOutputAssign = [
+        ]
+        ++ optionals (config.pluto.home.system == "Desktop") [
+          {
+            output = "DP-1";
+            workspace = "10";
+          }
+          {
+            output = "DP-2";
+            workspace = "1";
+          }
+        ]
+        ++ optionals (config.pluto.home.system == "Laptop") [
+          {
+            output = "eDP-2";
+            workspace = "1";
+          }
+        ];
         window = {
           border = 2;
           #Sway doesnt support window rounding, use hyprland for drip instead

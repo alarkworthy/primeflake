@@ -1,9 +1,11 @@
 { lib, ... }:
-
+let
+  version = "24.11";
+in
 {
-  stateVersion = rec {
-    nixos = "24.11";
-    home = nixos;
+  stateVersion = {
+    nixos = version;
+    home = version;
   };
 
 }

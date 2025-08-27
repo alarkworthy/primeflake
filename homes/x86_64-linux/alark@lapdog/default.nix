@@ -14,11 +14,14 @@
   pluto.desktop.swaylock = {
     enable = true;
     idle = {
-      enable = false;
+      enable = true;
     };
   };
+  pluto.containers.distrobox = {
+    enable = true;
+    matlab = true;
+  };
   pluto.home.system = "Laptop";
-  pluto.desktop.thunderbird.enable = true;
   home.packages = [
     pkgs.moonlight-qt
   ];
