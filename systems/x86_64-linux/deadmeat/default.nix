@@ -35,8 +35,9 @@
   services.flatpak.enable = false;
   programs.adb.enable = true;
   musnix.enable = true;
-
+  hardware.wooting.enable = true;
   environment.systemPackages = [
+    pkgs.wootility
     pkgs.wlx-overlay-s
     pkgs.wineWow64Packages.full
     pkgs.spice
@@ -57,7 +58,7 @@
 
   # Use the systemd-boot EFI boot loader.
   boot = {
-    kernelPackages = pkgs.linuxPackages_cachyos;
+    kernelPackages = pkgs.linuxPackages_cachyos.cachyOverride { mArch = "ZEN4"; };
     #pkgs.linuxPackages_zen;
     #initrd.kernelModules = [ "amdgpu" ];
     loader.systemd-boot.enable = true;
@@ -115,7 +116,7 @@
   programs.corectrl = {
     enable = true;
   };
-  
+
   hardware.amdgpu = {
     initrd.enable = true;
     opencl.enable = true;
@@ -154,18 +155,19 @@
   #Xbox stuff
   #hardware.xpadneo.enable = true; #For Xbox One wireless controllers
 
-  #hardware.xone.enable = true; # For Xbox One and Xbox Series X|S accessories
+  hardware.xpad-noone.enable = true;
+  hardware.xone.enable = true; # For Xbox One and Xbox Series X|S accessories
 
   #Might look into hardware.fancontrol
 
   #End of Hardware
   boot.binfmt = {
-      emulatedSystems = ["riscv64-linux"];
-      preferStaticEmulators = true;
+    emulatedSystems = [ "riscv64-linux" ];
+    preferStaticEmulators = true;
   };
   programs.virt-manager.enable = true;
   virtualisation = {
-   libvirtd = {
+    libvirtd = {
       enable = true;
       qemu = {
         package = pkgs.qemu_kvm.override {
@@ -220,7 +222,7 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   #Time Zone
-  time.timeZone = "US/Eastern";
+  time.timeZone = "US/Mountain";
 
   # Select internationalisation properties.
   i18n = {
@@ -322,12 +324,12 @@
   services.openssh.enable = true;
 
   networking.firewall = {
-		enable = true;
+    enable = true;
     allowedTCPPorts = [
 
     ];
     allowedUDPPorts = [
-			8266
+      8266
       53
       67
     ];

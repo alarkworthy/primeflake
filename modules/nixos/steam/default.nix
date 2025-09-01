@@ -82,6 +82,14 @@ in
         enable = true;
 
       };
+      extraPackages = with pkgs; [
+        foot
+      ]
+      ;
+      extraCompatPackages = [
+        pkgs.steamtinkerlaunch
+        pkgs.proton-ge-bin
+      ];
       protontricks = {
         #package =
         enable = true;
