@@ -22,7 +22,7 @@
   pluto = {
     audio.enable = true;
     impermanence.enable = false;
-    streaming.sunshine.enable = false;
+    streaming.sunshine.enable = true;
     docker.enable = false;
     theming.stylix.enable = true;
     gaming.vrstuff.enable = true;
@@ -46,6 +46,8 @@
     pkgs.spice-protocol
     pkgs.spice-gtk
     pkgs.alcom
+    pkgs.retroarch
+    pkgs.rpcs3
   ];
   programs.envision = {
     enable = true;

@@ -96,8 +96,9 @@
       channels-config = {
         allowUnfree = true; # Allow unfree packages
         permittedInsecurePackages = [
-                "libxml2-2.13.8"
-              ];
+          "libxml2-2.13.8"
+          "qtwebengine-5.15.19"
+        ];
       };
 
       overlays = with inputs; [
@@ -146,37 +147,37 @@
             postPatch = nixpkgs.legacyPackages."x86_64-linux".wlx-overlay-s.postPatch;
           });
 
-          wivrn = prev.wivrn.overrideAttrs(old: rec {
-              version = "debdbac87184b598cc064fcff7f4759dd527a048";
-              src = final.fetchFromGitHub {
-                owner = "notpeelz";
-                repo = "WiVRn";
-                rev = version;
-                hash = "sha256-IInUGSpAEX2SFTDMzXpjUp4Y6swiHXaLd9m5aRCNtp4=";
-              };
-              
-              buildInputs = old.buildInputs ++ [
-                final.librsvg
-                final.libpng
-                final.libarchive
-              ];
-              monado = prev.applyPatches {
-                src = prev.fetchFromGitLab {
-                  domain = "gitlab.freedesktop.org";
-                  owner = "monado";
-                  repo = "monado";
-                  rev = "5c137fe28b232fe460f9b03defa7749adc32ee48";
-                  hash = "sha256-4P/ejRAitrYn8hXZPaDOcx27utfm+aVLjtqL6JxZYAg=";
-                };
+          wivrn = prev.wivrn.overrideAttrs (old: rec {
+            version = "debdbac87184b598cc064fcff7f4759dd527a048";
+            src = final.fetchFromGitHub {
+              owner = "notpeelz";
+              repo = "WiVRn";
+              rev = version;
+              hash = "sha256-IInUGSpAEX2SFTDMzXpjUp4Y6swiHXaLd9m5aRCNtp4=";
+            };
 
-                postPatch = ''
-                  ${src}/patches/apply.sh ${src}/patches/monado/*
-                '';
+            buildInputs = old.buildInputs ++ [
+              final.librsvg
+              final.libpng
+              final.libarchive
+            ];
+            monado = prev.applyPatches {
+              src = prev.fetchFromGitLab {
+                domain = "gitlab.freedesktop.org";
+                owner = "monado";
+                repo = "monado";
+                rev = "5c137fe28b232fe460f9b03defa7749adc32ee48";
+                hash = "sha256-4P/ejRAitrYn8hXZPaDOcx27utfm+aVLjtqL6JxZYAg=";
               };
-              cmakeFlags = old.cmakeFlags ++ [
-                (nixpkgs.lib.cmakeBool "WIVRN_FEATURE_SOLARXR" true)
-              ];
-            });
+
+              postPatch = ''
+                ${src}/patches/apply.sh ${src}/patches/monado/*
+              '';
+            };
+            cmakeFlags = old.cmakeFlags ++ [
+              (nixpkgs.lib.cmakeBool "WIVRN_FEATURE_SOLARXR" true)
+            ];
+          });
           xrizer = prev.xrizer.overrideAttrs (prevAttrs: rec {
             src = final.fetchFromGitHub {
               owner = "Mr-Zero88-FBT";
@@ -222,7 +223,9 @@
         #     });
         #   })
       ];
-      systems = { container-config = container-config; };
+      systems = {
+        container-config = container-config;
+      };
       systems.modules.nixos = with inputs; [
         nixpkgs-xr.nixosModules.nixpkgs-xr
         home-manager.nixosModules.home-manager
