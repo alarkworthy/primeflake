@@ -81,7 +81,6 @@ in
             "wget"
             "x11-xkb-utils"
             "zlib1g"
-
           ];
         };
       };

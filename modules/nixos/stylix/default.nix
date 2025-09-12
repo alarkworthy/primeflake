@@ -33,7 +33,8 @@ in
           "${./bgs/space/coolbackground.png}"
         else
           "${./bgs/space/purplesky.jpg}";
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/spaceduck.yaml";
+      # base16Scheme = "${pkgs.base16-schemes}/share/themes/spaceduck.yaml";
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
 
       #image = "${./bgs/nature/snowMountains1.jpg}";
       #Cool orange spiral galaxy close up

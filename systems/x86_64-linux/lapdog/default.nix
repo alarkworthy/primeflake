@@ -27,6 +27,7 @@
     dockerCompat = true;
 
   };
+  hardware.wooting.enable = true;
   hardware.enableAllFirmware = true;
   services.tlp = {
     enable = true;

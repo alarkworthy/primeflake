@@ -15,6 +15,8 @@
       pkgs.nil
       pkgs.nixd
       pkgs.tinymist
+      pkgs.texlab
+      pkgs.bibtex-tidy
     ];
 
     stylix.targets.helix.transparent = lib.mkForce false;
