@@ -32,6 +32,7 @@
   services.hardware.openrgb = {
     enable = true;
   };
+
   services.flatpak.enable = false;
   programs.adb.enable = true;
   musnix.enable = true;
@@ -50,7 +51,7 @@
     pkgs.rpcs3
   ];
   programs.envision = {
-    enable = true;
+    enable = false;
     openFirewall = false;
   };
   #environment.systemPackages = [

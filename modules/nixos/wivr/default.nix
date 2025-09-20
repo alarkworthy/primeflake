@@ -9,16 +9,17 @@
     default = false;
   };
   config = lib.mkIf config.pluto.gaming.wivr.enable {
+    environment.systemPackages = [
+      pkgs.bash
+      pkgs.procps
+      pkgs.xrizer
+    ];
     services.wivrn = {
       enable = true;
       autoStart = false;
       package = pkgs.wivrn;
-        #pkgs.alarkPkgs.wivrn-solarXR;
-      extraPackages = [
-        pkgs.bash
-        pkgs.procps
-        pkgs.xrizer
-      ];
+      highPriority = true;
+      #pkgs.alarkPkgs.wivrn-solarXR;
       defaultRuntime = true;
       openFirewall = true;
       monadoEnvironment = {
@@ -37,7 +38,8 @@
         enable = true;
         json = {
           scale = [
-            0.5 0.5
+            0.5
+            0.5
           ];
           bitrate = 50000000;
           #	        50000000;
