@@ -35,10 +35,10 @@ in
         dark = "Papirus-Dark";
         light = "Papirus-Light";
       };
-        cursor = {
-          package = pkgs.rose-pine-cursor;
-          name = "BreezeX-RosePine-Linux";
-          size = 32;
+      cursor = {
+        package = pkgs.rose-pine-cursor;
+        name = "BreezeX-RosePine-Linux";
+        size = 32;
       };
       targets = {
         neovim.enable = false;

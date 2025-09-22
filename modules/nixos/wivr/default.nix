@@ -13,10 +13,10 @@
       enable = true;
       autoStart = false;
       package = pkgs.wivrn;
-      extraPackages = [
-        pkgs.bash
-        pkgs.procps
-      ];
+      # extraPackages = [
+      #   pkgs.bash
+      #   pkgs.procps
+      # ];
       defaultRuntime = true;
       openFirewall = true;
       monadoEnvironment = {

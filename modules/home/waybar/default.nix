@@ -191,18 +191,17 @@ in
             format = "{usage}% 󰻠";
           };
 
-          "temperature" =
-            {
-              interval = 60;
-              format = "{temperatureC}°C ";
-              format-critical = "HOT!! {temperatureC}°C ";
-              critical-threshold = 80;
-              tooltip = true;
-              tooltip-format = "{temperatureF}°F";
-            }
-            // (mkIf (config.pluto.home.system == "Desktop") {
-              hwmon-path = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon2/temp1_input";
-            });
+          "temperature" = {
+            interval = 60;
+            format = "{temperatureC}°C ";
+            format-critical = "HOT!! {temperatureC}°C ";
+            critical-threshold = 80;
+            tooltip = true;
+            tooltip-format = "{temperatureF}°F";
+          }
+          // (mkIf (config.pluto.home.system == "Desktop") {
+            hwmon-path = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon2/temp1_input";
+          });
 
           "pulseaudio" = {
             format = "{volume}% {format_source}";

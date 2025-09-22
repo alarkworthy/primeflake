@@ -18,7 +18,7 @@ in
       #discord#evil uwu
       #For screenshare with audio
       #nheko #matrix client
-      teamspeak3
+      # teamspeak3
       #arma3-unix-launcher
       mpg123
       gp-saml-gui

@@ -1,10 +1,18 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   options.pluto.desktop.qutebrowser.enable = lib.mkEnableOption "Enable Qutebrowser" // {
     default = true;
   };
 
   config = lib.mkIf config.pluto.desktop.qutebrowser.enable {
+    home.packages = [
+      pkgs.python313Packages.adblock
+    ];
     programs.qutebrowser = {
       enable = true;
       searchEngines = {
@@ -26,7 +34,7 @@
             "foot"
             "-T"
             "auxiliary text edit"
-            "nvim"
+            "hx"
             "{file}"
             #"+startinsert"
             "+call cursor({line}, {column})"

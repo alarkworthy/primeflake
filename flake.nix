@@ -86,6 +86,9 @@
     liba.mkFlake {
       channels-config = {
         allowUnfree = true; # Allow unfree packages
+        permittedInsecurePackages = [
+          "qtwebengine-5.15.19"
+        ];
       };
 
       overlays = with inputs; [
@@ -101,8 +104,8 @@
         # 			cargoHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
         # 		});
         # 	})
-        nixpkgs-xr.overlays.default
         neovim.overlays.default
+        nixpkgs-xr.overlays.default
         # postUnpack = ''
         #   # Ensure revision consistency between the fetched Monado and CMakeLists.txt
         #   ourMonadoRev="${previousMonadoAttrs.src.rev}"
@@ -151,7 +154,6 @@
       systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager
         impermanence.nixosModules.impermanence
-        chaotic.nixosModules.default
         nixpkgs-xr.nixosModules.nixpkgs-xr
         nix-gaming.nixosModules.pipewireLowLatency
         #jovian.nixosModules.default
@@ -160,6 +162,7 @@
         #  home-manager.useUserPackages = true;
         #}
         stylix.nixosModules.stylix
+        chaotic.nixosModules.default
         #hyprland.nixosModules.default
       ];
 

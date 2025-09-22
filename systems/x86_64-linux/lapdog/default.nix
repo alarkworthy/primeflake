@@ -19,6 +19,10 @@
     enable = true;
   };
 
+  programs.localsend = {
+    enable = true;
+    openFirewall = true;
+  };
   services.upower.enable = true;
   programs.noisetorch.enable = true;
 

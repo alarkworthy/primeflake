@@ -13,10 +13,9 @@ in
     default = config.pluto.desktop.sway.enable;
   };
   config = mkIf cfg.enable {
-    services.mako =
-      {
-        enable = true;
-       settings = {
+    services.mako = {
+      enable = true;
+      settings = {
         default-timeout = "10000";
         anchor = "top-left";
         border-size = "3";
@@ -32,6 +31,6 @@ in
       // attrsets.optionalAttrs (config.pluto.home.system == "Laptop") {
         anchor = "top-right";
       };
+    };
   };
-};
 }
