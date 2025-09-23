@@ -148,12 +148,12 @@
           });
 
           wivrn = prev.wivrn.overrideAttrs (old: rec {
-            version = "debdbac87184b598cc064fcff7f4759dd527a048";
+            version = "bbee507476b903a8ca826a8d3b1a6e820df7cd2c";
             src = final.fetchFromGitHub {
               owner = "notpeelz";
               repo = "WiVRn";
               rev = version;
-              hash = "sha256-IInUGSpAEX2SFTDMzXpjUp4Y6swiHXaLd9m5aRCNtp4=";
+              hash = "sha256-cw/2VFuFl5YeuwKbTnH6M8QaeXGlVouBVjFOEb9oaRU=";
             };
 
             buildInputs = old.buildInputs ++ [
@@ -166,8 +166,8 @@
                 domain = "gitlab.freedesktop.org";
                 owner = "monado";
                 repo = "monado";
-                rev = "5c137fe28b232fe460f9b03defa7749adc32ee48";
-                hash = "sha256-4P/ejRAitrYn8hXZPaDOcx27utfm+aVLjtqL6JxZYAg=";
+                rev = "7a4018e2d89151e60e562fac79eba90ca7a328d8";
+                hash = "sha256-DPIvJb23bK7SDjZr9mK0Wt6Zbo3Ari3Ar8TtPe5QgKY=";
               };
 
               postPatch = ''

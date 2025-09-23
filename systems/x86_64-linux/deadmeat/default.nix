@@ -47,7 +47,7 @@
     pkgs.spice-protocol
     pkgs.spice-gtk
     pkgs.alcom
-    pkgs.retroarch
+    pkgs.retroarch-full
     pkgs.rpcs3
   ];
   programs.envision = {
