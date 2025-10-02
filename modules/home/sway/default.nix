@@ -33,7 +33,7 @@ in
           "gtk"
         ];
 
-        "org.freedesktop.impl.portal.Screencast" = [ "wlr" ];
+        "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
         "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
       };
 

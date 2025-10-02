@@ -52,6 +52,7 @@ in
           (dir "/etc/fwupd" "root" "root" "u=rwx,g=rx,o=rx")
           (dir "/etc/ssh/authorized_keys.d" "root" "root" "u=rwx,g=,o=")
           (dir "/etc/nix" "root" "root" "u=rwx,g=rx,o=rx")
+          (dir "/var/lib/libvirt" "root" "root" "u=rwx,g=rx,o=x")
         ];
         files = [
           "/etc/machine-id"

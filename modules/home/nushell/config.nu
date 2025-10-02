@@ -53,7 +53,7 @@ $env.PROMPT_COMMAND_RIGHT = ""
 $env.LS_COLORS = (vivid generate catppuccin-mocha | str trim)
 
 # Editor
-$env.EDITOR = "nvim"
+$env.EDITOR = "hx"
 
 # The prompt indicators are environmental variables that represent
 # the state of the prompt

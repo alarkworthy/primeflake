@@ -10,9 +10,19 @@
   };
 
   config = lib.mkIf config.pluto.desktop.qutebrowser.enable {
+    home.file.".config/ueberzugpp/config.json".text = ''
+      {
+        "layer": {
+          "output": "sixel"
+        }
+      }
+    '';
     home.packages = [
       pkgs.python313Packages.adblock
+      pkgs.ueberzugpp
+      pkgs.dragon-drop
     ];
+
     programs.qutebrowser = {
       enable = true;
       searchEngines = {
@@ -29,30 +39,56 @@
           position = "right";
           width = "10%";
         };
+        # try doing
         editor = {
+          # command = [
+          #   "foot"
+          #   "-T"
+          #   "auxiliary text edit"
+          #   "hx"
+          #   "{file}"
+          #   #"+startinsert"
+          #   "+call cursor({line}, {column})"
+          # ];
           command = [
             "foot"
             "-T"
-            "auxiliary text edit"
+            "EDITOR"
+            "env"
+            "-u COLUMNS"
+            "-u LINES"
             "hx"
-            "{file}"
-            #"+startinsert"
-            "+call cursor({line}, {column})"
+            "{file}:{line}:{column}"
           ];
         };
         fileselect = {
           folder.command = [
             "foot"
+            "-T"
+            "Folder Select"
+            "env"
+            "-u COLUMNS"
+            "-u LINES"
             "ranger"
             "--choosedir={}"
           ];
           multiple_files.command = [
             "foot"
+            "-T"
+            "Multiple File Select"
+            "env"
+            "-u COLUMNS"
+            "-u LINES"
             "ranger"
             "--choosefiles={}"
           ];
           single_file.command = [
             "foot"
+            "-T"
+            "Single File Select"
+            "env"
+            "-u COLUMNS"
+            "-u LINES"
             "ranger"
             "--choosefile={}"
           ];
@@ -71,15 +107,20 @@
       plugins = [
         {
           name = "zoxide";
-          src = builtins.fetchGit {
+          src = pkgs.fetchgit {
             url = "https://github.com/jchook/ranger-zoxide.git";
-            rev = "363df97af34c96ea873c5b13b035413f56b12ead";
+            rev = "aefff2797b8e3999f659176dc99d76f7186ccc29";
+            hash = "sha256-07dpg8vhywbpknafbayz26hm5mirgy6bwdw5lpdd5fnpqpcjjpcl";
           };
         }
       ];
       mappings = {
         cz = "zi";
       };
+      extraConfig = ''
+        set preview_images true
+        set preview_images_method ueberzug
+      '';
     };
   };
 }

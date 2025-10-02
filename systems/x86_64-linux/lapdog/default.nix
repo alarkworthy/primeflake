@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
 {
   imports = [
@@ -30,6 +35,90 @@
     enable = true;
     dockerCompat = true;
 
+  };
+
+  specialisation = {
+    windowsDev.configuration = {
+      environment.systemPackages = [
+        pkgs.virt-viewer
+        pkgs.looking-glass-client
+      ];
+      system.nixos.tags = [ "gpu-pass" ];
+      users.users.alark.extraGroups = [
+        "libvirtd"
+        "kvm"
+      ];
+      programs.virt-manager.enable = true;
+      virtualisation = {
+        libvirtd.enable = true;
+        libvirtd.qemu = {
+          package = pkgs.qemu_kvm;
+          runAsRoot = true;
+          ovmf.enable = true;
+          ovmf.packages = [
+            (pkgs.OVMF.override {
+              secureBoot = true;
+              tpmSupport = true;
+            }).fd
+          ];
+          swtpm.enable = true;
+        };
+        spiceUSBRedirection.enable = true;
+      };
+      boot.kernel.sysctl = {
+        "vm.nr_hugepages" = 128;
+      };
+      boot.extraModulePackages = [
+        config.boot.kernelPackages.kvmfr
+      ];
+      boot.kernelModules = [ "kvmfr" ];
+      boot.extraModprobeConfig = ''
+        options vfio-pci ids=1002:7480,1002:ab30
+        softdep amdgpu pre: vfio-pci
+        options kvmfr static_size_mb=32
+      '';
+      services.udev.extraRules = ''
+        SUBSYSTEM=="kvmfr", OWNER="alark", GROUP="kvm", MODE="0660"
+      '';
+      virtualisation.libvirtd.qemu.verbatimConfig = ''
+        cgroup_device_acl = [
+          "/dev/null", "/dev/full", "/dev/zero",
+          "/dev/random", "/dev/urandom",
+          "/dev/ptmx", "/dev/kvm",
+          "/dev/kvmfr0"
+        ]
+      '';
+      boot.kernelParams = [
+        "amd_iommu=on"
+        "iommu=pt"
+        "vfio-pci.ids=1002:7480,1002:ab30"
+        "video=efifb:off"
+      ];
+      boot.initrd.kernelModules = [
+        "vfio_pci"
+        "vfio"
+        "vfio_iommu_type1"
+      ];
+    };
+    # i3c.configuration = {
+    #   security.pam.services.i3lock.enable = true;
+    #   services.xserver.windowManager.i3 = {
+    #     extraPackages = [
+    #       pkgs.dmenu
+    #       pkgs.i3status-rust
+    #     ];
+    #     enable = true;
+    #   };
+    #   services.xserver = {
+    #     enable = true;
+    #     displayManager.startx.enable = true;
+    #     xkb.layout = "us";
+    #     desktopManager = {
+    #       xterm.enable = false;
+    #     };
+    #   };
+    #   services.displayManager.defaultSession = "none+i3";
+    # };
   };
   hardware.wooting.enable = true;
   hardware.enableAllFirmware = true;
@@ -95,9 +184,9 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_cachyos;
     #pkgs.linuxPackages_zen;
-    initrd.kernelModules = [ "amdgpu" ];
+    # initrd.kernelModules = [ "amdgpu" ];
     loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
+    # loader.efi.canTouchEfiVariables = true;
     kernelParams = [
       "rcutree.enable_rcu_lazy=1"
       "resume_offset=53329980"
@@ -165,10 +254,10 @@
       ];
     };
   };
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "3l";
-  };
+  # services.xserver.xkb = {
+  #   layout = "us";
+  #   variant = "3l";
+  # };
   console = {
     font = "Lat2-Terminus16";
     #keyMap = "us";
