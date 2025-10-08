@@ -105,14 +105,14 @@
     programs.ranger = {
       enable = true;
       plugins = [
-        {
-          name = "zoxide";
-          src = pkgs.fetchgit {
-            url = "https://github.com/jchook/ranger-zoxide.git";
-            rev = "aefff2797b8e3999f659176dc99d76f7186ccc29";
-            hash = "sha256-07dpg8vhywbpknafbayz26hm5mirgy6bwdw5lpdd5fnpqpcjjpcl";
-          };
-        }
+        # {
+        #   name = "zoxide";
+        #   src = pkgs.fetchgit {
+        #     url = "https://github.com/jchook/ranger-zoxide.git";
+        #     rev = "aefff2797b8e3999f659176dc99d76f7186ccc29";
+        #     hash = "sha256-07dpg8vhywbpknafbayz26hm5mirgy6bwdw5lpdd5fnpqpcjjpcl";
+        #   };
+        # }
       ];
       mappings = {
         cz = "zi";

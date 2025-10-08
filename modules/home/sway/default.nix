@@ -30,7 +30,7 @@ in
     xdg.portal.config = {
       common = {
         default = [
-          "gtk"
+          "wlr"
         ];
 
         "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
@@ -42,7 +42,7 @@ in
       xdg-desktop-portal-gtk
       xdg-desktop-portal-wlr
     ];
-    xdg.portal.xdgOpenUsePortal = true;
+    xdg.portal.xdgOpenUsePortal = false;
     wayland.systemd.target = "sway-session.target";
     wayland.windowManager.sway = {
       #General Config
@@ -145,7 +145,7 @@ in
               statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml"; # need i3status we dont need this
 
             }
-            // config.lib.stylix.sway.bar
+            // config.stylix.targets.sway.exportedBarConfig
             // {
               fonts = {
                 names = [

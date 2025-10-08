@@ -25,4 +25,19 @@
   home.packages = [
     pkgs.moonlight-qt
   ];
+
+  # xdg.mimeApps = {
+  #   enable = true;
+  #   defaultApplications =
+  #     let
+  #       qute = "org.qutebrowser.qutebrowser.desktop";
+  #     in
+  #     {
+  #       "text/html" = qute;
+  #       "x-scheme-handler/http" = qute;
+  #       "x-scheme-handler/https" = qute;
+  #       "x-scheme-handler/about" = qute;
+  #       "x-scheme-handler/unknown" = qute;
+  #     };
+  # };
 }

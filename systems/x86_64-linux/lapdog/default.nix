@@ -36,7 +36,10 @@
     dockerCompat = true;
 
   };
-
+  # programs.sway = {
+  #   enable = true;
+  #   wrapperFeatures.gtk = true;
+  # };
   specialisation = {
     windowsDev.configuration = {
       environment.systemPackages = [
@@ -100,26 +103,26 @@
         "vfio_iommu_type1"
       ];
     };
-    # i3c.configuration = {
-    #   security.pam.services.i3lock.enable = true;
-    #   services.xserver.windowManager.i3 = {
-    #     extraPackages = [
-    #       pkgs.dmenu
-    #       pkgs.i3status-rust
-    #     ];
-    #     enable = true;
-    #   };
-    #   services.xserver = {
-    #     enable = true;
-    #     displayManager.startx.enable = true;
-    #     xkb.layout = "us";
-    #     desktopManager = {
-    #       xterm.enable = false;
-    #     };
-    #   };
-    #   services.displayManager.defaultSession = "none+i3";
-    # };
   };
+  # i3c.configuration = {
+  #   security.pam.services.i3lock.enable = true;
+  #   services.xserver.windowManager.i3 = {
+  #     extraPackages = [
+  #       pkgs.dmenu
+  #       pkgs.i3status-rust
+  #     ];
+  #     enable = true;
+  #   };
+  #   services.xserver = {
+  #     enable = true;
+  #     displayManager.startx.enable = true;
+  #     xkb.layout = "us";
+  #     desktopManager = {
+  #       xterm.enable = false;
+  #     };
+  #   };
+  #   services.displayManager.defaultSession = "none+i3";
+  # };
   hardware.wooting.enable = true;
   hardware.enableAllFirmware = true;
   services.tlp = {
@@ -186,6 +189,7 @@
     #pkgs.linuxPackages_zen;
     # initrd.kernelModules = [ "amdgpu" ];
     loader.systemd-boot.enable = true;
+    loader.systemd-boot.graceful = true;
     # loader.efi.canTouchEfiVariables = true;
     kernelParams = [
       "rcutree.enable_rcu_lazy=1"
@@ -212,7 +216,7 @@
   };
   programs.dconf.enable = true;
   programs.corectrl = {
-    enable = false;
+    enable = true;
 
     gpuOverclock.enable = false;
   };

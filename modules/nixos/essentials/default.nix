@@ -52,10 +52,16 @@ in
     ];
     programs.git.enable = true;
     programs.neovim.defaultEditor = true;
-    environment.pathsToLink = [
-      "/share/xdg-desktop-portal"
-      "/share/applications"
-    ];
+    # xdg.portal = {
+    #   wlr.enable = true;
+    #   extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    #   enable = true;
+    #   xdgOpenUsePortal = true;
+    # };
+    # environment.pathsToLink = [
+    #   "/share/xdg-desktop-portal"
+    #   "/share/applications"
+    # ];
     security.polkit.enable = true;
     programs.ssh = {
       startAgent = true;

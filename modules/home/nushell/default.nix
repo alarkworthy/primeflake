@@ -19,7 +19,8 @@ in
         enable = true;
         configFile.source = ./config.nu;
         envFile.source = ./env.nu;
-        shellAliases = {
+        environmentVariables = config.home.sessionVariables;
+        shellAliases = config.home.shellAliases // {
           "tree" = "lsd --tree";
           "gensokyo" = "mpg123 https://stream.gensokyoradio.net/1/";
         };

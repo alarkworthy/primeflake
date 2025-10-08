@@ -39,6 +39,7 @@ $env.GDK_DISABLE = "vulkan"
 $env.XDG_CONFIG_HOME = "/home/alark/.config"
 $env.WLR_RENDER = "vulkan"
 $env.SSH_AUTH_SOCK = "/run/user/1000/ssh-agent"
+# $env.XDG_DATA_DIRS = "/home/alark/.config/mimeapps.list:$env.XDG_DATA_DIRS"
 
 if "DOCKER_HOST" not-in $env { $env.DOCKER_HOST = $"unix://($env.XDG_RUNTIME_DIR)/docker.sock" }
 #$env.FZF_DEFAULT_OPTS=" \
