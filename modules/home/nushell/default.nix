@@ -18,8 +18,9 @@ in
       nushell = {
         enable = true;
         configFile.source = ./config.nu;
+        environmentVariables = config.home.sessionVariables;
         envFile.source = ./env.nu;
-        shellAliases = {
+        shellAliases = config.home.shellAliases // {
           "tree" = "lsd --tree";
           "gensokyo" = "mpg123 https://stream.gensokyoradio.net/1/";
         };

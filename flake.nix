@@ -40,6 +40,10 @@
     neovim.url = "github:alarkworthy/neovim";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+    aagl = {
+      url = "github:ezKEA/aagl-gtk-on-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   #   outputs = inputs:
   #       inputs.snowfall-lib.mkFlake {
@@ -233,6 +237,7 @@
         chaotic.nixosModules.default
         nix-gaming.nixosModules.pipewireLowLatency
         musnix.nixosModules.musnix
+        aagl.nixosModules.default
         #jovian.nixosModules.default
         #{
         #  home-manager.useGlobalPkgs = true;

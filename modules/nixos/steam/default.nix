@@ -27,7 +27,7 @@ in
     };
 
     hardware.enableRedistributableFirmware = true;
-    chaotic.hdr.enable = true;
+    # chaotic.hdr.enable = true;
     programs.gamescope = {
       capSysNice = true;
       enable = true;
@@ -84,11 +84,11 @@ in
       };
       extraPackages = with pkgs; [
         foot
-      ]
-      ;
+      ];
       extraCompatPackages = [
         pkgs.steamtinkerlaunch
         pkgs.proton-ge-bin
+        pkgs.proton-ge-rtsp-bin
       ];
       protontricks = {
         #package =

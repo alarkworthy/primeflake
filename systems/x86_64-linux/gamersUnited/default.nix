@@ -36,11 +36,7 @@
   hardware.graphics = {
     enable = true; # May not be needed, the system sway module auto enables this, but we are using homemanager to install sway
     extraPackages = with pkgs; [
-      amdvlk # AMDVLK
       rocmPackages.clr.icd # OpenCL
-    ];
-    extraPackages32 = with pkgs; [
-      driversi686Linux.amdvlk # 32 Bit AMDVLK drivers
     ];
 
     #Force radv

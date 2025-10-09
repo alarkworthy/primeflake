@@ -1,4 +1,7 @@
 { inputs, config, ... }:
+let
+
+in
 {
   #Enable modules
   pluto.home-manager.enable = true;

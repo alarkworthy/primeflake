@@ -6,6 +6,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 
@@ -33,10 +34,24 @@
     enable = true;
   };
 
+  nix.settings = inputs.aagl.nixConfig;
+  programs = {
+    anime-game-launcher.enable = true;
+    anime-games-launcher.enable = true;
+    honkers-railway-launcher.enable = true;
+    honkers-launcher.enable = true;
+    wavey-launcher.enable = true;
+    sleepy-launcher.enable = true;
+  };
+
   services.flatpak.enable = false;
   programs.adb.enable = true;
   musnix.enable = true;
   hardware.wooting.enable = true;
+  environment.pathsToLink = [
+    "/share/xdg-desktop-portal"
+    "/share/applications"
+  ];
   environment.systemPackages = [
     pkgs.wootility
     pkgs.wlx-overlay-s
@@ -47,7 +62,7 @@
     pkgs.spice-protocol
     pkgs.spice-gtk
     pkgs.alcom
-    pkgs.retroarch-full
+    pkgs.retroarch
     pkgs.rpcs3
   ];
   programs.envision = {
@@ -62,7 +77,7 @@
   # Use the systemd-boot EFI boot loader.
   boot = {
     kernelPackages = pkgs.linuxPackages_cachyos.cachyOverride { mArch = "ZEN4"; };
-    #pkgs.linuxPackages_zen;
+    # kernelPackages = pkgs.linuxPackages_zen;
     #initrd.kernelModules = [ "amdgpu" ];
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
@@ -125,10 +140,6 @@
     opencl.enable = true;
     overdrive.enable = true;
     overdrive.ppfeaturemask = "0xffffffff";
-    amdvlk = {
-      enable = false;
-      support32Bit.enable = false;
-    };
   };
 
   #hardware.cpu.amd.ryzen-smu.enable = true;
@@ -179,12 +190,12 @@
           openGLSupport = true;
         };
         swtpm.enable = true;
-        ovmf = {
-          enable = true;
-          packages = [
-            pkgs.OVMFFull
-          ];
-        };
+        # ovmf = {
+        #   enable = true;
+        #   packages = [
+        #     pkgs.OVMFFull
+        #   ];
+        # };
       };
     };
     spiceUSBRedirection.enable = true;
@@ -271,7 +282,7 @@
     extraBackends = [
       pkgs.hplipWithPlugin
       pkgs.sane-airscan
-      (pkgs.epsonscan2.override { withNonFreePlugins = true; })
+      # (pkgs.epsonscan2.override { withNonFreePlugins = true; })
     ];
     openFirewall = true;
   };

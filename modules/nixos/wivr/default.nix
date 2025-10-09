@@ -37,38 +37,38 @@
       config = {
         enable = true;
         json = {
-          scale = [
-            0.5
-            0.5
-          ];
+          # scale = [
+          #   0.5
+          #   0.5
+          # ];
           bitrate = 50000000;
           #	        50000000;
-          encoders = [
-            {
-              encoder = "vaapi";
-              codec = "h265";
-              width = 0.5;
-              height = 0.25;
-              offset_x = 0.0;
-              offset_y = 0.0;
-            }
-            {
-              encoder = "vaapi";
-              codec = "h265";
-              width = 0.5;
-              height = 0.75;
-              offset_x = 0.0;
-              offset_y = 0.25;
-            }
-            {
-              encoder = "vaapi";
-              codec = "h265";
-              width = 0.5;
-              height = 1.0;
-              offset_x = 0.5;
-              offset_y = 0.0;
-            }
-          ];
+          # encoders = [
+          #   {
+          #     encoder = "vaapi";
+          #     codec = "h265";
+          #     width = 0.5;
+          #     height = 0.25;
+          #     offset_x = 0.0;
+          #     offset_y = 0.0;
+          #   }
+          #   {
+          #     encoder = "vaapi";
+          #     codec = "h265";
+          #     width = 0.5;
+          #     height = 0.75;
+          #     offset_x = 0.0;
+          #     offset_y = 0.25;
+          #   }
+          #   {
+          #     encoder = "vaapi";
+          #     codec = "h265";
+          #     width = 0.5;
+          #     height = 1.0;
+          #     offset_x = 0.5;
+          #     offset_y = 0.0;
+          #   }
+          # ];
           openvr-compat-path = "${pkgs.xrizer}/lib/xrizer";
           application = [ pkgs.wlx-overlay-s ];
           #encoders = [

@@ -16,9 +16,9 @@ in
     home.packages = with pkgs; [
       zenity
       prismlauncher
-      (mcpelauncher-ui-qt.overrideAttrs (prev: {
-        runtimeDeps = [ pkgs.zenity ];
-      }))
+      # (mcpelauncher-ui-qt.overrideAttrs (prev: {
+      #   runtimeDeps = [ pkgs.zenity ];
+      # }))
     ];
   };
 }
