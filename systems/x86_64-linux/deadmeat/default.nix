@@ -53,6 +53,7 @@
     "/share/applications"
   ];
   environment.systemPackages = [
+    pkgs.helvum
     pkgs.wootility
     pkgs.wlx-overlay-s
     pkgs.wineWow64Packages.full
@@ -317,6 +318,18 @@
     ]; # Groups
     shell = pkgs.nushell;
     #TODO Set up secret management with sops-nix
+  };
+
+  services.searx = {
+    enable = true;
+    # redisCreateLocally
+    settings = {
+      server = {
+        secret_key = "DUMMYKEY";
+        bind_address = "127.0.0.1";
+        port = 8888;
+      };
+    };
   };
 
   #users.users.root.initialPassword = "pass";
