@@ -23,7 +23,11 @@
     powertop.enable = false;
     enable = true;
   };
+  services.udisks2 = {
+    enable = true;
+  };
 
+  programs.nix-ld.enable = true;
   programs.localsend = {
     enable = true;
     openFirewall = true;
@@ -36,14 +40,39 @@
     dockerCompat = true;
 
   };
-  # programs.sway = {
-  #   enable = true;
-  #   wrapperFeatures.gtk = true;
-  # };
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
   specialisation = {
+    #   netPass.configuration = {
+    #     networking.interfaces."eno1" = {
+    #       useDHCP = false;
+    #       address = "192.168.43.1";
+    #       prefixLength = 24;
+    #     };
+    #     networking.firewall.extraCommands = ''
+    #       iptables -t nat -A POSTROUTING -o wlp6s0
+    # '';
+    #     networking.nat = {
+    #       enable = true;
+    #       internalInterfaces = [
+    #         "eno1"
+    #       ];
+    #       externalInterface = "wlp6s0";
+    #     };
+    #     boot.kernel = {
+    #       sysctl = {
+    #         "net.ipv4.ip_forward" = 1;
+    #         "net.ipv4.conf.all.forwarding" = 1;
+    #         "net.ipv6.conf.all.forwarding" = 1;
+    #       };
+    #     };
+    #   };
     windowsDev.configuration = {
       environment.systemPackages = [
         pkgs.virt-viewer
+        pkgs.distrobox
         pkgs.looking-glass-client
       ];
       system.nixos.tags = [ "gpu-pass" ];
@@ -53,17 +82,15 @@
       ];
       programs.virt-manager.enable = true;
       virtualisation = {
+        # efi.OVMF =
+        #   (pkgs.OVMF.override {
+        #     secureBoot = true;
+        #     tpmSupport = true;
+        #   }).fd;
         libvirtd.enable = true;
         libvirtd.qemu = {
           package = pkgs.qemu_kvm;
           runAsRoot = true;
-          ovmf.enable = true;
-          ovmf.packages = [
-            (pkgs.OVMF.override {
-              secureBoot = true;
-              tpmSupport = true;
-            }).fd
-          ];
           swtpm.enable = true;
         };
         spiceUSBRedirection.enable = true;
@@ -156,16 +183,17 @@
     enable = true;
     drivers = with pkgs; [
       gutenprint
-      hplip
+      # hplip
       splix
-      epson-escpr2
+      # epson-escpr2
     ];
     browsing = true;
   };
   environment.systemPackages = [
     pkgs.acpi
-    pkgs.eagle
+    # pkgs.eagle
     pkgs.powertop
+    pkgs.libgcc
   ];
   services.avahi = {
     enable = true;
@@ -177,7 +205,7 @@
     extraBackends = [
       pkgs.hplipWithPlugin
       pkgs.sane-airscan
-      (pkgs.epsonscan2.override { withNonFreePlugins = true; })
+      # (pkgs.epsonscan2.override { withNonFreePlugins = true; })
     ];
     openFirewall = true;
   };
@@ -294,12 +322,20 @@
     shell = pkgs.nushell;
     #TODO Set up secret management with sops-nix
   };
+  # services.pixiecore = {
+  #   dhcpNoBind = true;
+  #   enable = true;
+  #   openFirewall = true;
+  #   mode = "quick";
+  # };
   networking.firewall = {
     allowedTCPPorts = [
       25565
     ];
     allowedUDPPorts = [
       25565
+      53
+      67
     ];
   };
   networking.firewall = {

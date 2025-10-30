@@ -107,7 +107,7 @@ in
           followMouse = "yes";
           #mouseWarping = true;
           newWindow = "smart";
-          wrapping = "workspace";
+          wrapping = "yes";
 
         };
 

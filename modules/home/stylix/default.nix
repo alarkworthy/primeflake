@@ -15,6 +15,9 @@ in
   config = mkIf cfg.enable {
     programs.btop = {
       enable = true;
+      settings = {
+        vim_keys = true;
+      };
       package = (pkgs.btop.override { rocmSupport = true; });
     };
     gtk = {

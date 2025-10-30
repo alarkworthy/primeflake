@@ -18,6 +18,9 @@
       pkgs.texlab
       pkgs.bibtex-tidy
       pkgs.basedpyright
+      pkgs.codebook
+      pkgs.typos-lsp
+
     ];
 
     stylix.targets.helix.transparent = lib.mkForce false;
@@ -25,6 +28,13 @@
       enable = true;
       languages = {
         language-server = {
+          typos = {
+            command = "typos-lsp";
+            environment = {
+              "Rust" = "error";
+            };
+            config.diagonosticSeverity = "Info";
+          };
           nixd = {
             command = "nixd";
             args = [ "--semantic-tokens=true" ];
@@ -43,6 +53,10 @@
                   home-manager.expr = "${nixosOpts}.home-manager.users.type.getSubOptions []";
                 };
               };
+          };
+          codekbook = {
+            command = "codebook-lsp";
+            args = [ "serve" ];
           };
           tinymist = {
             command = "tinymist";
@@ -65,7 +79,10 @@
           }
           {
             name = "typst";
-            language-servers = [ "tinymist" ];
+            language-servers = [
+              "tinymist"
+              "typos"
+            ];
           }
           {
             name = "python";

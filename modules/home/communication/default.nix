@@ -26,14 +26,14 @@ in
     ];
 
     #services.easyeffects.enable = true; #need that background filter baby, later learn to autospawn in a workspace with discord
-    services.arrpc = {
-      enable = true;
-      systemdTarget = "sway-session.target";
-    };
+    # services.arrpc = {
+    #   enable = true;
+    #   systemdTarget = "sway-session.target";
+    # };
     programs.nixcord = {
       discord.vencord.unstable = true;
       enable = true;
-      discord.enable = false;
+      discord.enable = true;
       vesktop.enable = true;
       config = {
         useQuickCss = false;
@@ -52,7 +52,7 @@ in
             format = "human";
           };
           clearURLs.enable = true;
-          colorSighted.enable = true;
+          # colorSighted.enable = true;
           consoleJanitor.enable = true;
           copyEmojiMarkdown.enable = true;
           copyFileContents.enable = true;
@@ -146,7 +146,7 @@ in
           whoReacted.enable = true;
           youtubeAdblock.enable = true;
           webKeybinds.enable = true;
-          webRichPresence.enable = true;
+          # webRichPresence.enable = true;
           webScreenShareFixes.enable = true;
         };
       };

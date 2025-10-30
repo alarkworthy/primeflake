@@ -24,7 +24,27 @@
   pluto.home.system = "Laptop";
   home.packages = [
     pkgs.moonlight-qt
+    pkgs.mprisence
+    pkgs.vlc
   ];
+
+  programs = {
+    yazi = {
+      enable = true;
+      enableNushellIntegration = true;
+      extraPackages = [
+        pkgs.ouch
+        pkgs.glow
+      ];
+      settings = {
+        log = false;
+      };
+    };
+    mpv = {
+      enable = true;
+      scripts = [ pkgs.mpvScripts.mpris ];
+    };
+  };
 
   # xdg.mimeApps = {
   #   enable = true;
