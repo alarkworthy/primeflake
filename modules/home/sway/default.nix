@@ -22,9 +22,17 @@ in
       nero-umu
     ];
 
+    # services.gnome-keyring = {
+    #   enable = true;
+    #   components = [
+    #     "pkcs11"
+    #     "secrets"
+    #     "ssh"
+    #   ];
+    # };
     #Sway specific
 
-    xdg.portal.enable = true;
+    xdg.portal.enable = false;
     #xdg.portal.configPackages = with pkgs; [
     #];
     #xdg.portal.config.common.default =;
@@ -36,6 +44,7 @@ in
 
         "org.freedesktop.impl.portal.Screencast" = [ "wlr" ];
         "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
+        # "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
       };
 
     };
@@ -47,6 +56,7 @@ in
     wayland.systemd.target = "sway-session.target";
     wayland.windowManager.sway = {
       #General Config
+      systemd.variables = [ "--all" ];
       enable = true;
       systemd.enable = true;
       wrapperFeatures.gtk = true;

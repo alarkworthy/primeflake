@@ -33,12 +33,12 @@ in
         enable = true;
         package = (pkgs.papirus-icon-theme.override { color = "blue"; });
         dark = "Papirus-Dark";
-        light = "Papirus-Light";
+        light = "Papirus-Dark";
       };
-        cursor = {
-          package = pkgs.rose-pine-cursor;
-          name = "BreezeX-RosePine-Linux";
-          size = 32;
+      cursor = {
+        package = pkgs.rose-pine-cursor;
+        name = "BreezeX-RosePine-Linux";
+        size = 32;
       };
       targets = {
         neovim.enable = false;
@@ -53,7 +53,7 @@ in
         firefox.profileNames = [ "default" ];
       };
       opacity = {
-        terminal = 0.7;
+        terminal = 0.9;
         popups = 0.8;
         desktop = 0.8;
         applications = 1.0;

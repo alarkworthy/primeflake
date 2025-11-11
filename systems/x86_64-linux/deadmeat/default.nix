@@ -44,14 +44,34 @@
     sleepy-launcher.enable = true;
   };
 
+  xdg.portal = {
+    wlr = {
+      enable = true;
+    };
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-wlr
+    ];
+    enable = true;
+    config = {
+      sway = {
+        default = [ "gtk" ];
+
+        "org.freedesktop.impl.portal.Screencast" = [ "wlr" ];
+        "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
+        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+      };
+    };
+  };
+
   services.flatpak.enable = false;
   programs.adb.enable = true;
   musnix.enable = true;
   hardware.wooting.enable = true;
-  environment.pathsToLink = [
-    "/share/xdg-desktop-portal"
-    "/share/applications"
-  ];
+  # environment.pathsToLink = [
+  #   "/share/xdg-desktop-portal"
+  #   "/share/applications"
+  # ];
   environment.systemPackages = [
     pkgs.helvum
     pkgs.wootility
@@ -65,6 +85,8 @@
     pkgs.alcom
     pkgs.retroarch
     pkgs.rpcs3
+    pkgs.mpv
+    pkgs.vlc
   ];
   programs.envision = {
     enable = false;
@@ -316,7 +338,7 @@
       "plugdev"
       "gamemode"
     ]; # Groups
-    shell = pkgs.nushell;
+    # shell = pkgs.nushell;
     #TODO Set up secret management with sops-nix
   };
 
@@ -339,11 +361,11 @@
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = false;
-  };
+  # programs.mtr.enable = true;
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = false;
+  # };
 
   # List services that you want to enable:
 

@@ -83,7 +83,7 @@ in
 
       };
       extraPackages = with pkgs; [
-        foot
+        xsel
       ];
       extraCompatPackages = [
         pkgs.steamtinkerlaunch

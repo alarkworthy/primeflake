@@ -26,16 +26,16 @@ in
         name = "BreezeX-RosePine-Linux";
         size = 32;
       };
-      image =
-        if config.pluto.system == "Desktop" then
-          "${./bgs/space/purplesky.jpg}"
-        else if config.pluto.system == "Laptop" then
-          "${./bgs/space/coolbackground.png}"
-        else
-          "${./bgs/space/purplesky.jpg}";
+      # image =
+      # if config.pluto.system == "Desktop" then
+      #   "${./bgs/space/purplesky.jpg}"
+      # else if config.pluto.system == "Laptop" then
+      #   "${./bgs/space/coolbackground.png}"
+      # else
+      #   "${./bgs/space/purplesky.jpg}";
       base16Scheme = "${pkgs.base16-schemes}/share/themes/spaceduck.yaml";
 
-      #image = "${./bgs/nature/snowMountains1.jpg}";
+      image = "${./bgs/nature/snowMountains1.jpg}";
       #Cool orange spiral galaxy close up
       #image = "${./bgs/nasa/spiral1.png}";
       #imageScalingMode = "fill";
