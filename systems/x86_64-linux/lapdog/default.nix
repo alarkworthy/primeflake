@@ -9,7 +9,15 @@
   imports = [
     ./hardware-configuration.nix
   ];
+  # Force override any injected NIX_PATH definitions (Chaotic, old channels, etc.)
+  environment.sessionVariables.NIX_PATH = lib.mkForce "nixpkgs=flake:nixpkgs:/nix/var/nix/profiles/per-user/root/channels";
 
+  # Prevent NixOS from appending any other channel entries
+  nix.nixPath = lib.mkForce [
+    "nixpkgs=flake:nixpkgs"
+    "/nix/var/nix/profiles/per-user/root/channels"
+  ];
+  chaotic.nyx.nixPath.enable = false;
   pluto = {
     audio.enable = true;
     impermanence.enable = true;

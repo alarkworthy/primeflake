@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   config,
+  lib,
   ...
 }:
 {
@@ -21,6 +22,14 @@
     enable = true;
     matlab = true;
   };
+  chaotic.nyx.nixPath.enable = false;
+  # environment.sessionVariables.NIX_PATH = lib.mkForce "nixpkgs=flake:nixpkgs:/nix/var/nix/profiles/per-user/root/channels";
+
+  # Prevent NixOS from appending any other channel entries
+  nix.nixPath = lib.mkForce [
+    "nixpkgs=flake:nixpkgs"
+    "/nix/var/nix/profiles/per-user/root/channels"
+  ];
   pluto.home.system = "Laptop";
   home.packages = [
     pkgs.moonlight-qt

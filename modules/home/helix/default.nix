@@ -20,7 +20,7 @@
       pkgs.basedpyright
       pkgs.codebook
       pkgs.typos-lsp
-
+      pkgs.markdown-oxide
     ];
 
     stylix.targets.helix.transparent = lib.mkForce false;

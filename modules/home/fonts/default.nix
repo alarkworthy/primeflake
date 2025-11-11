@@ -22,7 +22,7 @@ in
       noto-fonts-emoji
       # noto-fonts-extra
       ipafont
-      font-awesome # awesome 6
+      font-awesome_6 # awesome 6
       fira-code
       fira-code-symbols
       corefonts

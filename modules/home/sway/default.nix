@@ -143,7 +143,9 @@ in
               hiddenState = "hide";
               command = "swaybar"; # Need waybar
               statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml"; # need i3status we dont need this
-
+              extraConfig = ''
+                icon_theme ${config.stylix.iconTheme.dark}
+              '';
             }
             // config.stylix.targets.sway.exportedBarConfig
             // {
@@ -152,6 +154,7 @@ in
                   config.stylix.fonts.sansSerif.name
                   "Font Awesome 6 Free"
                 ];
+                style = "";
                 size = 11.0; # config.stylix.fonts.sizes.desktop + 0.0;
               };
             }

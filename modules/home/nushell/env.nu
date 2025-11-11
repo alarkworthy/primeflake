@@ -15,6 +15,7 @@ $env.ENV_CONVERSIONS = {
   }
 }
 
+$env.NIX_PATH = "nixpkgs=flake:nixpkgs:/nix/var/nix/profiles/per-user/root/channels"
 # Directories to search for scripts when calling source or use
 #
 # By default, <nushell-config-dir>/scripts is added
