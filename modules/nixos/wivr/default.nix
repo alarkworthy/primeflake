@@ -35,14 +35,25 @@
         #XRT_DEBUG_GUI = "1";
       };
       config = {
-        enable = true;
+        enable = false;
         json = {
-          # scale = [
-          #   0.5
-          #   0.5
-          # ];
+          scale = 0.5;
+          # bitdepth = 10;
           bitrate = 50000000;
-          #	        50000000;
+          #   45000000;
+          # encoders = [
+          #   {
+          #     codec = "h265";
+          #     encoder = "vulkan";
+          #     width = 0.5;
+          #   }
+          #   {
+          #     codec = "h265";
+          #     encoder = "vulkan";
+          #     offset_x = 0.5;
+          #     width = 0.5;
+          #   }
+          # ];
           # encoders = [
           #   {
           #     encoder = "vaapi";
@@ -70,17 +81,7 @@
           #   }
           # ];
           openvr-compat-path = "${pkgs.xrizer}/lib/xrizer";
-          application = [ pkgs.wlx-overlay-s ];
-          #encoders = [
-          #	{
-          #		encoder = "vaapi";
-          #		codec = "av1";
-          #		width = 1.0;
-          #		height = 1.0;
-          #		offset_x = 0.0;
-          #		offset_y = 0.0;
-          #	}
-          #];
+          # application = [ pkgs.wlx-overlay-s ];
         };
       };
     };

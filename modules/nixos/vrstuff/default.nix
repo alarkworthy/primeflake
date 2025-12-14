@@ -12,7 +12,8 @@
 
     environment.systemPackages = with pkgs; [
       slimevr
-      #slimevr
+      intiface-central
+      vrcx
     ];
     networking.firewall = {
       allowedTCPPorts = [
@@ -48,7 +49,7 @@
     #         }
     #       ];
     #     };
-      # };
+    # };
     # boot.kernelPatches = [
     #   {
     #     name = "amdgpu-ignore-ctx-privileges";
