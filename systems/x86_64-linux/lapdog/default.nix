@@ -48,6 +48,7 @@
     dockerCompat = true;
 
   };
+  # hardware.xone.enable = true;
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -116,7 +117,7 @@
         options kvmfr static_size_mb=32
       '';
       services.udev.extraRules = ''
-        SUBSYSTEM=="kvmfr", OWNER="alark", GROUP="kvm", MODE="0660"
+        SUBSYSTEM=="kvmfr", GROUP="kvm", MODE="0660"
       '';
       virtualisation.libvirtd.qemu.verbatimConfig = ''
         cgroup_device_acl = [
@@ -176,6 +177,8 @@
       START_CHARGE_THRESH_BAT0 = 50;
       STOP_CHARGE_THRESH_BAT0 = 60;
       RUNTIME_PM_DRIVER_DENYLIST = "mei_me";
+      RADEON_DPM_STATE_ON_AC = "performance";
+      RADEON_DPM_STATE_ON_BAT = "battery";
     };
   };
 
@@ -202,6 +205,7 @@
     # pkgs.eagle
     pkgs.powertop
     pkgs.libgcc
+    pkgs.bluetui
   ];
   services.avahi = {
     enable = true;
@@ -284,15 +288,15 @@
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
-    inputMethod = {
-      type = "fcitx5";
-      enable = true;
-      fcitx5.addons = with pkgs; [
-        fcitx5-gtk
-        fcitx5-chinese-addons
-        fcitx5-configtool
-      ];
-    };
+    # inputMethod = {
+    #   type = "fcitx5";
+    #   enable = true;
+    #   fcitx5.addons = with pkgs; [
+    #     fcitx5-gtk
+    #     fcitx5-chinese-addons
+    #     fcitx5-configtool
+    #   ];
+    # };
   };
   # services.xserver.xkb = {
   #   layout = "us";

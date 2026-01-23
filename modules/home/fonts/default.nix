@@ -19,7 +19,7 @@ in
     home.packages = with pkgs; [
       noto-fonts
       noto-fonts-cjk-sans
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       # noto-fonts-extra
       ipafont
       font-awesome_6 # awesome 6

@@ -79,8 +79,8 @@ in
         };
 
         startup = [
-          { command = "fcitx5 -d -r"; }
-          { command = "fcitx5-remote -r"; }
+          # { command = "fcitx5 -d -r"; }
+          # { command = "fcitx5-remote -r"; }
           { command = "exec mako"; }
         ];
         keybindings = lib.mkOptionDefault {

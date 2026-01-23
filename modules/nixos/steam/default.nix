@@ -82,6 +82,9 @@ in
         enable = false;
 
       };
+      extraCompatPackages = [
+        pkgs.proton-ge-bin
+      ];
       protontricks = {
         #package =
         enable = true;

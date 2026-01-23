@@ -42,6 +42,8 @@ in
       ripgrep
       fd
       comma
+      fastfetch
+      hyfetch
     ];
     documentation = {
       dev.enable = true;

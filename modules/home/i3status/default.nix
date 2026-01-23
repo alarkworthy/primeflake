@@ -23,6 +23,7 @@ in
             }
             {
               block = "amd_gpu";
+              device = "card2";
               format_alt = " $icon $vram_used / $vram_total ";
             }
             {

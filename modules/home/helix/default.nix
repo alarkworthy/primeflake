@@ -28,6 +28,10 @@
       enable = true;
       languages = {
         language-server = {
+          # clangd = {
+          #   command = "clangd";
+          #   args = [ "-std=c++17" ];
+          # };
           typos = {
             command = "typos-lsp";
             environment = {
