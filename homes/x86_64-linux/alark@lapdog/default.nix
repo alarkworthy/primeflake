@@ -22,7 +22,7 @@
     enable = true;
     matlab = true;
   };
-  chaotic.nyx.nixPath.enable = false;
+  # chaotic.nyx.nixPath.enable = false;
   # environment.sessionVariables.NIX_PATH = lib.mkForce "nixpkgs=flake:nixpkgs:/nix/var/nix/profiles/per-user/root/channels";
 
   # Prevent NixOS from appending any other channel entries
@@ -35,6 +35,8 @@
     pkgs.moonlight-qt
     pkgs.mprisence
     pkgs.vlc
+    pkgs.nero-umu
+    pkgs.snes9x-gtk
   ];
 
   programs = {

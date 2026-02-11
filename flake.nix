@@ -29,7 +29,7 @@
     #    url = "github:Jovian-Experiments/Jovian-NixOS";
     #    inputs.nixpkgs.follows = "nixpkgs";
     #};
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    # chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     neovim.url = "github:alarkworthy/neovim";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -86,9 +86,9 @@
     liba.mkFlake {
       channels-config = {
         allowUnfree = true; # Allow unfree packages
-        permittedInsecurePackages = [
-          "qtwebengine-5.15.19"
-        ];
+        # permittedInsecurePackages = [
+        #   "qtwebengine-5.15.19"
+        # ];
       };
 
       overlays = with inputs; [
@@ -162,14 +162,14 @@
         #  home-manager.useUserPackages = true;
         #}
         stylix.nixosModules.stylix
-        chaotic.nixosModules.default
+        # chaotic.nixosModules.default
         #hyprland.nixosModules.default
       ];
 
       homes.modules = with inputs; [
         #hyprland.homeManagerModules.default
         nixcord.homeModules.nixcord
-        chaotic.homeManagerModules.default
+        # chaotic.homeManagerModules.default
       ];
 
     }

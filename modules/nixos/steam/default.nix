@@ -27,7 +27,6 @@ in
     };
 
     hardware.enableRedistributableFirmware = true;
-    chaotic.hdr.enable = false;
     programs.gamescope = {
       capSysNice = true;
       enable = false;

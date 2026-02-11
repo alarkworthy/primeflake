@@ -17,7 +17,7 @@
     "nixpkgs=flake:nixpkgs"
     "/nix/var/nix/profiles/per-user/root/channels"
   ];
-  chaotic.nyx.nixPath.enable = false;
+  # chaotic.nyx.nixPath.enable = false;
   pluto = {
     audio.enable = true;
     impermanence.enable = true;
@@ -43,6 +43,9 @@
   services.upower.enable = true;
   programs.noisetorch.enable = true;
 
+  services.openssh = {
+    enable = true;
+  };
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;
@@ -225,7 +228,7 @@
   #		enable = true;
   # };
   boot = {
-    kernelPackages = pkgs.linuxPackages_cachyos;
+    kernelPackages = pkgs.linuxPackages_zen;
     #pkgs.linuxPackages_zen;
     # initrd.kernelModules = [ "amdgpu" ];
     loader.systemd-boot.enable = true;
