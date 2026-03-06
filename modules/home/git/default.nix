@@ -15,8 +15,10 @@ in
   config = mkIf cfg.enable {
     programs.git = {
       enable = true;
-      userName = "Andrew Larkworthy";
-      userEmail = "andrew@larkworthy.org";
+      settings.user = {
+        name = "Andrew Larkworthy";
+        email = "andrew@larkworthy.org";
+      };
     };
   };
 }

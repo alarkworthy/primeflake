@@ -14,6 +14,8 @@
       pkgs.procps
       pkgs.xrizer
     ];
+    systemd.user.services.wivrn.serviceConfig.ExecStart =
+      lib.mkForce "${config.security.wrapperDir}/wivrn-server";
     services.wivrn = {
       enable = true;
       autoStart = false;

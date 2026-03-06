@@ -51,7 +51,7 @@ in
       pkgs.nushell
     ];
     programs.git.enable = true;
-    programs.neovim.defaultEditor = true;
+    # programs.neovim.defaultEditor = true;
     environment.pathsToLink = [
       "/share/xdg-desktop-portal"
       "/share/applications"
@@ -60,6 +60,7 @@ in
     programs.ssh = {
       startAgent = true;
     };
+    users.groups.plugdev = { };
     #hardware.opentabletdriver = {
     #  enable = true;
 

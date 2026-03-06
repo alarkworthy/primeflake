@@ -17,7 +17,8 @@ in
     programs.ssh = mkMerge [
       {
         enable = true;
-        addKeysToAgent = "yes";
+        matchBlocks."*".addKeysToAgent = "yes";
+
       }
       (mkIf (config.pluto.home.system == "Desktop") {
         matchBlocks = {

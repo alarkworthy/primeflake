@@ -16,9 +16,11 @@ in
     home.packages = with pkgs; [
       zenity
       prismlauncher
+      hytale-launcher
       # (mcpelauncher-ui-qt.overrideAttrs (prev: {
       #   runtimeDeps = [ pkgs.zenity ];
       # }))
     ];
   };
 }
+# hytale-launcher = hytale.packages.x86_64-linux.hytale-launcher;

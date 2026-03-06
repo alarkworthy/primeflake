@@ -25,6 +25,9 @@ in
           ".." = "cd ..";
 
         };
+        sessionVariables = {
+          WLR_RENDERER = "vulkan";
+        };
       };
       nushell = {
         enable = true;

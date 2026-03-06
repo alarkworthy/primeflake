@@ -83,7 +83,11 @@ in
 
       };
       extraPackages = with pkgs; [
-        xsel
+        # xsel
+        wl-clipboard-x11
+        # gamescope
+        gamemode
+        # winetricks
       ];
       extraCompatPackages = [
         pkgs.steamtinkerlaunch

@@ -23,7 +23,7 @@
   pluto = {
     audio.enable = true;
     impermanence.enable = false;
-    streaming.sunshine.enable = true;
+    streaming.sunshine.enable = false;
     docker.enable = false;
     theming.stylix.enable = true;
     gaming.vrstuff.enable = true;
@@ -34,7 +34,32 @@
     enable = true;
   };
 
-  nix.settings = inputs.aagl.nixConfig;
+  services.clipboard-sync.enable = true;
+  # boot.nixStoreMountOpts = [
+  #   "nodev"
+  #   "nosuid"
+  #   "recovery"
+  #   "skip_bad_blocks"
+  # ];
+  programs.localsend = {
+    enable = true;
+    openFirewall = true;
+  };
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
+  security.soteria.enable = true;
+  nix.settings = inputs.aagl.nixConfig // {
+    trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+    ];
+    substituters = [
+      "https://cache.nixos.org"
+      "https://nixpkgs-wayland.cachix.org"
+    ];
+  };
   programs = {
     anime-game-launcher.enable = true;
     anime-games-launcher.enable = true;
@@ -47,6 +72,11 @@
   xdg.portal = {
     wlr = {
       enable = true;
+
+      settings.screencast = {
+        chooser_cmd = "${pkgs.fuzzel}/bin/fuzzel -d";
+        chooser_type = "dmenu";
+      };
     };
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
@@ -64,29 +94,38 @@
     };
   };
 
-  services.flatpak.enable = false;
-  programs.adb.enable = true;
-  musnix.enable = true;
+  services.flatpak.enable = true;
+  # musnix.enable = false;
   hardware.wooting.enable = true;
   # environment.pathsToLink = [
   #   "/share/xdg-desktop-portal"
   #   "/share/applications"
+  virtualisation.containers.enable = true;
+  virtualisation.waydroid = {
+    enable = true;
+    package = pkgs.waydroid-nftables;
+  };
   # ];
   environment.systemPackages = [
+    pkgs.corefonts
+    pkgs.android-tools
     pkgs.helvum
+    pkgs.distrobox
     pkgs.wootility
-    pkgs.wlx-overlay-s
+    pkgs.wayvr
     pkgs.wineWow64Packages.full
-    pkgs.spice
-    pkgs.win-virtio
-    pkgs.win-spice
-    pkgs.spice-protocol
-    pkgs.spice-gtk
+    pkgs.fuzzel
+    # pkgs.spice
+    # pkgs.win-virtio
+    # pkgs.win-spice
+    # pkgs.spice-protocol
+    # pkgs.spice-gtk
     pkgs.alcom
     pkgs.retroarch
-    pkgs.rpcs3
+    # pkgs.rpcs3
     pkgs.mpv
     pkgs.vlc
+    pkgs.libnotify
   ];
   programs.envision = {
     enable = false;
@@ -99,8 +138,15 @@
 
   # Use the systemd-boot EFI boot loader.
   boot = {
-    kernelPackages = pkgs.linuxPackages_cachyos.cachyOverride { mArch = "ZEN4"; };
-    # kernelPackages = pkgs.linuxPackages_zen;
+    # kernelPackages = pkgs.linuxPackages_cachyos.cachyOverride { mArch = "ZEN4"; };
+    # kernelPackages = pkgs.linuxPackagesFor (
+    #   pkgs.linux_zen.override {
+    #     extraConfig = ''
+    #       SDCARDFS m
+    #     '';
+    #   }
+    # );
+    kernelPackages = pkgs.linuxPackages_zen;
     #initrd.kernelModules = [ "amdgpu" ];
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
@@ -154,7 +200,11 @@
 
   };
   programs.dconf.enable = true;
-  programs.corectrl = {
+  # programs.corectrl = {
+  #   enable = true;
+  # };
+
+  services.lact = {
     enable = true;
   };
 
@@ -171,6 +221,9 @@
   #"L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
   #];
 
+  # hardware.uni-sync = {
+  #   enable = true;
+  # };
   #Razer
 
   hardware.openrazer = {
@@ -182,6 +235,26 @@
   };
   #Note, there is openrgb support in NixOS options
 
+  services.pipewire.wireplumber.extraConfig."99-disable-suspend" = {
+    "monitor.alsa.rules" = [
+      {
+        matches = [
+          {
+            "node.name" = "alsa_output.pci-0000_7e_00.6.iec958-stereo";
+          }
+          {
+            "node.name" =
+              "alsa_input.usb-Blue_Microphones_Yeti_X_2049SG00LBZ8_888-000313110306-00.analog-stereo";
+          }
+        ];
+        actions = {
+          update-props = {
+            "session.suspend-timeout-seconds" = 0;
+          };
+        };
+      }
+    ];
+  };
   #Bluetooth
   hardware.bluetooth = {
     enable = true;
@@ -192,8 +265,8 @@
   #Xbox stuff
   #hardware.xpadneo.enable = true; #For Xbox One wireless controllers
 
-  hardware.xpad-noone.enable = true;
-  hardware.xone.enable = true; # For Xbox One and Xbox Series X|S accessories
+  # hardware.xpad-noone.enable = true;
+  # hardware.xone.enable = true; # For Xbox One and Xbox Series X|S accessories
 
   #Might look into hardware.fancontrol
 
@@ -264,15 +337,15 @@
   # Select internationalisation properties.
   i18n = {
     defaultLocale = "en_US.UTF-8";
-    inputMethod = {
-      type = "fcitx5";
-      enable = true;
-      fcitx5.addons = with pkgs; [
-        fcitx5-gtk
-        fcitx5-chinese-addons
-        fcitx5-configtool
-      ];
-    };
+    # inputMethod = {
+    #   type = "fcitx5";
+    #   enable = true;
+    #   fcitx5.addons = with pkgs; [
+    #     fcitx5-gtk
+    #     fcitx5-chinese-addons
+    #     fcitx5-configtool
+    #   ];
+    # };
   };
   console = {
     font = "Lat2-Terminus16";
@@ -300,15 +373,25 @@
     browsing = true;
   };
 
-  hardware.sane = {
-    enable = true;
-    extraBackends = [
-      pkgs.hplipWithPlugin
-      pkgs.sane-airscan
-      # (pkgs.epsonscan2.override { withNonFreePlugins = true; })
-    ];
+  services.open-webui = {
+    enable = false;
+    host = "0.0.0.0";
     openFirewall = true;
   };
+  services.ollama = {
+    enable = false;
+    package = pkgs.ollama-rocm;
+  };
+
+  # hardware.sane = {
+  #   enable = true;
+  #   extraBackends = [
+  #     pkgs.hplipWithPlugin
+  #     pkgs.sane-airscan
+  #     # (pkgs.epsonscan2.override { withNonFreePlugins = true; })
+  #   ];
+  #   openFirewall = true;
+  # };
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
@@ -342,15 +425,28 @@
     #TODO Set up secret management with sops-nix
   };
 
+  services.tinyproxy = {
+    enable = true;
+    settings = {
+      Port = 8888;
+      Listen = "0.0.0.0";
+
+    };
+  };
+
   services.searx = {
     enable = true;
     # redisCreateLocally
     settings = {
       server = {
         secret_key = "DUMMYKEY";
-        bind_address = "127.0.0.1";
-        port = 8888;
+        bind_address = "0.0.0.0";
+        port = 8889;
       };
+      search.formats = [
+        "html"
+        "json"
+      ];
     };
   };
 
@@ -374,8 +470,11 @@
 
   networking.firewall = {
     enable = true;
+    interfaces."alarkPC".allowedTCPPorts = [
+      8889
+      8888
+    ];
     allowedTCPPorts = [
-
     ];
     allowedUDPPorts = [
       8266

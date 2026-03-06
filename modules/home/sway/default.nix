@@ -18,7 +18,7 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      pavucontrol
+      pwvucontrol
       nero-umu
     ];
 
@@ -209,8 +209,8 @@ in
         }
         // attrsets.optionalAttrs (config.pluto.home.system == "Desktop") {
           #Acer
-          DP-1 = {
-            mode = "2560x1440@179.877Hz";
+          HDMI-A-1 = {
+            mode = "2560x1440@59.951Hz";
             pos = "0 0";
             adaptive_sync = "on";
           };
@@ -218,6 +218,8 @@ in
           DP-2 = {
             mode = "3440x1440@174.963Hz";
             pos = "2560 0";
+            render_bit_depth = "10";
+            hdr = "off";
           };
         }
         // attrsets.optionalAttrs (config.pluto.home.system == "Laptop") {

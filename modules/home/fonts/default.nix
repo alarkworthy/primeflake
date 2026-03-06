@@ -19,10 +19,15 @@ in
     home.packages = with pkgs; [
       noto-fonts
       noto-fonts-cjk-sans
-      noto-fonts-emoji
-      noto-fonts-extra
+      nerd-fonts.jetbrains-mono
+      noto-fonts-color-emoji
       ipafont
+      monocraft
+      miracode
       font-awesome # awesome 6
+      pkgs.ttf_bitstream_vera
+      pkgs.vista-fonts
+      pkgs.corefonts
     ];
   };
 }

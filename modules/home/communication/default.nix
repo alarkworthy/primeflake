@@ -13,13 +13,14 @@ in
     default = true;
   };
   config = mkIf cfg.enable {
-    services.easyeffects.enable = false;
+    services.easyeffects.enable = true;
     home.packages = with pkgs; [
       #discord#evil uwu
       #For screenshare with audio
       #nheko #matrix client
       # teamspeak3
       #arma3-unix-launcher
+      element-desktop
       mpg123
       gp-saml-gui
       openconnect
@@ -44,19 +45,19 @@ in
           anonymiseFileNames.enable = true;
           betterGifAltText.enable = true;
           betterGifPicker.enable = true;
-          blurNSFW.enable = true;
+          BlurNSFW.enable = true;
           betterSessions.enable = true;
           biggerStreamPreview.enable = true;
           callTimer = {
             enable = false;
             format = "human";
           };
-          clearURLs.enable = true;
+          ClearURLs.enable = true;
           colorSighted.enable = true;
           consoleJanitor.enable = true;
           copyEmojiMarkdown.enable = true;
           copyFileContents.enable = true;
-          copyUserURLs.enable = true;
+          CopyUserURLs.enable = true;
           customIdle = {
             enable = true;
             idleTimeout = 0.0;
@@ -78,17 +79,17 @@ in
           imageLink.enable = true;
           #imageZoom.enable = true;
           implicitRelationships.enable = true;
-          invisibleChat = {
-            enable = true;
-          };
+          # invisibleChat = {
+          #   enable = true;
+          # };
           keepCurrentChannel.enable = true;
           memberCount.enable = true;
           mentionAvatars.enable = true;
           messageLatency.enable = true;
           messageLinkEmbeds.enable = true;
           messageLogger.enable = true;
-          moreUserTags.enable = true;
-          mutualGroupDMs.enable = true;
+          # moreUserTags.enable = true;
+          MutualGroupDMs.enable = true;
           noDevtoolsWarning.enable = true;
           noF1.enable = true;
           noOnboardingDelay.enable = true;
@@ -105,17 +106,17 @@ in
           permissionFreeWill.enable = true;
           permissionsViewer.enable = true;
           pictureInPicture.enable = true;
-          pinDMs.enable = true;
+          PinDMs.enable = true;
           platformIndicators.enable = true;
           previewMessage.enable = true;
           reactErrorDecoder.enable = true;
           readAllNotificationsButton.enable = true;
           relationshipNotifier.enable = true;
-          replaceGoogleSearch = {
-            enable = false;
-            customEngineName = "duckduckgo";
-            customEngineURL = "https://duckduckgo.com/?q=";
-          };
+          # replaceGoogleSearch = {
+          #   enable = false;
+          #   customEngineName = "duckduckgo";
+          #   customEngineURL = "https://duckduckgo.com/?q=";
+          # };
           replyTimestamp.enable = true;
           reverseImageSearch.enable = true;
           #summaries.enable = true;
@@ -131,7 +132,7 @@ in
           startupTimings.enable = true;
           superReactionTweaks = {
             enable = true;
-            superReactionPlayingLimit = 0;
+            superReactionPlayingLimit = 0.0;
           };
           typingIndicator.enable = true;
           typingTweaks.enable = true;

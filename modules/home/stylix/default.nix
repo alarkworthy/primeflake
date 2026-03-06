@@ -61,12 +61,16 @@ in
       #abc
       fonts = {
         #emoji leave default who cares
-        monospace.name = "JetBrainsMono Nerd Font";
-        monospace.package = pkgs.nerd-fonts.jetbrains-mono; # (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; });
-        sansSerif.name = "CommitMono Nerd Font";
-        #	      sansSerif.name = "DejaVuSansM Nerd Font";
-        sansSerif.package = pkgs.nerd-fonts.commit-mono; # with pkgs; (nerdfonts.override { fonts = [ "CommitMono" ]; });
-        #	      sansSerif.package = with pkgs; (nerdfonts.override { fonts = ["DejaVuSansMono"]; });
+        monospace = {
+          name = "Monocraft";
+          package = pkgs.monocraft;
+        };
+        # monospace.name = "JetBrainsMono Nerd Font";
+        # monospace.package = pkgs.nerd-fonts.jetbrains-mono; # (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; });
+        # sansSerif.name = "CommitMono Nerd Font";
+        sansSerif.name = "DejaVuSansM Nerd Font";
+        # sansSerif.package = pkgs.nerd-fonts.commit-mono; # with pkgs; (nerdfonts.override { fonts = [ "CommitMono" ]; });
+        sansSerif.package = pkgs.nerd-fonts.dejavu-sans-mono;
         serif.name = "IosevkaTermSlab Nerd Font";
 
         serif.package = pkgs.nerd-fonts.iosevka-term-slab; # with pkgs; (nerdfonts.override { fonts = [ "IosevkaTermSlab" ]; });
