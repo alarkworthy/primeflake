@@ -29,6 +29,7 @@
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
     };
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
     snowfall-lib = {
       url = "github:snowfallorg/lib";
@@ -162,6 +163,7 @@
           hytale-launcher = hytale.packages.x86_64-linux.default;
           sway-unwrapped = inputs.nixpkgs-wayland.packages.x86_64-linux.sway-unwrapped;
           xdg-desktop-portal-wlr = inputs.nixpkgs-wayland.packages.x86_64-linux.xdg-desktop-portal-wlr;
+          intiface-central = inputs.nixpkgs-stable.legacyPackages."x86_64-linux".intiface-central;
           # vrcx = inputs.alarkpkgs.legacyPackages."x86_64-linux".vrcx;
           # wlx-overlay-s = prev.wlx-overlay-s.overrideAttrs (prevAttrs: {
           #   postPatch = nixpkgs.legacyPackages."x86_64-linux".wlx-overlay-s.postPatch;
