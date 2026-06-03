@@ -96,9 +96,12 @@ in
         ];
         keybindings = lib.mkOptionDefault {
           "${modr}+Return+Shift" = "exec ${pkgs.kitty}/bin/kitty";
-          "${modr}+Return+Ctrl" =
-            "exec slurp | grim -g - /home/alark/Pictures/swayshots/$(date -u +%4Y%2m%2d_%2Hh%2Mm%2Ss_swayshot.png)";
+          # "${modr}+Return+Ctrl" =
+          #   "exec slurp | grim -g - /home/alark/Pictures/swayshots/$(date -u +%4Y%2m%2d_%2Hh%2Mm%2Ss_swayshot.png)";
           "${modr}+S+Shift" = "exec slurp | grim -g - - | wl-copy";
+          "${modr}+O+Shift" = "exec slurp -o | grim -g - - | wl-copy";
+          "${modr}+Return+Ctrl" =
+            "exec slurp -o | grim -g - /home/alark/Pictures/swayshots/$(date -u +%4Y%2m%2d_%2Hh%2Mm%2Ss_swayshot.png)";
           #"${modr}+Tab+Shift" = "swaymsg output DP-2
           "XF86AudioRaiseVolume" =
             "exec ${pkgs.wireplumber}/bin/wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+";
@@ -106,8 +109,8 @@ in
             "exec ${pkgs.wireplumber}/bin/wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-";
           "XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
           "XF86AudioMicMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
-          "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 5";
-          "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 5";
+          # "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 5";
+          # "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 5";
           "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
           "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
           "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";

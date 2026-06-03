@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   #Enable modules
   pluto.home-manager.enable = true;
@@ -10,4 +10,14 @@
   pluto.streaming.obs.enable = true;
   pluto.vr.vrchat.enable = true;
   pluto.sound.design.enable = false;
+
+  programs.yazi = {
+    enable = true;
+    enableBashIntegration = true;
+  };
+
+  programs.sm64ex = {
+    baserom = pkgs.sm64baserom;
+    enable = true;
+  };
 }

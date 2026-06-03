@@ -34,7 +34,7 @@ in
     programs.nixcord = {
       discord.vencord.unstable = true;
       enable = true;
-      discord.enable = false;
+      discord.enable = true;
       vesktop.enable = true;
       config = {
         useQuickCss = false;
@@ -128,7 +128,7 @@ in
           showTimeoutDuration.enable = true;
           silentMessageToggle.enable = true;
           sortFriendRequests.enable = true;
-          spotifyCrack.enable = true;
+          spotifyCrack.enable = false;
           startupTimings.enable = true;
           superReactionTweaks = {
             enable = true;

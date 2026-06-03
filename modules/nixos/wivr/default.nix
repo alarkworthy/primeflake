@@ -22,7 +22,7 @@
       package = pkgs.wivrn;
       highPriority = true;
       #pkgs.alarkPkgs.wivrn-solarXR;
-      defaultRuntime = true;
+      # defaultRuntime = true;
       openFirewall = true;
       monadoEnvironment = {
         # XRT_COMPOSITOR_COMPUTE = "1";

@@ -1,11 +1,16 @@
-{config, pkgs, lib,  ...}:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   options.pluto.mailserver.enable = lib.mkEnableOption "Mail server" // {
-    enable = true;
+    enable = false;
   };
   config = lib.mkIf config.pluto.mailserver.enable {
     networking.nat = {
-      internalInterfaces = ["ve-+"];
+      internalInterfaces = [ "ve-+" ];
       externalInterface = "enp113s0";
       enable = true;
     };
@@ -14,7 +19,7 @@
         privateNetwork = true;
         localAddress = "10.0.10.2";
         hostAddress = "10.0.10.1";
-        
+
         config = config.container-config.nixosModules.default;
         #  config = {config, pkgs, lib,... }:
         #

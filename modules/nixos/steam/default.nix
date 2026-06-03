@@ -28,8 +28,12 @@ in
 
     hardware.enableRedistributableFirmware = true;
     # chaotic.hdr.enable = true;
+
+    environment.systemPackages = [
+      pkgs.gamescope
+    ];
     programs.gamescope = {
-      capSysNice = true;
+      # capSysNice = true;
       enable = true;
     };
     programs.gamemode = {
@@ -78,10 +82,10 @@ in
       enable = true;
       remotePlay.openFirewall = true;
       extest.enable = true;
-      gamescopeSession = {
-        enable = true;
+      # gamescopeSession = {
+      #   enable = true;
 
-      };
+      # };
       extraPackages = with pkgs; [
         # xsel
         wl-clipboard-x11

@@ -12,8 +12,8 @@
     #   url = "github:musnix/musnix";
     # };
 
-    container-config.url = ./modules/nixos/container;
-    container-config.inputs.nixpkgs.follows = "nixpkgs";
+    # container-config.url = ./modules/nixos/container;
+    # container-config.inputs.nixpkgs.follows = "nixpkgs";
     #hyprland = {
     #    url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     #    inputs.nixpkgs.follows = "nixpkgs";
@@ -39,7 +39,7 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    clipboard-sync.url = "github:dnut/clipboard-sync";
+    # clipboard-sync.url = "github:dnut/clipboard-sync";
     impermanence.url = "github:nix-community/impermanence";
     nixcord.url = "github:kaylorben/nixcord";
     #jovian = {
@@ -87,8 +87,8 @@
       systems,
       nixpkgs-xr,
       nixpkgs,
-      clipboard-sync,
-      container-config,
+      # clipboard-sync,
+      # container-config,
       hytale,
       ...
     }:
@@ -256,9 +256,9 @@
         nixpkgs-xr.overlays.default
         # inputs.nixpkgs-wayland.overlay
       ];
-      systems = {
-        container-config = container-config;
-      };
+      # systems = {
+      #   container-config = container-config;
+      # };
       systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager
         impermanence.nixosModules.impermanence
@@ -266,7 +266,7 @@
         nix-gaming.nixosModules.pipewireLowLatency
         # musnix.nixosModules.musnix
         aagl.nixosModules.default
-        clipboard-sync.nixosModules.default
+        # clipboard-sync.nixosModules.default
         #jovian.nixosModules.default
         {
           home-manager.useGlobalPkgs = true;

@@ -25,10 +25,51 @@ in
       # jack.enable = true;
       lowLatency = {
         enable = true;
-        quantum = 800;
+        quantum = 256;
         rate = 48000;
       };
-
+      wireplumber.configPackages = [
+        (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/no-suspend.conf" ''
+          monitor.alsa.rules = [
+            {
+              matches = [
+                {
+                  # Matches all sources
+                  node.name = "~alsa_input.*"
+                },
+                {
+                  # Matches all sinks
+                  node.name = "~alsa_output.*"
+                }
+              ]
+              actions = {
+                update-props = {
+                  session.suspend-timeout-seconds = 0
+                }
+              }
+            }
+          ]
+          # bluetooth devices
+          monitor.bluez.rules = [
+            {
+              matches = [
+                {
+                  # Matches all sources
+                  node.name = "~bluez_input.*"
+                },
+                {
+                  # Matches all sinks
+                  node.name = "~bluez_output.*"
+                }
+              ]
+              actions = {
+                update-props = {
+                  session.suspend-timeout-seconds = 0
+                }
+              }
+            }
+          ]'')
+      ];
       configPackages = [
         # (pkgs.writeTextDir "share/pipewire/pipewire.conf.d/99-deepfilternet.conf" ''
         #   context.modules = [
@@ -72,24 +113,24 @@ in
       # 	"default.clock.max-quantum" = 32;
       # 	};
       # };
-      #    extraConfig.pipewire-pulse."92-low-latency" = {
-      #      context.modules = [
-      #        {
-      #          name = "libpipewire-module-protocol-pulse";
-      #          args = {
-      #            pulse.min.req = "32/48000";
-      #            pulse.default.req = "32/48000";
-      #            pulse.max.req = "32/48000";
-      #            pulse.min.quantum = "32/48000";
-      #            pulse.max.quantum = "32/48000";
-      #          };
-      #        }
-      #      ];
-      #      stream.properties = {
-      #        node.latency = "32/48000";
-      #        resample.quality = 1;
-      #      };
-      #    };
+      # extraConfig.pipewire-pulse."92-low-latency" = {
+      #   context.modules = [
+      #     {
+      #       name = "libpipewire-module-protocol-pulse";
+      #       args = {
+      #         pulse.min.req = "32/48000";
+      #         # pulse.default.req = "32/48000";
+      #         pulse.max.req = "32/48000";
+      #         pulse.min.quantum = "32/48000";
+      #         pulse.max.quantum = "32/48000";
+      #       };
+      #     }
+      #   ];
+      #   stream.properties = {
+      #     node.latency = "32/48000";
+      #     resample.quality = 1;
+      #   };
+      # };
     };
   };
 }

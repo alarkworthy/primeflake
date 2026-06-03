@@ -153,7 +153,13 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  boot.kernel.sysctl = {
+    "net.ipv4.conf.all.rp_filter" = 2;
+    "net.ipv4.conf.default.rp_filter" = 2;
+    "net.ipv4.conf.enp110s0.rp_filter" = 2;
+  };
   networking.firewall = {
+    checkReversePath = "loose";
     # if packets are still dropped, they will show up in dmesg
     logReversePathDrops = true;
     # wireguard trips rpfilter up

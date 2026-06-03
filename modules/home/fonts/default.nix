@@ -18,6 +18,7 @@ in
     };
     home.packages = with pkgs; [
       noto-fonts
+      freetype
       noto-fonts-cjk-sans
       nerd-fonts.jetbrains-mono
       noto-fonts-color-emoji
