@@ -10,7 +10,7 @@ let
 in
 {
   options.pluto.desktop.libre.enable = mkEnableOption "Enable LibreOffice" // {
-    default = true;
+    default = false;
   };
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

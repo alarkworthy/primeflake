@@ -58,6 +58,7 @@
       "compress=zstd"
       "noatime"
     ];
+    neededForBoot = true;
   };
 
   fileSystems."/var/log" = {

@@ -4,15 +4,15 @@ $env.config = {
     mode: rounded
   },
   show_banner: false,
-  hooks: {
-    pre_prompt: [{ ||
-      if (which direnv | is-empty) {
-        return
-      }
+  # hooks: {
+  #   pre_prompt: [{ ||
+  #     if (which direnv | is-empty) {
+  #       return
+  #     }
 
-      direnv export json | from json | default {} | load-env
-    }]
-  }
+  #     direnv export json | from json | default {} | load-env
+  #   }]
+  # }
 }
 
 

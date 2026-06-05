@@ -15,7 +15,7 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       # zenity
-      prismlauncher
+      (prismlauncher.override { textToSpeechSupport = false; })
       # (mcpelauncher-ui-qt.overrideAttrs (prev: {
       #   runtimeDeps = [ pkgs.zenity ];
       # }))

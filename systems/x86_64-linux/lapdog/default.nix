@@ -10,7 +10,7 @@
     ./hardware-configuration.nix
   ];
   # Force override any injected NIX_PATH definitions (Chaotic, old channels, etc.)
-  environment.sessionVariables.NIX_PATH = lib.mkForce "nixpkgs=flake:nixpkgs:/nix/var/nix/profiles/per-user/root/channels";
+  # environment.sessionVariables.NIX_PATH = lib.mkForce "nixpkgs=flake:nixpkgs:/nix/var/nix/profiles/per-user/root/channels";
 
   # Prevent NixOS from appending any other channel entries
   nix.nixPath = lib.mkForce [
@@ -41,7 +41,7 @@
     openFirewall = true;
   };
   services.upower.enable = true;
-  programs.noisetorch.enable = true;
+  # programs.noisetorch.enable = true;
 
   services.openssh = {
     enable = true;
@@ -56,6 +56,10 @@
     enable = true;
     wrapperFeatures.gtk = true;
   };
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="0955", ATTRS{idProduct}=="7321", MODE="0666"
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="3000", MODE="0666"
+  '';
   specialisation = {
     #   netPass.configuration = {
     #     networking.interfaces."eno1" = {
@@ -91,6 +95,7 @@
       users.users.alark.extraGroups = [
         "libvirtd"
         "kvm"
+        "qemu"
       ];
       programs.virt-manager.enable = true;
       virtualisation = {
@@ -101,6 +106,7 @@
         #   }).fd;
         libvirtd.enable = true;
         libvirtd.qemu = {
+          vhostUserPackages = [ pkgs.virtiofsd ];
           package = pkgs.qemu_kvm;
           runAsRoot = true;
           swtpm.enable = true;
@@ -209,6 +215,10 @@
     pkgs.powertop
     pkgs.libgcc
     pkgs.bluetui
+    pkgs.nushell
+    pkgs.libreoffice-fresh
+    pkgs.hunspell
+    pkgs.hunspellDicts.en_US-large
   ];
   services.avahi = {
     enable = true;
@@ -328,6 +338,7 @@
       "scanner"
       "audio"
       "input"
+      "dialout"
       "libvirtd"
       "netdev"
       "ubridge"

@@ -35,8 +35,9 @@
     pkgs.moonlight-qt
     pkgs.mprisence
     pkgs.vlc
+    pkgs.fusee-nano
     pkgs.nero-umu
-    pkgs.snes9x-gtk
+    # pkgs.snes9x-gtk
   ];
 
   programs = {

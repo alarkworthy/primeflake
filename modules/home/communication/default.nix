@@ -13,7 +13,7 @@ in
     default = true;
   };
   config = mkIf cfg.enable {
-    services.easyeffects.enable = false;
+    services.easyeffects.enable = true;
     home.packages = with pkgs; [
       #discord#evil uwu
       #For screenshare with audio
@@ -33,7 +33,7 @@ in
     programs.nixcord = {
       discord.vencord.unstable = true;
       enable = true;
-      discord.enable = true;
+      discord.enable = false;
       vesktop.enable = true;
       config = {
         useQuickCss = false;

@@ -10,7 +10,7 @@ let
 in
 {
   options.pluto.programs.neovim.enable = mkEnableOption "Enable Neovim" // {
-    default = true;
+    default = false;
   };
   config = mkIf cfg.enable {
     programs.neovim.defaultEditor = true;

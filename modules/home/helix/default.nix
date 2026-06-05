@@ -20,7 +20,13 @@
       pkgs.basedpyright
       pkgs.codebook
       pkgs.typos-lsp
+      pkgs.codebook
       pkgs.markdown-oxide
+      pkgs.typstyle
+      pkgs.superhtml
+      # pkgs.forth-lsp
+      pkgs.harper
+      pkgs.vscode-css-languageserver
     ];
 
     stylix.targets.helix.transparent = lib.mkForce false;
@@ -28,10 +34,20 @@
       enable = true;
       languages = {
         language-server = {
-          # clangd = {
-          #   command = "clangd";
-          #   args = [ "-std=c++17" ];
-          # };
+          harper-ls = {
+            command = "harper-ls";
+            args = [ "--stdio" ];
+            config.harper-ls = {
+              linters = {
+                # SpellCheck = false;
+              };
+
+            };
+          };
+          codebook = {
+            command = "codebook-lsp";
+            args = [ "serve" ];
+          };
           typos = {
             command = "typos-lsp";
             environment = {
@@ -58,20 +74,26 @@
                 };
               };
           };
-          codekbook = {
-            command = "codebook-lsp";
-            args = [ "serve" ];
-          };
           tinymist = {
             command = "tinymist";
-            config = {
-              preview.background.enabled = true;
-              preview.background.args = [
-                # "--data-plane-host=127.0.0.1:23635"
-                "--invert-colors=never"
-                "--open"
-              ];
-            };
+            config =
+              let
+                argslist = [
+                  # "--data-plane-host=127.0.0.1:23635"
+                  "--invert-colors=never"
+                  "--open"
+                ];
+              in
+              {
+                preview.browsing.args = argslist;
+                preview.background.enabled = true;
+                preview.background.args = argslist;
+                formatterMode = "typstyle";
+                formatterPrintWidth = 80;
+                lint = {
+                  enabled = true;
+                };
+              };
           };
 
         };
@@ -85,7 +107,9 @@
             name = "typst";
             language-servers = [
               "tinymist"
-              "typos"
+              # "typos"
+              "codebook"
+              # "harper-ls"
             ];
           }
           {
@@ -96,6 +120,14 @@
       };
       settings = {
         editor = {
+          end-of-line-diagnostics = "hint";
+          inline-diagnostics = {
+            cursor-line = "warning";
+            other-lines = "error";
+          };
+          lsp = {
+            display-inlay-hints = true;
+          };
           line-number = "relative";
         };
       };

@@ -18,6 +18,7 @@ in
     };
     home.packages = with pkgs; [
       noto-fonts
+      monocraft
       noto-fonts-cjk-sans
       noto-fonts-color-emoji
       # noto-fonts-extra

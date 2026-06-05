@@ -53,7 +53,7 @@ in
       pkgs.nushell
     ];
     programs.git.enable = true;
-    programs.neovim.defaultEditor = true;
+    # programs.neovim.defaultEditor = true;
     # xdg.portal = {
     #   wlr.enable = true;
     #   extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
