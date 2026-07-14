@@ -261,8 +261,9 @@
     pkgs.corefonts
     pkgs.android-tools
     pkgs.crosspipe
-    pkgs.distrobox
+    # pkgs.distrobox
     pkgs.jdk17
+    pkgs.qbittorrent
     pkgs.wootility
     pkgs.wayvr
     pkgs.wineWow64Packages.full
@@ -281,7 +282,9 @@
     # pkgs.bsnes-hd
     pkgs.dolphin-emu
     pkgs.rpcs3
+    pkgs.eden
     pkgs.xenia-canary
+    pkgs.ani-cli
     (pkgs.mpv.override {
       scripts = [
         pkgs.mpvScripts.mpris
@@ -435,7 +438,7 @@
   #hardware.xpadneo.enable = true; #For Xbox One wireless controllers
 
   # hardware.xpad-noone.enable = true;
-  # hardware.xone.enable = true; # For Xbox One and Xbox Series X|S accessories
+  hardware.xone.enable = true; # For Xbox One and Xbox Series X|S accessories
 
   #Might look into hardware.fancontrol
 

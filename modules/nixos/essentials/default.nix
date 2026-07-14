@@ -61,10 +61,10 @@ in
       startAgent = true;
     };
     users.groups.plugdev = { };
-    #hardware.opentabletdriver = {
-    #  enable = true;
+    hardware.opentabletdriver = {
+      enable = true;
 
-    #};
+    };
     #services.xserver = {
     #  enable = true;
     #  autorun = false;

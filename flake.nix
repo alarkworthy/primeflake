@@ -36,12 +36,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix = {
-      url = "github:danth/stylix";
+      # url = "github:danth/stylix";
+      url = "github:nix-community/stylix/pull/2337/head";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    betterbird.url = "github:Heehaaw/betterbird-flake";
     # clipboard-sync.url = "github:dnut/clipboard-sync";
     impermanence.url = "github:nix-community/impermanence";
-    nixcord.url = "github:kaylorben/nixcord";
+    # nixcord.url = "github:kaylorben/nixcord";
+    nixcord.url = "github:FlameFlag/nixcord";
     #jovian = {
     #    url = "github:Jovian-Experiments/Jovian-NixOS";
     #    inputs.nixpkgs.follows = "nixpkgs";
@@ -54,8 +58,8 @@
       url = "github:ezKEA/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
-    nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
+    # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    # nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
   };
   #   outputs = inputs:
   #       inputs.snowfall-lib.mkFlake {
@@ -160,9 +164,10 @@
         #   );
         # })
         (final: prev: {
+          betterbird = inputs.betterbird.packages.x86_64-linux.default;
           hytale-launcher = hytale.packages.x86_64-linux.default;
-          sway-unwrapped = inputs.nixpkgs-wayland.packages.x86_64-linux.sway-unwrapped;
-          xdg-desktop-portal-wlr = inputs.nixpkgs-wayland.packages.x86_64-linux.xdg-desktop-portal-wlr;
+          # sway-unwrapped = inputs.nixpkgs-wayland.packages.x86_64-linux.sway-unwrapped;
+          # xdg-desktop-portal-wlr = inputs.nixpkgs-wayland.packages.x86_64-linux.xdg-desktop-portal-wlr;
           intiface-central = inputs.nixpkgs-stable.legacyPackages."x86_64-linux".intiface-central;
           # vrcx = inputs.alarkpkgs.legacyPackages."x86_64-linux".vrcx;
           # wlx-overlay-s = prev.wlx-overlay-s.overrideAttrs (prevAttrs: {

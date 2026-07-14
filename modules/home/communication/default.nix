@@ -24,6 +24,7 @@ in
       mpg123
       gp-saml-gui
       openconnect
+      betterbird
     ];
 
     #services.easyeffects.enable = true; #need that background filter baby, later learn to autospawn in a workspace with discord
@@ -72,7 +73,7 @@ in
           fixSpotifyEmbeds.enable = true;
           fixYoutubeEmbeds.enable = true;
           forceOwnerCrown.enable = true;
-          friendsSince.enable = true;
+          # friendsSince.enable = true;
           gameActivityToggle.enable = true;
           greetStickerPicker.enable = true;
           iLoveSpam.enable = true;

@@ -4,7 +4,7 @@
   pluto.home-manager.enable = true;
   pluto.desktop.sway.enable = true;
   pluto.emulation.rars.enable = true;
-  pluto.texLive.enable = true;
+  # pluto.texLive.enable = true;
   pluto.ssh.client.enable = true;
   pluto.home.system = "Desktop";
   pluto.streaming.obs.enable = true;
@@ -16,8 +16,16 @@
     enableBashIntegration = true;
   };
 
-  programs.sm64ex = {
-    baserom = pkgs.sm64baserom;
+  home.packages = [
+    pkgs.spotify
+  ];
+
+  programs.distrobox = {
     enable = true;
   };
+
+  # programs.sm64ex = {
+  #   baserom = /home/alark/Games/old/n64/mario/baserom.us.z64;
+  #   enable = true;
+  # };
 }

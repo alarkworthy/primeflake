@@ -93,6 +93,10 @@ in
           { command = "fcitx5 -d -r"; }
           { command = "fcitx5-remote -r"; }
           { command = "exec mako"; }
+          {
+            command = "${pkgs.xrandr}/bin/xrandr --output DP-2 --primary";
+            always = true;
+          }
         ];
         keybindings = lib.mkOptionDefault {
           "${modr}+Return+Shift" = "exec ${pkgs.kitty}/bin/kitty";
@@ -102,6 +106,9 @@ in
           "${modr}+O+Shift" = "exec slurp -o | grim -g - - | wl-copy";
           "${modr}+Return+Ctrl" =
             "exec slurp -o | grim -g - /home/alark/Pictures/swayshots/$(date -u +%4Y%2m%2d_%2Hh%2Mm%2Ss_swayshot.png)";
+          "${modr}+I+Shift" =
+            "exec grim -o DP-2 /home/alark/Pictures/swayshots/$(date -u +%4Y%2m%2d_%2Hh%2Mm%2Ss_swayshot.png)";
+
           #"${modr}+Tab+Shift" = "swaymsg output DP-2
           "XF86AudioRaiseVolume" =
             "exec ${pkgs.wireplumber}/bin/wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+";
@@ -213,9 +220,11 @@ in
         // attrsets.optionalAttrs (config.pluto.home.system == "Desktop") {
           #Acer
           HDMI-A-1 = {
-            mode = "2560x1440@59.951Hz";
+            mode = "2560x1440@143.912Hz";
             pos = "0 0";
             adaptive_sync = "on";
+            allow_tearing = "yes";
+            # max_render_time = "1";
           };
           #Alienware
           DP-2 = {
@@ -223,6 +232,9 @@ in
             pos = "2560 0";
             render_bit_depth = "10";
             hdr = "off";
+            allow_tearing = "yes";
+            # max_render_time = "1";
+
           };
         }
         // attrsets.optionalAttrs (config.pluto.home.system == "Laptop") {

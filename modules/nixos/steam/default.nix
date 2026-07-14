@@ -21,17 +21,17 @@ in
     #           ];
     hardware.steam-hardware.enable = true;
 
-    programs.alvr = {
-      enable = false;
-      openFirewall = true;
-    };
+    # programs.alvr = {
+    #   enable = false;
+    #   openFirewall = true;
+    # };
 
     hardware.enableRedistributableFirmware = true;
     # chaotic.hdr.enable = true;
 
-    environment.systemPackages = [
-      pkgs.gamescope
-    ];
+    # environment.systemPackages = [
+    #   pkgs.gamescope
+    # ];
     programs.gamescope = {
       # capSysNice = true;
       enable = true;

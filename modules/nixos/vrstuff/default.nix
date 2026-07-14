@@ -11,7 +11,7 @@
   config = lib.mkIf config.pluto.gaming.vrstuff.enable {
 
     environment.systemPackages = with pkgs; [
-      slimevr
+      # slimevr
       intiface-central
       vrcx
     ];
