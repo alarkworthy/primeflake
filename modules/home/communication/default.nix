@@ -33,9 +33,11 @@ in
       systemdTarget = "sway-session.target";
     };
     programs.nixcord = {
-      discord.vencord.unstable = true;
+      discord = {
+        vencord.enable = true;
+        enable = true;
+      };
       enable = true;
-      discord.enable = true;
       vesktop.enable = true;
       config = {
         useQuickCss = false;
@@ -46,7 +48,7 @@ in
           anonymiseFileNames.enable = true;
           betterGifAltText.enable = true;
           betterGifPicker.enable = true;
-          BlurNSFW.enable = true;
+          BlurNSFW.enable = false;
           betterSessions.enable = true;
           biggerStreamPreview.enable = true;
           callTimer = {

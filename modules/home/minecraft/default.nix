@@ -15,7 +15,23 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       zenity
-      prismlauncher
+      (prismlauncher.override {
+
+        jdks = [
+
+          # pkgs.javaPackages.compiler.temurin-bin.jdk-17
+          # pkgs.javaPackages.compiler.temurin-bin.jdk-21
+          pkgs.javaPackages.compiler.temurin-bin.jdk-25
+          pkgs.javaPackages.compiler.temurin-bin.jdk-21
+
+          pkgs.jdk21
+          pkgs.jdk17
+          pkgs.jdk8
+
+        ];
+      }
+
+      )
       hytale-launcher
       # (mcpelauncher-ui-qt.overrideAttrs (prev: {
       #   runtimeDeps = [ pkgs.zenity ];

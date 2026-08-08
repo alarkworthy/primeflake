@@ -16,6 +16,17 @@
     ./hardware-configuration.nix
   ];
 
+  environment.variables = {
+    DXVK_HUD = 0;
+  };
+
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
+
+  services.joycond.enable = true;
+
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
@@ -258,11 +269,20 @@
   };
   # ];
   environment.systemPackages = [
+    pkgs.vintagestoryPackages.latest
     pkgs.corefonts
+    pkgs.gdbHostCpuOnly
     pkgs.android-tools
+    pkgs.ryubing
+    pkgs.ryujinxV
+    pkgs.vkbasalt
+    pkgs.goverlay
+    pkgs.mangohud
+    # pkgs.javaPackages.compiler.temurin-bin.jdk-25
     pkgs.crosspipe
     # pkgs.distrobox
     pkgs.jdk17
+    pkgs.limo
     pkgs.qbittorrent
     pkgs.wootility
     pkgs.wayvr
@@ -282,9 +302,15 @@
     # pkgs.bsnes-hd
     pkgs.dolphin-emu
     pkgs.rpcs3
+    pkgs.pcsx2
     pkgs.eden
+    pkgs.p7zip
+    pkgs.anki
     pkgs.xenia-canary
+    pkgs.dusklight
     pkgs.ani-cli
+    # pkgs.shipwright
+    # pkgs.zelda64recomp
     (pkgs.mpv.override {
       scripts = [
         pkgs.mpvScripts.mpris
@@ -428,8 +454,27 @@
     ];
   };
   #Bluetooth
+  boot.extraModprobeConfig = ''
+    options bluetooth disable_ertm=1
+    options btusb enable_autosuspend=0
+  '';
+
   hardware.bluetooth = {
     enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Name = "Nintendo";
+        FastConnectable = true;
+        Experimental = true;
+      };
+    };
+    input = {
+      General = {
+        ClassicBondedOnly = false;
+        UserspaceHID = false;
+      };
+    };
     #powerOnBoot = false; default is true
     #Check Nix options for more
   };

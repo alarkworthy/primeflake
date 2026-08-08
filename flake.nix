@@ -41,6 +41,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ryu = {
+      url = "github:tickreyiz/ryujinx-canary-flake";
+    };
+    vintagestory-nix = {
+      url = "git+https://codeberg.org/PierreBorine/vintagestory-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     betterbird.url = "github:Heehaaw/betterbird-flake";
     # clipboard-sync.url = "github:dnut/clipboard-sync";
     impermanence.url = "github:nix-community/impermanence";
@@ -164,6 +172,7 @@
         #   );
         # })
         (final: prev: {
+          ryujinxV = inputs.ryu.packages.x86_64-linux.default;
           betterbird = inputs.betterbird.packages.x86_64-linux.default;
           hytale-launcher = hytale.packages.x86_64-linux.default;
           # sway-unwrapped = inputs.nixpkgs-wayland.packages.x86_64-linux.sway-unwrapped;
@@ -258,6 +267,7 @@
           #       postUnpack = '' '';
           #     });
         })
+        inputs.vintagestory-nix.overlays.default
         nixpkgs-xr.overlays.default
         # inputs.nixpkgs-wayland.overlay
       ];
