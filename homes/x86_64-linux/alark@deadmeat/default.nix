@@ -24,6 +24,10 @@
     enable = true;
   };
 
+  programs.calibre = {
+    enable = true;
+  };
+
   # programs.sm64ex = {
   #   baserom = /home/alark/Games/old/n64/mario/baserom.us.z64;
   #   enable = true;

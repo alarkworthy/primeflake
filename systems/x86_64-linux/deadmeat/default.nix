@@ -298,6 +298,7 @@
     # pkgs.spice-gtk
     pkgs.alcom
     pkgs.retroarch-full
+    (pkgs.parallel-launcher.override { withDiscordRpc = true; })
     pkgs.melonds
     # pkgs.bsnes-hd
     pkgs.dolphin-emu
