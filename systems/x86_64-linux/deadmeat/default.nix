@@ -23,6 +23,17 @@
   programs.appimage = {
     enable = true;
     binfmt = true;
+    package = pkgs.appimage-run.override {
+      extraPkgs = pkgs: [
+        pkgs.webkitgtk_4_1
+        pkgs.gst_all_1.gst-plugins-base
+        pkgs.gst_all_1.gst-plugins-good
+        pkgs.gst_all_1.gst-libav
+        pkgs.icu
+        pkgs.libxcrypt
+        pkgs.python312
+      ];
+    };
   };
 
   services.joycond.enable = true;
@@ -276,13 +287,14 @@
     pkgs.ryubing
     pkgs.ryujinxV
     pkgs.vkbasalt
+    pkgs.unrar
     pkgs.goverlay
     pkgs.mangohud
     # pkgs.javaPackages.compiler.temurin-bin.jdk-25
     pkgs.crosspipe
     # pkgs.distrobox
     pkgs.jdk17
-    pkgs.limo
+    (pkgs.limo.override { withUnrar = true; })
     pkgs.qbittorrent
     pkgs.wootility
     pkgs.wayvr
@@ -550,7 +562,7 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   #Time Zone
-  time.timeZone = "US/Mountain";
+  time.timeZone = "US/Eastern";
 
   # Select internationalisation properties.
   i18n = {
@@ -601,15 +613,15 @@
     package = pkgs.ollama-rocm;
   };
 
-  # hardware.sane = {
-  #   enable = true;
-  #   extraBackends = [
-  #     pkgs.hplipWithPlugin
-  #     pkgs.sane-airscan
-  #     # (pkgs.epsonscan2.override { withNonFreePlugins = true; })
-  #   ];
-  #   openFirewall = true;
-  # };
+  hardware.sane = {
+    enable = true;
+    extraBackends = [
+      # pkgs.hplipWithPlugin
+      # pkgs.sane-airscan
+      (pkgs.epsonscan2.override { withNonFreePlugins = true; })
+    ];
+    openFirewall = true;
+  };
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 

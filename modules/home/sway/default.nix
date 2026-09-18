@@ -191,7 +191,7 @@ in
 
         modifier = modr;
         defaultWorkspace = "workspace number 1";
-        menu = "tofi-drun | xargs swaymsg exec --";
+        menu = "tofi-drun --drun-launch=true";
         output = {
           #DP-1 = {
           # Acer
